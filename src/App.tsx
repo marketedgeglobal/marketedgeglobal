@@ -59,9 +59,12 @@ function App() {
               turn complex data into clear action plans.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold">
+              <a
+                className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
+                href="/get-started/"
+              >
                 Get started
-              </button>
+              </a>
               <button className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200">
                 Explore platform
               </button>
