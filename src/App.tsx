@@ -61,7 +61,7 @@ function App() {
             <div className="flex flex-wrap gap-4">
               <a
                 className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-                href="/get-started/"
+                href={`${import.meta.env.BASE_URL}get-started/`}
               >
                 Get started
               </a>
