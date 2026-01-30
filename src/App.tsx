@@ -31,7 +31,46 @@ type PageProps = {
   onOpenChat: () => void;
 };
 
-function HomePage({ onOpenChat }: PageProps) {
+function ExplorePlatformPage({ onOpenChat }: PageProps) {
+  return (
+    <section className="mx-auto max-w-6xl px-6 py-20">
+      <div className="grid gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+        <div className="space-y-5">
+          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Explore Platform</p>
+          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
+            Explore MarketEdge capabilities
+          </h1>
+          <p className="text-lg text-slate-300">
+            Review the platform highlights and open the BD Assistant when you need real-time support.
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <button
+              className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
+              onClick={onOpenChat}
+            >
+              Open BD Assistant
+            </button>
+            <Link
+              className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
+              to="/explore-platform/bd-assistant/"
+            >
+              Learn more
+            </Link>
+          </div>
+        </div>
+        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+          <ul className="space-y-4 text-sm text-slate-300">
+            <li>• Generate briefs for high-priority accounts.</li>
+            <li>• Compare segment performance across regions.</li>
+            <li>• Summarize competitive shifts in minutes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomePage() {
   return (
     <>
       <section className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1.1fr_0.9fr] md:items-center">
@@ -53,12 +92,12 @@ function HomePage({ onOpenChat }: PageProps) {
             >
               Get started
             </a>
-            <a
+            <Link
               className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
-              href={`${import.meta.env.BASE_URL}explore-platform/`}
+              to="/explore-platform/"
             >
               Explore platform
-            </a>
+            </Link>
           </div>
           <div className="flex flex-wrap gap-6 pt-6">
             {stats.map((stat) => (
@@ -153,32 +192,6 @@ function HomePage({ onOpenChat }: PageProps) {
         </div>
       </section>
 
-      <section id="bd-assistant" className="border-t border-slate-900 bg-slate-950/60">
-        <div className="mx-auto max-w-6xl px-6 py-16">
-          <div className="grid gap-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-            <div className="space-y-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">BD Assistant</p>
-              <h3 className="text-3xl font-semibold">Accelerate business development with AI</h3>
-              <p className="text-sm text-slate-400">
-                Ask the BD Assistant for regional insights, account briefs, and competitive positioning.
-              </p>
-              <button
-                className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-                onClick={onOpenChat}
-              >
-                Open BD Assistant
-              </button>
-            </div>
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
-              <ul className="space-y-4 text-sm text-slate-300">
-                <li>• Draft outreach notes and call prep in seconds.</li>
-                <li>• Compare segment performance by region or vertical.</li>
-                <li>• Summarize shifts in pricing and competitive moves.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section id="contact" className="border-t border-slate-900 bg-slate-950/60">
         <div className="mx-auto max-w-6xl px-6 py-16">
@@ -357,9 +370,9 @@ function FeaturesPage() {
               </button>
               <Link
                 className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
-                to="/explore-platform/bd-assistant/"
+                to="/explore-platform/"
               >
-                Explore BD Assistant
+                Explore platform
               </Link>
             </div>
           </div>
@@ -384,8 +397,8 @@ function Layout({ children }: { children: ReactNode }) {
             <a className="hover:text-white" href={`${import.meta.env.BASE_URL}#insights`}>
               Insights
             </a>
-            <Link className="hover:text-white" to="/explore-platform/bd-assistant/">
-              BD Assistant
+            <Link className="hover:text-white" to="/explore-platform/">
+              Explore platform
             </Link>
             <a className="hover:text-white" href={`${import.meta.env.BASE_URL}#contact`}>
               Contact
@@ -484,8 +497,12 @@ function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Layout>
         <Routes>
-          <Route path="/" element={<HomePage onOpenChat={() => setIsChatOpen(true)} />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/features/" element={<FeaturesPage />} />
+          <Route
+            path="/explore-platform/"
+            element={<ExplorePlatformPage onOpenChat={() => setIsChatOpen(true)} />}
+          />
           <Route
             path="/explore-platform/bd-assistant/"
             element={<BdAssistantPage onOpenChat={() => setIsChatOpen(true)} />}
