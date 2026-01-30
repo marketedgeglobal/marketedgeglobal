@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Platform | MarketEdge Global</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: #020617;
+        color: #e2e8f0;
+        min-height: 100vh;
+      }
+
+      header {
+        padding: 1.5rem 1.5rem 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      nav {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.95rem;
+      }
+
+      nav a {
+        color: #e2e8f0;
+        text-decoration: none;
+        letter-spacing: 0.01em;
+      }
+
+      nav a:hover {
+        color: #a5b4fc;
+      }
+
+      main {
+        padding: 3rem 1.5rem 4rem;
+        display: grid;
+        gap: 2.5rem;
+        place-items: center;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin: 0 0 1rem;
+      }
+
+      p {
+        margin: 0.5rem 0 0;
+        color: #94a3b8;
+      }
+
+      .card {
+        max-width: 720px;
+        width: min(720px, 100%);
+        border-radius: 1.5rem;
+        border: 1px solid #1e293b;
+        background: #0f172a;
+        padding: 2rem;
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 1.75rem;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .button-row a {
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 999px;
+        border: 1px solid #334155;
+        color: #e2e8f0;
+        font-weight: 600;
+      }
+
+      .button-row a:hover {
+        border-color: #818cf8;
+        color: #e0e7ff;
+      }
+
+      .primary-button {
+        background: #6366f1;
+        border-color: #6366f1;
+        color: #0f172a;
+      }
+
+      .primary-button:hover {
+        background: #818cf8;
+        border-color: #818cf8;
+        color: #0f172a;
+      }
+
+      .menu-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .menu-grid a {
+        text-decoration: none;
+        padding: 0.85rem 1.25rem;
+        border-radius: 0.85rem;
+        border: 1px solid #1e293b;
+        background: #0b1220;
+        color: #e2e8f0;
+        font-weight: 600;
+      }
+
+      .menu-grid a:hover {
+        border-color: #818cf8;
+        color: #e0e7ff;
+      }
+
+      a {
+        color: #a5b4fc;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Primary">
+        <a href="https://rmallorybpc.github.io/marketedgeglobal/">MarketEdge Global</a>
+        <a href="https://rmallorybpc.github.io/marketedgeglobal/#features">Features</a>
+        <a href="https://rmallorybpc.github.io/marketedgeglobal/#insights">Insights</a>
+        <a href="https://rmallorybpc.github.io/marketedgeglobal/#contact">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <div>
+        <h1>Explore Platform</h1>
+        <p>Choose a workspace or jump to a section of MarketEdge Global.</p>
+      </div>
+
+      <section class="card" aria-label="MarketEdge BD Assistant">
+        <div>
+          <h2>MarketEdge BD Assistant</h2>
+          <p>
+            Accelerate business development with guided insights, outreach planning, and
+            opportunity tracking.
+          </p>
+        </div>
+        <div class="button-row">
+          <a class="primary-button" href="https://rmallorybpc.github.io/marketedgeglobal/#contact">
+            Request access
+          </a>
+          <a href="https://rmallorybpc.github.io/marketedgeglobal/">Back to overview</a>
+        </div>
+      </section>
+
+      <section class="card" aria-label="Platform menu">
+        <div>
+          <h2>Platform menu</h2>
+          <p>Quick links to the same menu options available on the Get Started page.</p>
+        </div>
+        <div class="menu-grid">
+          <a href="https://rmallorybpc.github.io/marketedgeglobal/">MarketEdge Global</a>
+          <a href="https://rmallorybpc.github.io/marketedgeglobal/#features">Features</a>
+          <a href="https://rmallorybpc.github.io/marketedgeglobal/#insights">Insights</a>
+          <a href="https://rmallorybpc.github.io/marketedgeglobal/#contact">Contact</a>
+        </div>
+      </section>
+
+      <p>Return to the <a href="/">homepage</a>.</p>
+    </main>
+  </body>
+</html>

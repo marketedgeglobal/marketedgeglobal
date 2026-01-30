@@ -65,9 +65,12 @@ function App() {
               >
                 Get started
               </a>
-              <button className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200">
+              <a
+                className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
+                href={`${import.meta.env.BASE_URL}explore-platform/`}
+              >
                 Explore platform
-              </button>
+              </a>
             </div>
             <div className="flex flex-wrap gap-6 pt-6">
               {stats.map((stat) => (
