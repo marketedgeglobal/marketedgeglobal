@@ -62,3 +62,5 @@ npm run lint
 ## Notes
 
 If you are setting up new routes or layouts, check `src/main.tsx` and the components in `src/layout`.
+
+For documentation-only branches that don't include a `package.json`, tooling commands like `npm run lint` won't be available.
