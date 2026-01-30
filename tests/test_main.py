@@ -7,6 +7,8 @@ This module contains unit tests for the main application.
 import unittest
 import sys
 import os
+import io
+from contextlib import redirect_stdout
 
 # Add src to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
@@ -20,9 +22,6 @@ class TestMain(unittest.TestCase):
         """Test that main function runs without error."""
         try:
             # Capture output instead of printing to console
-            import io
-            from contextlib import redirect_stdout
-            
             f = io.StringIO()
             with redirect_stdout(f):
                 main()
