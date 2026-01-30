@@ -50,12 +50,6 @@ function ExplorePlatformPage({ onOpenChat }: PageProps) {
             >
               Open BD Assistant
             </button>
-            <Link
-              className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
-              to="/explore-platform/bd-assistant/"
-            >
-              Learn more
-            </Link>
           </div>
         </div>
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
@@ -212,45 +206,6 @@ function HomePage() {
         </div>
       </section>
     </>
-  );
-}
-
-function BdAssistantPage({ onOpenChat }: PageProps) {
-  return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
-      <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-        <div className="space-y-5">
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">BD Assistant</p>
-          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Meet your MarketEdge BD Assistant
-          </h1>
-          <p className="text-lg text-slate-300">
-            Generate account briefs, prioritize outreach, and summarize competitive shifts in seconds.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button
-              className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-              onClick={onOpenChat}
-            >
-              Open BD Assistant
-            </button>
-            <Link
-              className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
-              to="/"
-            >
-              Back to overview
-            </Link>
-          </div>
-        </div>
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
-          <ul className="space-y-4 text-sm text-slate-300">
-            <li>• Prioritize accounts with dynamic scoring cues.</li>
-            <li>• Generate prep notes for regional stakeholders.</li>
-            <li>• Summarize market moves and expansion signals.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -502,10 +457,6 @@ function App() {
           <Route
             path="/explore-platform/"
             element={<ExplorePlatformPage onOpenChat={() => setIsChatOpen(true)} />}
-          />
-          <Route
-            path="/explore-platform/bd-assistant/"
-            element={<BdAssistantPage onOpenChat={() => setIsChatOpen(true)} />}
           />
         </Routes>
       </Layout>
