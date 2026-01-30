@@ -64,3 +64,11 @@ npm run lint
 If you are setting up new routes or layouts, check `src/main.tsx` and the components in `src/layout`.
 
 For documentation-only branches that don't include a `package.json`, tooling commands like `npm run lint` won't be available.
+
+## Agent Chat (OpenAI)
+
+The chat widget on the site calls a separate backend proxy to keep your API key private.
+
+- See docs/agent-backend.md for setup
+- Set the GitHub Actions secret VITE_AGENT_API_URL to your deployed /agent endpoint
+ - Optional: use the Fly.io deployment workflow in .github/workflows/deploy-agent.yml

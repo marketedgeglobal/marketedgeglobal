@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 const features = [
   {
     title: "Market intelligence",
@@ -22,7 +24,75 @@ const stats = [
   { label: "Data points", value: "2.4M" },
 ];
 
+type ChatMessage = { role: "user" | "assistant"; content: string };
+
 function App() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [inputValue, setInputValue] = useState("");
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      role: "assistant",
+      content:
+        "Hi! I’m the MarketEdge assistant. Ask me about insights, regions, or competitive trends.",
+    },
+  ]);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const messageEndRef = useRef<HTMLDivElement | null>(null);
+
+  const agentEndpoint = import.meta.env.VITE_AGENT_API_URL as string | undefined;
+
+  useEffect(() => {
+    if (!isChatOpen) {
+      return;
+    }
+    inputRef.current?.focus();
+  }, [isChatOpen]);
+
+  useEffect(() => {
+    messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages, isChatOpen]);
+
+  const handleSend = async () => {
+    if (!inputValue.trim() || isSending) {
+      return;
+    }
+
+    const userMessage: ChatMessage = { role: "user", content: inputValue.trim() };
+    const nextMessages = [...messages, userMessage];
+    setMessages(nextMessages);
+    setInputValue("");
+    setIsSending(true);
+    setErrorMessage(null);
+
+    if (!agentEndpoint) {
+      setIsSending(false);
+      setErrorMessage("Agent endpoint not configured. Set VITE_AGENT_API_URL to your API URL.");
+      return;
+    }
+
+    try {
+      const response = await fetch(agentEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: nextMessages }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed (${response.status})`);
+      }
+
+      const data = (await response.json()) as { reply?: string };
+      const replyText = data.reply ?? "Sorry, I couldn’t generate a reply.";
+      setMessages((prev) => [...prev, { role: "assistant", content: replyText }]);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unexpected error";
+      setErrorMessage(message);
+    } finally {
+      setIsSending(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="border-b border-slate-800">
@@ -59,12 +129,12 @@ function App() {
               turn complex data into clear action plans.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <button
                 className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-                href={`${import.meta.env.BASE_URL}get-started/`}
+                onClick={() => setIsChatOpen(true)}
               >
                 Get started
-              </a>
+              </button>
               <a
                 className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
                 href={`${import.meta.env.BASE_URL}explore-platform/`}
@@ -194,6 +264,75 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {isChatOpen && (
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm">
+          <div className="absolute bottom-6 right-6 flex w-[min(420px,90vw)] flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+              <div>
+                <div className="text-sm font-semibold">MarketEdge Assistant</div>
+                <div className="text-xs text-slate-400">Ask about performance, trends, or strategy.</div>
+              </div>
+              <button
+                className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300"
+                onClick={() => setIsChatOpen(false)}
+              >
+                Close
+              </button>
+            </div>
+            <div className="flex max-h-[50vh] flex-1 flex-col gap-4 overflow-y-auto px-5 py-4 text-sm">
+              {messages.map((message, index) => (
+                <div
+                  key={`${message.role}-${index}`}
+                  className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                      message.role === "user"
+                        ? "bg-indigo-500 text-white"
+                        : "bg-slate-900 text-slate-200"
+                    }`}
+                  >
+                    {message.content}
+                  </div>
+                </div>
+              ))}
+              <div ref={messageEndRef} />
+            </div>
+            {errorMessage && (
+              <div className="border-t border-slate-800 px-5 py-2 text-xs text-rose-400">
+                {errorMessage}
+              </div>
+            )}
+            <div className="border-t border-slate-800 p-4">
+              <div className="flex items-center gap-3">
+                <input
+                  ref={inputRef}
+                  className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+                  placeholder="Ask the assistant..."
+                  value={inputValue}
+                  onChange={(event) => setInputValue(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      void handleSend();
+                    }
+                  }}
+                />
+                <button
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold"
+                  onClick={() => void handleSend()}
+                  disabled={isSending}
+                >
+                  {isSending ? "Sending..." : "Send"}
+                </button>
+              </div>
+              <p className="mt-2 text-[11px] text-slate-500">
+                Set VITE_AGENT_API_URL to your backend endpoint (e.g. https://api.yourdomain.com/agent).
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
