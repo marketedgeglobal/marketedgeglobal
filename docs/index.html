@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ranking Tool | MarketEdge Global</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+        background: radial-gradient(circle at top, #f8fafc, #e2e8f0 45%, #cbd5f5);
+        color: #0f172a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 2.5rem 1.5rem 4rem;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .subtitle {
+        margin: 0.4rem 0 0;
+        color: #475569;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      label {
+        font-weight: 600;
+      }
+
+      select {
+        border-radius: 999px;
+        border: 1px solid #cbd5f5;
+        padding: 0.55rem 1.1rem;
+        font-size: 1rem;
+        background: #fff;
+      }
+
+      .charts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .chart-card {
+        background: #ffffffcc;
+        border-radius: 24px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+        backdrop-filter: blur(12px);
+      }
+
+      .status {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        color: #64748b;
+      }
+
+      .error {
+        color: #b91c1c;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Ranking Tool</h1>
+        <p class="subtitle">Explore criteria performance by area.</p>
+      </div>
+      <div class="controls">
+        <label for="criteria-select">Criteria Area</label>
+        <select id="criteria-select"></select>
+      </div>
+    </header>
+
+    <section class="charts" id="charts"></section>
+    <p class="status" id="status">Loading data...</p>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script type="module" src="assets/app.js"></script>
+  </body>
+</html>

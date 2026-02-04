@@ -1,0 +1,34 @@
+{
+  "criteria": [
+    {
+      "id": "economic",
+      "label": "Economic Potential",
+      "weight": 25,
+      "area": "Impact"
+    },
+    {
+      "id": "pro_poor",
+      "label": "Pro-Poor Potential",
+      "weight": 20,
+      "area": "Impact"
+    },
+    {
+      "id": "feasibility",
+      "label": "Implementation Feasibility",
+      "weight": 25,
+      "area": "Execution"
+    },
+    {
+      "id": "market",
+      "label": "Market Readiness",
+      "weight": 15,
+      "area": "Execution"
+    },
+    {
+      "id": "resilience",
+      "label": "Climate Resilience",
+      "weight": 15,
+      "area": "Risk"
+    }
+  ]
+}

@@ -4,83 +4,89 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ranking Tool | MarketEdge Global</title>
-    <style>
-      :root {
-        color-scheme: dark;
-      }
-
-      body {
-        margin: 0;
-        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-        background: #020617;
-        color: #e2e8f0;
-        min-height: 100vh;
-      }
-
-      header {
-        padding: 1.5rem 1.5rem 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      nav {
-        display: flex;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        font-size: 0.95rem;
-      }
-
-      nav a {
-        color: #e2e8f0;
-        text-decoration: none;
-        letter-spacing: 0.01em;
-      }
-
-      nav a:hover {
-        color: #a5b4fc;
-      }
-
-      main {
-        text-align: center;
-        padding: 3rem 1.5rem 4rem;
-        display: grid;
-        place-items: center;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        margin: 0 0 1rem;
-      }
-
-      p {
-        margin: 0.5rem 0 0;
-        color: #94a3b8;
-      }
-
-      a {
-        color: #a5b4fc;
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
     <header>
-      <nav aria-label="Primary">
-        <a href="https://marketedgeglobal.github.io/marketedgeglobal/">MarketEdge Global</a>
-        <a href="https://marketedgeglobal.github.io/marketedgeglobal/#features">Features</a>
-        <a href="https://marketedgeglobal.github.io/marketedgeglobal/#insights">Insights</a>
-        <a href="https://marketedgeglobal.github.io/marketedgeglobal/#contact">Contact</a>
-      </nav>
+      <div class="header-inner">
+        <div>
+          <p class="eyebrow">Explore Platform</p>
+          <h1>Ranking Tool</h1>
+          <p class="subtitle">Compare value chains across weighted criteria.</p>
+        </div>
+        <nav aria-label="Primary">
+          <a href="https://marketedgeglobal.github.io/marketedgeglobal/">MarketEdge Global</a>
+          <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">
+            Explore Platform
+          </a>
+          <a href="how-to-update.html">How to Update</a>
+        </nav>
+      </div>
     </header>
     <main>
-      <h1>Ranking Tool</h1>
-      <p>
-        Return to the
-        <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">Explore Platform</a>
-        overview.
-      </p>
-      <p>More details for this tool are coming soon.</p>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://marketedgeglobal.github.io/marketedgeglobal/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">
+          Explore Platform
+        </a>
+        <span aria-hidden="true">/</span>
+        <span>Ranking Tool</span>
+      </nav>
+
+      <section class="controls" aria-label="Dashboard filters">
+        <div class="control-group">
+          <label for="value-chain-select">Value Chains</label>
+          <select id="value-chain-select" multiple aria-describedby="value-chain-hint"></select>
+          <p id="value-chain-hint" class="hint">Select one or more value chains.</p>
+        </div>
+        <div class="control-group">
+          <span class="control-title">Criteria Filters</span>
+          <div id="criteria-filters" class="checkbox-grid" role="group"></div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Total score by value chain</h2>
+          <div class="chart-shell" id="totals-chart"></div>
+        </div>
+        <div class="card">
+          <h2>Criteria profile (radar)</h2>
+          <div class="chart-shell" id="radar-chart"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Weighted score snapshot</h2>
+          <p class="subtitle">Totals reflect the criteria you selected.</p>
+        </div>
+        <div class="table-wrapper">
+          <table class="compact-table">
+            <thead>
+              <tr>
+                <th>Value chain</th>
+                <th>Total weighted score</th>
+                <th>Average score</th>
+              </tr>
+            </thead>
+            <tbody id="totals-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Value chain details</h2>
+        <p class="subtitle">Open the detail view for deeper insight.</p>
+        <div id="value-chain-links" class="link-grid"></div>
+      </section>
+
+      <p id="status" class="status" role="status">Loading ranking data...</p>
     </main>
+    <script src="assets/vendor/chartjs/chart.umd.min.js" defer></script>
+    <script src="assets/js/loadData.js" defer></script>
+    <script src="assets/js/charts.js" defer></script>
+    <script src="assets/js/index.js" defer></script>
   </body>
 </html>

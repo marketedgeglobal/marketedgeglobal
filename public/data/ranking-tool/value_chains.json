@@ -1,0 +1,20 @@
+{
+  "value_chains": [
+    {
+      "id": "rice",
+      "label": "Climate Smart Rice"
+    },
+    {
+      "id": "shrimp",
+      "label": "Shrimp"
+    },
+    {
+      "id": "banana",
+      "label": "Banana"
+    },
+    {
+      "id": "cassava",
+      "label": "Cassava"
+    }
+  ]
+}

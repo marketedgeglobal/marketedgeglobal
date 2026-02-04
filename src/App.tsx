@@ -381,6 +381,12 @@ function Layout({ children }: { children: ReactNode }) {
             <Link className="hover:text-white" to="/explore-platform/">
               Explore platform
             </Link>
+            <a
+              className="hover:text-white"
+              href={`${import.meta.env.BASE_URL}explore-platform/ranking-tool/`}
+            >
+              Ranking tool
+            </a>
             <a className="hover:text-white" href={`${import.meta.env.BASE_URL}#contact`}>
               Contact
             </a>

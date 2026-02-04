@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ranking Tool Detail | MarketEdge Global</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div>
+          <p class="eyebrow">Explore Platform</p>
+          <h1>Ranking Tool Detail</h1>
+          <p class="subtitle">Inspect weighted scores by criterion.</p>
+        </div>
+        <nav aria-label="Primary">
+          <a href="https://marketedgeglobal.github.io/marketedgeglobal/">MarketEdge Global</a>
+          <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">
+            Explore Platform
+          </a>
+          <a href="index.html">Ranking Tool</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://marketedgeglobal.github.io/marketedgeglobal/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">
+          Explore Platform
+        </a>
+        <span aria-hidden="true">/</span>
+        <a href="index.html">Ranking Tool</a>
+        <span aria-hidden="true">/</span>
+        <span>Detail</span>
+      </nav>
+
+      <section class="controls" aria-label="Detail filters">
+        <div class="control-group">
+          <label for="value-chain-detail">Value Chain</label>
+          <select id="value-chain-detail"></select>
+        </div>
+        <div class="control-group">
+          <span class="control-title">Criteria Areas</span>
+          <div id="area-filters" class="checkbox-grid" role="group"></div>
+        </div>
+        <div class="control-group">
+          <span class="control-title">Export</span>
+          <button id="download-csv" type="button">Download CSV</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Criteria table</h2>
+        <div class="table-wrapper">
+          <table class="compact-table">
+            <thead>
+              <tr>
+                <th>Criterion</th>
+                <th>Weight</th>
+                <th>Score</th>
+                <th>Weighted score</th>
+                <th>Explanation</th>
+              </tr>
+            </thead>
+            <tbody id="detail-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <p id="detail-status" class="status" role="status">Loading ranking data...</p>
+    </main>
+    <script src="assets/js/loadData.js" defer></script>
+    <script src="assets/js/detail.js" defer></script>
+  </body>
+</html>

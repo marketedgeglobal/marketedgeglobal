@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Update Ranking Data | MarketEdge Global</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-inner">
+        <div>
+          <p class="eyebrow">Explore Platform</p>
+          <h1>How to Update Ranking Data</h1>
+          <p class="subtitle">Quick guidance for non-technical editors.</p>
+        </div>
+        <nav aria-label="Primary">
+          <a href="https://marketedgeglobal.github.io/marketedgeglobal/">MarketEdge Global</a>
+          <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">
+            Explore Platform
+          </a>
+          <a href="index.html">Ranking Tool</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="https://marketedgeglobal.github.io/marketedgeglobal/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/">
+          Explore Platform
+        </a>
+        <span aria-hidden="true">/</span>
+        <a href="index.html">Ranking Tool</a>
+        <span aria-hidden="true">/</span>
+        <span>How to Update</span>
+      </nav>
+
+      <section class="card">
+        <h2>Where to edit data</h2>
+        <p class="subtitle">Update metrics by editing JSON at <strong>/data/ranking-tool/*.json</strong>.</p>
+        <div class="link-grid">
+          <a class="link-card" href="../../data/ranking-tool/criteria.json">criteria.json</a>
+          <a class="link-card" href="../../data/ranking-tool/scores.json">scores.json</a>
+          <a class="link-card" href="../../data/ranking-tool/value_chains.json">value_chains.json</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Field descriptions</h2>
+        <div class="table-wrapper">
+          <table class="compact-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>id</td>
+                <td>Short unique key used across files (no spaces).</td>
+              </tr>
+              <tr>
+                <td>label</td>
+                <td>Human-readable name shown on the dashboard.</td>
+              </tr>
+              <tr>
+                <td>area</td>
+                <td>Criteria Area label used for detail filters.</td>
+              </tr>
+              <tr>
+                <td>weight</td>
+                <td>Percent weight for a criterion (0-100).</td>
+              </tr>
+              <tr>
+                <td>score</td>
+                <td>Raw score for a value chain + criterion (numeric).</td>
+              </tr>
+              <tr>
+                <td>weighted_score</td>
+                <td>Optional override for the computed score.</td>
+              </tr>
+              <tr>
+                <td>explanation</td>
+                <td>Short rationale shown in the detail view.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>How to add a Criterion Area or Value Chain</h2>
+        <p class="subtitle">
+          Add a new entry to <strong>criteria.json</strong> or <strong>value_chains.json</strong>,
+          then add matching rows to <strong>scores.json</strong>.
+        </p>
+        <div class="tag-list">
+          <span class="tag">New criterion IDs must be unique.</span>
+          <span class="tag">New value chains need scores for each criterion.</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Preview changes</h2>
+        <p class="subtitle">
+          Use the GitHub web editor to update JSON, commit the change, and refresh the page.
+        </p>
+        <div class="tag-list">
+          <a class="tag" href="https://github.com/marketedgeglobal/marketedgeglobal/edit/main/public/data/ranking-tool/criteria.json">
+            Edit criteria.json
+          </a>
+          <a class="tag" href="https://github.com/marketedgeglobal/marketedgeglobal/edit/main/public/data/ranking-tool/scores.json">
+            Edit scores.json
+          </a>
+          <a class="tag" href="https://github.com/marketedgeglobal/marketedgeglobal/edit/main/public/data/ranking-tool/value_chains.json">
+            Edit value_chains.json
+          </a>
+          <a class="tag" href="index.html">Open Ranking Tool</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

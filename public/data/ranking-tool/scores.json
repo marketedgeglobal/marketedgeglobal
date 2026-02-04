@@ -1,0 +1,126 @@
+{
+  "scores": [
+    {
+      "value_chain": "rice",
+      "criterion_id": "economic",
+      "score": 9,
+      "weighted_score": 22.5,
+      "explanation": "Strong export demand and productivity gains."
+    },
+    {
+      "value_chain": "rice",
+      "criterion_id": "pro_poor",
+      "score": 8,
+      "weighted_score": 16,
+      "explanation": "Broad smallholder participation."
+    },
+    {
+      "value_chain": "rice",
+      "criterion_id": "feasibility",
+      "score": 7,
+      "explanation": "Existing extension networks lower delivery risk."
+    },
+    {
+      "value_chain": "rice",
+      "criterion_id": "market",
+      "score": 8,
+      "explanation": "Established buyers and logistics."
+    },
+    {
+      "value_chain": "rice",
+      "criterion_id": "resilience",
+      "score": 6,
+      "explanation": "Some exposure to drought risk."
+    },
+    {
+      "value_chain": "shrimp",
+      "criterion_id": "economic",
+      "score": 8,
+      "explanation": "High margin but more volatile pricing."
+    },
+    {
+      "value_chain": "shrimp",
+      "criterion_id": "pro_poor",
+      "score": 5,
+      "explanation": "Fewer smallholder entrants."
+    },
+    {
+      "value_chain": "shrimp",
+      "criterion_id": "feasibility",
+      "score": 6,
+      "explanation": "Requires specialized inputs and controls."
+    },
+    {
+      "value_chain": "shrimp",
+      "criterion_id": "market",
+      "score": 9,
+      "explanation": "Strong global demand."
+    },
+    {
+      "value_chain": "shrimp",
+      "criterion_id": "resilience",
+      "score": 4,
+      "explanation": "Sensitive to water quality shocks."
+    },
+    {
+      "value_chain": "banana",
+      "criterion_id": "economic",
+      "score": 7,
+      "explanation": "Stable domestic demand."
+    },
+    {
+      "value_chain": "banana",
+      "criterion_id": "pro_poor",
+      "score": 9,
+      "explanation": "Accessible for smallholders."
+    },
+    {
+      "value_chain": "banana",
+      "criterion_id": "feasibility",
+      "score": 8,
+      "explanation": "Simple input requirements."
+    },
+    {
+      "value_chain": "banana",
+      "criterion_id": "market",
+      "score": 7,
+      "explanation": "Moderate export pipeline."
+    },
+    {
+      "value_chain": "banana",
+      "criterion_id": "resilience",
+      "score": 6,
+      "explanation": "Weather exposure but manageable."
+    },
+    {
+      "value_chain": "cassava",
+      "criterion_id": "economic",
+      "score": 6,
+      "explanation": "Lower margins with steady demand."
+    },
+    {
+      "value_chain": "cassava",
+      "criterion_id": "pro_poor",
+      "score": 8,
+      "explanation": "Fits low-input farming systems."
+    },
+    {
+      "value_chain": "cassava",
+      "criterion_id": "feasibility",
+      "score": 9,
+      "explanation": "Existing supply chains across regions."
+    },
+    {
+      "value_chain": "cassava",
+      "criterion_id": "market",
+      "score": 6,
+      "explanation": "Fragmented buyer landscape."
+    },
+    {
+      "value_chain": "cassava",
+      "criterion_id": "resilience",
+      "score": 8,
+      "explanation": "Tolerant of variable climate conditions."
+    }
+  ]
+}
