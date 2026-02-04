@@ -69,9 +69,12 @@ function ExplorePlatformPage({ onOpenChat }: PageProps) {
             weaknesses.
           </p>
           <div className="flex flex-wrap gap-4">
-            <button className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold" type="button">
+            <Link
+              className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
+              to="/explore-platform/bd-assistant/"
+            >
               Open Ranking Tool
-            </button>
+            </Link>
           </div>
         </div>
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
