@@ -250,20 +250,6 @@ export function GetStartedPage(_: PageProps) {
           </div>
         </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h3 className="text-lg font-semibold">Practice Engaging Stakeholders</h3>
-            <p className="mt-3 text-sm text-slate-400">
-              Enhance learning through AI-powered guidance, interactive simulations, and tailored
-              learning pathways.
-            </p>
-            <div className="mt-4">
-              <button
-                className="rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold hover:bg-amber-700"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', "Ramiro - The Bolivian Rancher")}
-              >
-                Chat with Ramiro — The Bolivian Rancher
-              </button>
-            </div>
           <h3 className="mt-6 text-lg font-semibold">Why PartnerAI™</h3>
           <p className="mt-2 text-slate-400">
             Social impact organizations operate under tight constraints. Teams juggle delivery, partnerships, learning, and accountability across funders, coordinating entities, and local implementers. PartnerAI™ addresses this gap with a single, integrated operating environment that supports different users without flattening their needs.
