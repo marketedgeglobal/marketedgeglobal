@@ -68,6 +68,123 @@ app.post("/agent", async (request, response) => {
   }
 });
 
+// Proxy for Assistants API (keeps OPENAI_API_KEY on server)
+app.post("/assistant", async (request, response) => {
+  const { assistant_id, messages } = request.body ?? {};
+
+  if (!assistant_id) {
+    return response.status(400).json({ error: "assistant_id is required" });
+  }
+
+  if (!Array.isArray(messages)) {
+    return response.status(400).json({ error: "messages must be an array" });
+  }
+
+  if (!process.env.OPENAI_API_KEY) {
+    return response.status(500).json({ error: "OPENAI_API_KEY is not configured" });
+  }
+
+  try {
+    // Create a thread
+    const createRes = await fetch("https://api.openai.com/v1/threads", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "OpenAI-Beta": "assistants=v2",
+      },
+      body: JSON.stringify({}),
+    });
+
+    if (!createRes.ok) {
+      const text = await createRes.text();
+      return response.status(createRes.status).json({ error: text });
+    }
+
+    const createData = await createRes.json();
+    const threadId = createData.id;
+
+    // Post messages
+    await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "OpenAI-Beta": "assistants=v2",
+      },
+      body: JSON.stringify({ role: "user", content: messages }),
+    });
+
+    // Run assistant
+    const runRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        "OpenAI-Beta": "assistants=v2",
+      },
+      body: JSON.stringify({ assistant_id }),
+    });
+
+    if (!runRes.ok) {
+      const text = await runRes.text();
+      return response.status(runRes.status).json({ error: text });
+    }
+
+    const runData = await runRes.json();
+    const runId = runData.id;
+
+    // Poll for completion
+    let isComplete = false;
+    let attempts = 0;
+    const maxAttempts = 30;
+    while (!isComplete && attempts < maxAttempts) {
+      await new Promise((r) => setTimeout(r, 1000));
+      const statusRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs/${runId}`, {
+        headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, "OpenAI-Beta": "assistants=v2" },
+      });
+
+      if (!statusRes.ok) {
+        const text = await statusRes.text();
+        return response.status(statusRes.status).json({ error: text });
+      }
+
+      const statusData = await statusRes.json();
+      isComplete = statusData.status === "completed";
+      attempts++;
+    }
+
+    if (!isComplete) {
+      return response.status(504).json({ error: "Assistant run timed out" });
+    }
+
+    // Fetch messages
+    const messagesRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+      headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, "OpenAI-Beta": "assistants=v2" },
+    });
+
+    if (!messagesRes.ok) {
+      const text = await messagesRes.text();
+      return response.status(messagesRes.status).json({ error: text });
+    }
+
+    const messagesData = await messagesRes.json();
+    const assistantMessage = (messagesData.data || []).reverse().find((m) => m.role === "assistant");
+
+    if (!assistantMessage) {
+      return response.status(500).json({ error: "No assistant response found" });
+    }
+
+    const textContent = (assistantMessage.content || []).find((c) => c.type === "text");
+    const reply = textContent?.text?.value ?? "";
+
+    return response.json({ reply });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Unexpected error";
+    return response.status(500).json({ error: message });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Agent proxy listening on http://localhost:${port}`);
 });
