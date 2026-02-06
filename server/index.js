@@ -69,7 +69,10 @@ app.post("/agent", async (request, response) => {
 });
 
 // Proxy for Assistants API (keeps OPENAI_API_KEY on server)
-app.post("/assistant", async (request, response) => {
+// Accept requests at `/assistant` or `/<base>/assistant` (useful when the
+// frontend is served under a subpath like `/marketedgeglobal/`).
+app.post(/^(.+\/)?assistant$/, async (request, response) => {
+  console.log("Assistant proxy received request", { path: request.path, origin: request.get("origin") });
   const { assistant_id, messages } = request.body ?? {};
 
   if (!assistant_id) {
@@ -85,6 +88,7 @@ app.post("/assistant", async (request, response) => {
   }
 
   try {
+    console.log("Assistant proxy body", { assistant_id, messages_length: Array.isArray(messages) ? messages.length : 0 });
     // Create a thread
     const createRes = await fetch("https://api.openai.com/v1/threads", {
       method: "POST",
@@ -169,6 +173,7 @@ app.post("/assistant", async (request, response) => {
     }
 
     const messagesData = await messagesRes.json();
+    console.log("Assistant messages fetched", { count: (messagesData.data || []).length });
     const assistantMessage = (messagesData.data || []).reverse().find((m) => m.role === "assistant");
 
     if (!assistantMessage) {
