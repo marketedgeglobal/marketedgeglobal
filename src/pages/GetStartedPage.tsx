@@ -94,17 +94,19 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="space-y-8">
-        <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
-            Getting Started
-          </p>
-          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
-            Get Started Now
-          </h1>
-          <p className="mt-4 text-lg text-slate-300">
-            Explore our tools and chat with our communications coach to help you explain your work
-            clearly and build trust with your supporters.
-          </p>
+        <div className="flex items-start gap-6">
+          <div className="flex-shrink-0">
+            <img src="/assets/partnerai-logo.png" alt="PartnerAI logo" className="w-28 h-28 object-contain" />
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-slate-500">PartnerAI™</p>
+            <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
+              AI that turns insight into action across complex social impact systems
+            </h1>
+            <p className="mt-4 text-lg text-slate-300 max-w-3xl">
+              PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands.
+            </p>
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -145,11 +147,23 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
         </div>
 
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
-          <h2 className="text-2xl font-semibold">Get expert communications support</h2>
+          <h2 className="text-2xl font-semibold">About PartnerAI™</h2>
           <p className="mt-3 text-slate-400">
-            Our Coms Support Coach can help you explain your work simply and clearly so donors,
-            partners, and supporters understand and trust what you do. Attach documents for review and get personalized feedback.
+            PartnerAI™ exists for one reason: most AI tools fail in real-world impact settings. They add parallel systems, increase reporting burden, and generate insights disconnected from authority and action. PartnerAI™ integrates where work already happens, strengthens human judgment, and improves coordination across teams and institutions.
           </p>
+
+          <h3 className="mt-6 text-lg font-semibold">Why PartnerAI™</h3>
+          <p className="mt-2 text-slate-400">
+            Social impact organizations operate under tight constraints. Teams juggle delivery, partnerships, learning, and accountability across funders, coordinating entities, and local implementers. PartnerAI™ addresses this gap with a single, integrated operating environment that supports different users without flattening their needs.
+          </p>
+
+          <h3 className="mt-6 text-lg font-semibold">What Makes PartnerAI™ Different</h3>
+          <ul className="mt-3 list-disc list-inside text-slate-400">
+            <li className="mt-2"><strong>Embedded, not layered:</strong> integrates into existing workflows rather than adding parallel tools.</li>
+            <li className="mt-2"><strong>Human-led, decision-focused:</strong> amplifies expert judgment and delivers decision-ready outputs.</li>
+            <li className="mt-2"><strong>Built for multi-actor systems:</strong> serves funders, coordinating bodies, and implementers while respecting distinct decision rights.</li>
+            <li className="mt-2"><strong>Proven in delivery:</strong> used across real engagements for market assessments, partnership design, and portfolio oversight.</li>
+          </ul>
         </div>
       </div>
 

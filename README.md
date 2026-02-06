@@ -1,6 +1,6 @@
-# MarketEdge Global Web
+# PartnerAI (MarketEdge)
 
-MarketEdge Global is a React + TypeScript web application built with Vite. The project uses Tailwind CSS for utility styling and Material UI for components.
+PartnerAI™ is the platform front-end for MarketEdge's AI-enabled tooling. This React + TypeScript app demonstrates the PartnerAI interface and the Coms Support Coach integration. The project uses Vite, Tailwind CSS, and Material UI.
 
 ## Tech Stack
 

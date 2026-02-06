@@ -1,0 +1,5 @@
+Place your PartnerAI logo image here as `partnerai-logo.png`.
+
+Recommended: PNG or SVG, around 140x140px for the header. The app references `/assets/partnerai-logo.png`.
+
+Add the image file to this folder (public/assets/partnerai-logo.png) and refresh the site.
