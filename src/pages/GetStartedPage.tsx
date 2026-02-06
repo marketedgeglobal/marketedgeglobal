@@ -10,6 +10,8 @@ interface AttachedFile {
 
 export function GetStartedPage(_: PageProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  interface AssistantItem { id: string | null; name: string; description?: string }
+  const [assistants, setAssistants] = useState<AssistantItem[]>([]);
   const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
     import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null
   );
@@ -32,11 +34,48 @@ export function GetStartedPage(_: PageProps) {
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!isChatOpen) {
-      return;
-    }
+    if (!isChatOpen) return;
     inputRef.current?.focus();
   }, [isChatOpen]);
+
+  useEffect(() => {
+    async function loadAssistants() {
+      // Build URL similar to sendMessage so this works under a subpath or with a remote agent API
+      const agentApi = import.meta.env.VITE_AGENT_API_URL as string | undefined;
+      let url: string;
+      if (agentApi) {
+        url = new URL('assistants', agentApi).toString();
+      } else if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
+        url = new URL('assistants', window.location.origin + (import.meta.env.BASE_URL ?? '/')).toString();
+      } else {
+        url = '/assistants';
+      }
+
+      try {
+        const resp = await fetch(url);
+        if (resp.ok) {
+          const data = await resp.json();
+          if (Array.isArray(data?.assistants)) {
+            setAssistants(data.assistants);
+            return;
+          }
+        }
+      } catch (err) {
+        // ignore and fall back to env-built list
+      }
+
+      // Fallback: build assistant list from env vars / hard-coded defaults
+      const fallback = [] as AssistantItem[];
+      fallback.push({ id: import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null, name: 'Coms Support Coach' });
+      fallback.push({ id: import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', name: 'Financial Management Help' });
+      fallback.push({ id: import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', name: 'Operations Systems' });
+      fallback.push({ id: import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', name: 'Business Development Support' });
+      fallback.push({ id: import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', name: 'Marketing and Communications' });
+      setAssistants(fallback);
+    }
+
+    void loadAssistants();
+  }, []);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -184,34 +223,25 @@ export function GetStartedPage(_: PageProps) {
               organizational tasks.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              <button
-                className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null, "Coms Support Coach")}
-              >
-                Chat with Coms Support Coach
-              </button>
+              {assistants.map((a) => {
+                const name = a.name;
+                const cls = name.includes('Financial')
+                  ? 'rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-700'
+                  : name.includes('Operations')
+                  ? 'rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600'
+                  : name.includes('Business')
+                  ? 'rounded-full bg-yellow-500 px-4 py-2 text-sm font-semibold hover:bg-yellow-600'
+                  : name.includes('Marketing')
+                  ? 'rounded-full bg-pink-600 px-4 py-2 text-sm font-semibold hover:bg-pink-700'
+                  : 'rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600';
 
-              <button
-                className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-700"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', "Financial Management Help")}
-              >
-                Chat with Financial Management Help
-              </button>
-              
-              <button
-                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', "Operations Systems")}
-              >
-                Chat with Operations Systems
-              </button>
-              
-              <button
-                className="rounded-full bg-yellow-500 px-4 py-2 text-sm font-semibold hover:bg-yellow-600"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', "Business Development Support")}
-              >
-                Chat with Business Development Support
-              </button>
-              
+                return (
+                  <button key={name} className={cls} onClick={() => openAssistant(a.id, a.name)}>
+                    {`Chat with ${a.name}`}
+                  </button>
+                );
+              })}
+            </div>
               <button
                 className="rounded-full bg-pink-500 px-4 py-2 text-sm font-semibold hover:bg-pink-600"
                 onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', "Marketing and Communications")}
