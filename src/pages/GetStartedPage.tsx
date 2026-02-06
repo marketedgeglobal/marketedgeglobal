@@ -100,6 +100,7 @@ export function GetStartedPage(_: PageProps) {
     setCurrentAssistantName(name);
     // Set initial messages per assistant so previews match the selected agent
     const financialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
+    const operationsId = import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb';
     let initialMessages: ChatMessage[] = [];
     if (name === "Coms Support Coach" || id === import.meta.env.VITE_OPENAI_ASSISTANT_ID) {
       initialMessages = [
@@ -115,6 +116,14 @@ export function GetStartedPage(_: PageProps) {
           role: "assistant",
           content:
             "Hello — I'm here to help with financial management, budgeting, and reporting. Ask about forecasts, cashflow, expense categorization, or attach financial documents for review.",
+        },
+      ];
+    } else if (name === "Operations Systems" || id === operationsId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hi — I'm the Operations Systems assistant. I can help with system architecture, deployments, monitoring, integrations, runbooks, and automations. Attach diagrams, configs, or logs and I'll review them.",
         },
       ];
     }
@@ -169,6 +178,13 @@ export function GetStartedPage(_: PageProps) {
                 onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', "Financial Management Help")}
               >
                 Chat with Financial Management Help
+              </button>
+              
+              <button
+                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', "Operations Systems")}
+              >
+                Chat with Operations Systems
               </button>
             </div>
           </div>
