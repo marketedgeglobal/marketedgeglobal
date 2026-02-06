@@ -20,7 +20,7 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
     {
       role: "assistant",
       content:
-        "Hi! I'm here to help you with your organization's communications. Ask me anything about messaging, storytelling, or explaining your work to donors and partners. You can also attach files like documents or images for me to review.",
+        "Hi! I'm your Coms Support Coach. Ask me anything about messaging, storytelling, or explaining your work to donors and partners. You can also attach files like documents or images for me to review.",
     },
   ]);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -128,6 +128,12 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
               Optimize workflows and improve productivity with AI-driven assistants for key
               organizational tasks.
             </p>
+            <button
+              className="mt-4 rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
+              onClick={openChat}
+            >
+              Chat with Coms Support Coach
+            </button>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
             <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
@@ -139,17 +145,11 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
         </div>
 
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
-          <h2 className="text-2xl font-semibold">Need help with your messaging?</h2>
+          <h2 className="text-2xl font-semibold">Get expert communications support</h2>
           <p className="mt-3 text-slate-400">
-            Our communications coach can help you explain your work simply and clearly so donors,
-            partners, and supporters understand and trust what you do.
+            Our Coms Support Coach can help you explain your work simply and clearly so donors,
+            partners, and supporters understand and trust what you do. Attach documents for review and get personalized feedback.
           </p>
-          <button
-            className="mt-6 rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold hover:bg-indigo-600"
-            onClick={openChat}
-          >
-            Chat with Coach
-          </button>
         </div>
       </div>
 
@@ -158,7 +158,7 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
           <div className="flex w-full max-w-2xl h-[80vh] flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
               <div>
-                <div className="text-lg font-semibold">Communications Coach</div>
+                <div className="text-lg font-semibold">Coms Support Coach</div>
                 <div className="text-sm text-slate-400">Ask about messaging and storytelling. Attach files for review.</div>
               </div>
               <button
