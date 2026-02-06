@@ -98,6 +98,27 @@ export function GetStartedPage(_: PageProps) {
   const openAssistant = (id: string | null, name: string) => {
     setCurrentAssistantId(id);
     setCurrentAssistantName(name);
+    // Set initial messages per assistant so previews match the selected agent
+    const financialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
+    let initialMessages: ChatMessage[] = [];
+    if (name === "Coms Support Coach" || id === import.meta.env.VITE_OPENAI_ASSISTANT_ID) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hi! I'm your Coms Support Coach. Ask me anything about messaging, storytelling, or explaining your work to donors and partners. You can also attach files like documents or images for me to review.",
+        },
+      ];
+    } else if (name === "Financial Management Help" || id === financialId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hello — I'm here to help with financial management, budgeting, and reporting. Ask about forecasts, cashflow, expense categorization, or attach financial documents for review.",
+        },
+      ];
+    }
+    setMessages(initialMessages);
     setIsChatOpen(true);
   };
 
