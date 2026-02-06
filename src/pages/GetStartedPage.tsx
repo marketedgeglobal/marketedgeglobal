@@ -1,17 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { sendMessage, type ChatMessage } from "../lib/openai";
 
-type PageProps = {
-  onOpenChat?: () => void;
-};
+type PageProps = {};
 
 interface AttachedFile {
   name: string;
   size: number;
 }
 
-export function GetStartedPage({ onOpenChat }: PageProps) {
+export function GetStartedPage(_: PageProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
+    import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null
+  );
+  const [currentAssistantName, setCurrentAssistantName] = useState<string>(
+    "Coms Support Coach"
+  );
   const [isSending, setIsSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
@@ -76,7 +80,10 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
     setErrorMessage(null);
 
     try {
-      const reply = await sendMessage(messageText);
+      if (!currentAssistantId) {
+        throw new Error("No assistant selected");
+      }
+      const reply = await sendMessage(messageText, currentAssistantId);
       setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unexpected error";
@@ -86,9 +93,12 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
     }
   };
 
-  const openChat = () => {
+  
+
+  const openAssistant = (id: string | null, name: string) => {
+    setCurrentAssistantId(id);
+    setCurrentAssistantName(name);
     setIsChatOpen(true);
-    onOpenChat?.();
   };
 
   return (
@@ -125,12 +135,21 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
               Optimize workflows and improve productivity with AI-driven assistants for key
               organizational tasks.
             </p>
-            <button
-              className="mt-4 rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
-              onClick={openChat}
-            >
-              Chat with Coms Support Coach
-            </button>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <button
+                className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
+                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null, "Coms Support Coach")}
+              >
+                Chat with Coms Support Coach
+              </button>
+
+              <button
+                className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-700"
+                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', "Financial Management Help")}
+              >
+                Chat with Financial Management Help
+              </button>
+            </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
             <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
@@ -167,8 +186,8 @@ export function GetStartedPage({ onOpenChat }: PageProps) {
           <div className="flex w-full max-w-2xl h-[80vh] flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
               <div>
-                <div className="text-lg font-semibold">Coms Support Coach</div>
-                <div className="text-sm text-slate-400">Ask about messaging and storytelling. Attach files for review.</div>
+                <div className="text-lg font-semibold">{currentAssistantName}</div>
+                <div className="text-sm text-slate-400">Ask about messaging, finance, or workflows. Attach files for review.</div>
               </div>
               <button
                 className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300 hover:text-slate-100"
