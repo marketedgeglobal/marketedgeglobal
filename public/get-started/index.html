@@ -62,6 +62,44 @@
       a {
         color: #a5b4fc;
       }
+
+      .content {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .card {
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 0.75rem;
+        padding: 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .card:hover {
+        background: rgba(30, 41, 59, 0.8);
+        border-color: rgba(165, 180, 252, 0.4);
+      }
+
+      .card h3 {
+        margin: 0 0 1rem 0;
+        font-size: 1.25rem;
+        color: #e2e8f0;
+      }
+
+      .card p {
+        margin: 0;
+        color: #cbd5e1;
+        line-height: 1.6;
+      }
     </style>
   </head>
   <body>
@@ -74,8 +112,28 @@
       </nav>
     </header>
     <main>
-      <h1>Get Started Now</h1>
-      <p>Return to the <a href="/marketedgeglobal/">homepage</a>.</p>
+      <div class="content">
+        <h1>Get Started Now</h1>
+        <div class="cards">
+          <div class="card">
+            <h3>AI Analytics</h3>
+            <p>Leverage our agents trained in advanced analytics for data-driven insights, streamlining decision-making and program effectiveness.</p>
+          </div>
+          <div class="card">
+            <h3>Learning Companion</h3>
+            <p>Enhance learning through AI-powered guidance, interactive simulations, and tailored learning pathways.</p>
+          </div>
+          <div class="card">
+            <h3>Task Assistant Automations</h3>
+            <p>Optimize workflows and improve productivity with AI-driven assistants for key organizational tasks.</p>
+          </div>
+          <div class="card">
+            <h3>Rapid Diagnostics of Organizational Capabilities</h3>
+            <p>Gain comprehensive assessments of organizational capacity and performance for strategic growth and impact.</p>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 3rem;">Return to the <a href="/marketedgeglobal/">homepage</a>.</p>
+      </div>
     </main>
   </body>
 </html>
