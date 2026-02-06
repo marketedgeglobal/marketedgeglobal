@@ -260,23 +260,98 @@ export function GetStartedPage(_: PageProps) {
         </div>
 
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
-          <h2 className="text-2xl font-semibold">About PartnerAI™</h2>
+          <h2 className="text-2xl font-semibold">PartnerAI™</h2>
+          <p className="mt-3 text-slate-400">AI that turns insight into action across complex social impact systems</p>
+
+          <p className="mt-3 text-slate-400">
+            PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands.
+          </p>
+
           <p className="mt-3 text-slate-400">
             PartnerAI™ exists for one reason: most AI tools fail in real-world impact settings. They add parallel systems, increase reporting burden, and generate insights disconnected from authority and action. PartnerAI™ integrates where work already happens, strengthens human judgment, and improves coordination across teams and institutions.
           </p>
 
+          <p className="mt-3 text-slate-400">MarketEdge designs PartnerAI™ to reduce friction, increase clarity, and accelerate decisions that matter.</p>
+
           <h3 className="mt-6 text-lg font-semibold">Why PartnerAI™</h3>
           <p className="mt-2 text-slate-400">
-            Social impact organizations operate under tight constraints. Teams juggle delivery, partnerships, learning, and accountability across funders, coordinating entities, and local implementers. PartnerAI™ addresses this gap with a single, integrated operating environment that supports different users without flattening their needs.
+            Social impact organizations operate under tight constraints. Teams juggle delivery, partnerships, learning, and accountability across funders, coordinating entities, and local implementers. Only a small share use AI effectively, even as expectations for speed, evidence, and collaboration continue to rise
           </p>
 
+          <p className="mt-2 text-slate-400">MarketEdge Overview Deck with P…</p>
+
+          <p className="mt-2 text-slate-400">PartnerAI™ addresses this gap with a single, integrated operating environment that supports different users without flattening their needs.</p>
+
           <h3 className="mt-6 text-lg font-semibold">What Makes PartnerAI™ Different</h3>
-          <ul className="mt-3 list-disc list-inside text-slate-400">
-            <li className="mt-2"><strong>Embedded, not layered:</strong> integrates into existing workflows rather than adding parallel tools.</li>
-            <li className="mt-2"><strong>Human-led, decision-focused:</strong> amplifies expert judgment and delivers decision-ready outputs.</li>
-            <li className="mt-2"><strong>Built for multi-actor systems:</strong> serves funders, coordinating bodies, and implementers while respecting distinct decision rights.</li>
-            <li className="mt-2"><strong>Proven in delivery:</strong> used across real engagements for market assessments, partnership design, and portfolio oversight.</li>
+          <ol className="mt-3 list-decimal list-inside text-slate-400 space-y-3">
+            <li>
+              <strong>Embedded, not layered</strong>
+              <div className="text-slate-400">PartnerAI™ integrates into existing workflows. It supports how decisions already occur instead of forcing teams onto new platforms or parallel tools.</div>
+            </li>
+            <li>
+              <strong>Human-led, decision-focused</strong>
+              <div className="text-slate-400">PartnerAI™ amplifies expert judgment. It prioritizes decision-ready outputs over generic analytics or automation for its own sake.</div>
+            </li>
+            <li>
+              <strong>Built for multi-actor systems</strong>
+              <div className="text-slate-400">The platform explicitly serves funders, coordinating bodies, and implementing organizations within a shared operating system, while respecting distinct decision rights and constraints.</div>
+            </li>
+            <li>
+              <strong>Proven in delivery</strong>
+              <div className="text-slate-400">MarketEdge developed and uses PartnerAI™ across real engagements, from market assessments to partnership design and portfolio oversight, ensuring relevance under operational pressure.</div>
+            </li>
+          </ol>
+
+          <p className="mt-3 text-slate-400">MarketEdge Overview Deck with P…</p>
+
+          <h3 className="mt-6 text-lg font-semibold">What PartnerAI™ Does</h3>
+          <p className="mt-2 text-slate-400">PartnerAI™ embeds AI-assisted analytics, diagnostics, and task support directly into day-to-day work, including:</p>
+          <ul className="mt-3 list-disc list-inside text-slate-400 space-y-2">
+            <li>Drafting proposals, strategies, and reports</li>
+            <li>Synthesizing qualitative and quantitative data at speed</li>
+            <li>Running organizational and partnership diagnostics</li>
+            <li>Generating decision-ready insights for managers and funders</li>
+            <li>Supporting learning through simulations and AI-guided reflection</li>
+            <li>Automating recurring, high-friction tasks</li>
           </ul>
+
+          <p className="mt-3 text-slate-400">Used this way, PartnerAI™ reduces administrative load, improves consistency and quality, and accelerates institutional learning across teams.</p>
+
+          <h3 className="mt-6 text-lg font-semibold">From Platform to Shared Operating System</h3>
+          <p className="mt-2 text-slate-400">MarketEdge works with partners to configure PartnerAI™ into program- or organization-specific dashboards. These dashboards adapt existing PartnerAI™ workflows to a partner’s governance structure, delivery model, and decision cadence across delivery, portfolio management, and oversight.</p>
+
+          <p className="mt-3 text-slate-400">The result is a shared operating system that:</p>
+          <ul className="mt-3 list-disc list-inside text-slate-400 space-y-2">
+            <li>Connects funders, coordinating entities, and implementers through common workflows</li>
+            <li>Surfaces risks, patterns, and performance signals in real time</li>
+            <li>Eliminates duplicate reporting and parallel tools</li>
+            <li>Strengthens coordination without centralizing control</li>
+          </ul>
+
+          <p className="mt-3 text-slate-400">Adoption succeeds because PartnerAI™ improves how decisions already happen instead of asking teams to relearn core processes.</p>
+
+          <h3 className="mt-6 text-lg font-semibold">High-Level Architecture and Workflow</h3>
+          <div className="mt-4">
+            <h4 className="text-sm font-semibold text-slate-300">Inputs</h4>
+            <p className="text-slate-400">Qualitative data, quantitative datasets, documents, interviews, and operational inputs from delivery teams and partners.</p>
+
+            <h4 className="mt-4 text-sm font-semibold text-slate-300">AI-Assisted Core</h4>
+            <ul className="list-disc list-inside text-slate-400 space-y-2">
+              <li>Analytics agents for synthesis, pattern detection, and prioritization</li>
+              <li>Task assistants for drafting, analysis, and workflow automation</li>
+              <li>Diagnostic engines for organizational and partnership assessment</li>
+              <li>Learning companions for scenario testing and skill-building</li>
+            </ul>
+
+            <h4 className="mt-4 text-sm font-semibold text-slate-300">Outputs</h4>
+            <p className="text-slate-400">Decision-ready insights, prioritized options, dashboards, reports, and learning artifacts aligned to user roles.</p>
+
+            <h4 className="mt-4 text-sm font-semibold text-slate-300">Users</h4>
+            <p className="text-slate-400">Funders, coordinating entities, delivery teams, and local partners, connected through shared workflows and metrics.</p>
+
+            <h4 className="mt-4 text-sm font-semibold text-slate-300">Ownership and Status</h4>
+            <p className="text-slate-400">PartnerAI™ is a proprietary, trademarked platform developed and owned by MarketEdge. MarketEdge continuously evolves the platform through live delivery, ensuring relevance, rigor, and operational credibility.</p>
+          </div>
         </div>
       </div>
 
