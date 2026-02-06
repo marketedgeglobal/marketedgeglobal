@@ -101,6 +101,7 @@ export function GetStartedPage(_: PageProps) {
     // Set initial messages per assistant so previews match the selected agent
     const financialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
     const operationsId = import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb';
+    const bdId = import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP';
     let initialMessages: ChatMessage[] = [];
     if (name === "Coms Support Coach" || id === import.meta.env.VITE_OPENAI_ASSISTANT_ID) {
       initialMessages = [
@@ -124,6 +125,14 @@ export function GetStartedPage(_: PageProps) {
           role: "assistant",
           content:
             "Hi — I'm the Operations Systems assistant. I can help with system architecture, deployments, monitoring, integrations, runbooks, and automations. Attach diagrams, configs, or logs and I'll review them.",
+        },
+      ];
+    } else if (name === "Business Development Support" || id === bdId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hello — I'm the Business Development Support assistant. I can help with partnership outreach, proposal framing, market research, and engagement strategies. Attach briefs or partner info and I'll provide recommendations.",
         },
       ];
     }
@@ -185,6 +194,13 @@ export function GetStartedPage(_: PageProps) {
                 onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', "Operations Systems")}
               >
                 Chat with Operations Systems
+              </button>
+              
+              <button
+                className="rounded-full bg-yellow-500 px-4 py-2 text-sm font-semibold hover:bg-yellow-600"
+                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', "Business Development Support")}
+              >
+                Chat with Business Development Support
               </button>
             </div>
           </div>
@@ -300,7 +316,7 @@ export function GetStartedPage(_: PageProps) {
                 <input
                   ref={inputRef}
                   className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none focus:border-indigo-500"
-                  placeholder="Ask the coach..."
+                    placeholder={isChatOpen ? `Ask ${currentAssistantName}...` : "Ask the coach..."}
                   value={inputValue}
                   onChange={(event) => setInputValue(event.target.value)}
                   onKeyDown={(event) => {
