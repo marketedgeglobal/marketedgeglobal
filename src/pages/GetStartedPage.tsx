@@ -204,7 +204,7 @@ export function GetStartedPage(_: PageProps) {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h3 className="text-lg font-semibold">AI Analytics</h3>
+            <h3 className="text-lg font-semibold">Advanced Analytics</h3>
             <p className="mt-3 text-sm text-slate-400">
               Leverage our agents trained in advanced analytics for data-driven insights, streamlining
               decision-making and program effectiveness.
