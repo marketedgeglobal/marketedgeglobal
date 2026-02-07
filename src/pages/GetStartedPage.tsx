@@ -202,7 +202,7 @@ export function GetStartedPage(_: PageProps) {
             AI that turns insight into action across complex social impact systems
           </h1>
           <p className="mt-4 text-lg text-slate-300 max-w-3xl">
-            PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands.
+            PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands. Collaborate smoothly with built-in learning companions including specialized assistants and Ramiro, The Bolivian Rancher.
           </p>
         </div>
 
