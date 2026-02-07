@@ -8,6 +8,9 @@ async function sendMessage(message: string, assistantId: string): Promise<string
 	let url: string;
 	if (agentApi) {
 		url = new URL('assistant', agentApi).toString();
+	} else if ((window as any).__AGENT_API_URL) {
+		// Allow a runtime-injected global to override the agent URL.
+		url = new URL('assistant', (window as any).__AGENT_API_URL).toString();
 	} else if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
 		url = new URL('assistant', window.location.origin + (import.meta.env.BASE_URL ?? '/')).toString();
 	} else {

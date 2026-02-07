@@ -16,6 +16,15 @@
         }
       })(window.location);
     </script>
+    <script>
+      // Runtime fallback for agent API URL so the built client can post to
+      // the deployed proxy without requiring a build-time secret.
+      // This can be overridden by setting window.__AGENT_API_URL before
+      // the app module loads (or by setting VITE_AGENT_API_URL at build time).
+      if (!window.__AGENT_API_URL) {
+        window.__AGENT_API_URL = "https://marketedgeglobal.onrender.com/";
+      }
+    </script>
     <title>PartnerAI</title>
   </head>
   <body>
