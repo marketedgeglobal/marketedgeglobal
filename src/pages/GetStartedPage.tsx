@@ -214,7 +214,7 @@ export function GetStartedPage(_: PageProps) {
                 href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-700"
+                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
               >
                 Ranking Tool
               </a>
@@ -232,7 +232,7 @@ export function GetStartedPage(_: PageProps) {
                 .map((a) => (
                   <button
                     key={a.name}
-                    className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
+                    className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
                     onClick={() => openAssistant(a.id, a.name)}
                   >
                     {a.name}
@@ -251,15 +251,7 @@ export function GetStartedPage(_: PageProps) {
                 .filter((a) => !a.name.includes('Ramiro'))
                 .map((a) => {
                 const name = a.name;
-                const cls = name.includes('Financial')
-                  ? 'rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-700'
-                  : name.includes('Operations')
-                  ? 'rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600'
-                  : name.includes('Business')
-                  ? 'rounded-full bg-yellow-500 px-4 py-2 text-sm font-semibold hover:bg-yellow-600'
-                  : name.includes('Marketing')
-                  ? 'rounded-full bg-pink-600 px-4 py-2 text-sm font-semibold hover:bg-pink-700'
-                  : 'rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600';
+                const cls = 'rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600';
 
                 return (
                   <button key={name} className={cls} onClick={() => openAssistant(a.id, a.name)}>
@@ -280,7 +272,7 @@ export function GetStartedPage(_: PageProps) {
                 href="https://form.typeform.com/to/QLgS0bbC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
+                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
               >
                 Organization Self-Assessment Survey
               </a>
