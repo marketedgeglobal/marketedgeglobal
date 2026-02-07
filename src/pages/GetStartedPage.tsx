@@ -221,10 +221,9 @@ export function GetStartedPage(_: PageProps) {
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h3 className="text-lg font-semibold">Learning Companion</h3>
+            <h3 className="text-lg font-semibold">Practice Engaging Stakeholders</h3>
             <p className="mt-3 text-sm text-slate-400">
-              Enhance learning through AI-powered guidance, interactive simulations, and tailored
-              learning pathways.
+              Explore different perspectives and prepare for your next engagement.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               {assistants
