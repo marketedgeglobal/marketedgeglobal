@@ -16,19 +16,13 @@ export function GetStartedPage(_: PageProps) {
     import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null
   );
   const [currentAssistantName, setCurrentAssistantName] = useState<string>(
-    "Coms Support Coach"
+    ""
   );
   const [isSending, setIsSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([]);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      role: "assistant",
-      content:
-        "Hi! I'm your Coms Support Coach. Ask me anything about messaging, storytelling, or explaining your work to donors and partners. You can also attach files like documents or images for me to review.",
-    },
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
@@ -66,7 +60,6 @@ export function GetStartedPage(_: PageProps) {
 
       // Fallback: build assistant list from env vars / hard-coded defaults
       const fallback = [] as AssistantItem[];
-      fallback.push({ id: import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null, name: 'Coms Support Coach' });
       fallback.push({ id: import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', name: 'Financial Management Help' });
       fallback.push({ id: import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', name: 'Operations Systems' });
       fallback.push({ id: import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', name: 'Business Development Support' });
@@ -143,15 +136,7 @@ export function GetStartedPage(_: PageProps) {
     const bdId = import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP';
     const marketingId = import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU';
     let initialMessages: ChatMessage[] = [];
-    if (name === "Coms Support Coach" || id === import.meta.env.VITE_OPENAI_ASSISTANT_ID) {
-      initialMessages = [
-        {
-          role: "assistant",
-          content:
-            "Hi! I'm your Coms Support Coach. Ask me anything about messaging, storytelling, or explaining your work to donors and partners. You can also attach files like documents or images for me to review.",
-        },
-      ];
-    } else if (name === "Financial Management Help" || id === financialId) {
+    if (name === "Financial Management Help" || id === financialId) {
       initialMessages = [
         {
           role: "assistant",
