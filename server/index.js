@@ -110,26 +110,17 @@ async function assistantProxyHandler(request, response) {
     const createData = await createRes.json();
     const threadId = createData.id;
 
-    // Post messages
-    // Convert incoming messages (array of { role, content }) into the
-    // Assistants API `content` shape. Use `input_text` entries so the
-    // assistant receives plain text instead of arbitrary objects which
-    // could be misinterpreted.
+    // Prepare input content from incoming messages. Prefer sending the
+    // user text directly as the run `input` so the assistant receives a
+    // single, explicit text input instead of relying on thread message
+    // semantics which may trigger file-detection heuristics.
     const contentPayload = Array.isArray(messages)
       ? messages.map((m) => ({ type: "input_text", text: String(m.content) }))
       : [{ type: "input_text", text: String(messages) }];
 
-    await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        "OpenAI-Beta": "assistants=v2",
-      },
-      body: JSON.stringify({ role: "user", content: contentPayload }),
-    });
-
-    // Run assistant
+    // Start a run and pass the input content explicitly. This avoids
+    // creating separate thread messages that the assistant might treat
+    // as uploads or attachments.
     const runRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
       method: "POST",
       headers: {
@@ -137,7 +128,7 @@ async function assistantProxyHandler(request, response) {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         "OpenAI-Beta": "assistants=v2",
       },
-      body: JSON.stringify({ assistant_id }),
+      body: JSON.stringify({ assistant_id, input: { content: contentPayload } }),
     });
 
     if (!runRes.ok) {
