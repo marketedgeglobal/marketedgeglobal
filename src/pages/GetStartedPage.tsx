@@ -218,6 +218,12 @@ export function GetStartedPage(_: PageProps) {
               >
                 Ranking Tool
               </a>
+              <button
+                onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
+                className="ml-3 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+              >
+                Publication Review
+              </button>
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
