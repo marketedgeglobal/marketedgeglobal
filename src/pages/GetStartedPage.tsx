@@ -338,8 +338,7 @@ export function GetStartedPage(_: PageProps) {
                 <div className="text-2xl font-bold text-white">8x</div>
                 <div className="text-xs text-sky-200">Faster reporting</div>
               </div>
-              <div className="mt-3 text-sm text-slate-300">MarketEdge — Read MarketEdge Impact Statement</div>
-            </div>
+              </div>
           </div>
 
           <h3 className="mt-6 text-lg font-semibold">Shaped around how your organization actually works</h3>
