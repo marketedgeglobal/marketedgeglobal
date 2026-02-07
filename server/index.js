@@ -90,21 +90,40 @@ async function assistantProxyHandler(request, response) {
   }
 
   try {
-    console.log("Assistant proxy body", { assistant_id, messages_length: Array.isArray(messages) ? messages.length : 0, messages });
-    // Simpler compatibility path: use the Responses API directly with the
-    // combined user messages to avoid Assistants-specific schema mismatches
-    // that vary between deployments. This returns an immediate text reply.
-    const inputs = Array.isArray(messages)
+    console.log("Assistant proxy body", { assistant_id, messages_length: Array.isArray(messages) ? messages.length : 0 });
+    
+    // Fetch the assistant to get its instructions/behavior
+    const assistantRes = await fetch(`https://api.openai.com/v1/assistants/${assistant_id}`, {
+      headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+    });
+    
+    let systemPrompt = "You are a helpful assistant.";
+    if (assistantRes.ok) {
+      const assistantData = await assistantRes.json();
+      console.log("Fetched assistant", { id: assistant_id, name: assistantData.name });
+      // Use the assistant's instructions as the system prompt
+      if (assistantData.instructions) {
+        systemPrompt = assistantData.instructions;
+      }
+    } else {
+      console.warn("Failed to fetch assistant", { assistant_id, status: assistantRes.status });
+    }
+
+    // Use Chat Completions API with the assistant's instructions as system prompt
+    const userText = Array.isArray(messages)
       ? messages.map((m) => (typeof m === 'string' ? m : String(m.content))).join('\n')
       : String(messages);
 
     const payload = {
-      model: process.env.OPENAI_MODEL || 'gpt-4.1-mini',
-      input: inputs,
+      model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userText },
+      ],
       temperature: 0.3,
     };
 
-    const apiResponse = await fetch('https://api.openai.com/v1/responses', {
+    const apiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -115,20 +134,14 @@ async function assistantProxyHandler(request, response) {
 
     if (!apiResponse.ok) {
       const errorText = await apiResponse.text();
-      console.error('responses API error:', errorText);
-      return response.status(apiResponse.status).json({ error: errorText, source: 'responses_api' });
+      console.error('chat completions API error:', errorText);
+      return response.status(apiResponse.status).json({ error: errorText, source: 'chat_completions' });
     }
 
     const data = await apiResponse.json();
-    const outputText =
-      data.output_text ??
-      (data.output || [])
-        .flatMap((item) => item.content || [])
-        .filter((content) => content.type === 'output_text')
-        .map((content) => content.text)
-        .join('\n');
+    const reply = data.choices?.[0]?.message?.content || 'Sorry, I couldn\'t generate a reply.';
 
-    return response.json({ reply: outputText || 'Sorry, I couldn\'t generate a reply.' });
+    return response.json({ reply });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unexpected error";
     return response.status(500).json({ error: message });
