@@ -65,6 +65,8 @@ export function GetStartedPage(_: PageProps) {
       fallback.push({ id: import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', name: 'Operations Systems' });
       fallback.push({ id: import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', name: 'Business Development Support' });
       fallback.push({ id: import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', name: 'Marketing and Communications' });
+      // New Learning Companion assistant: Ramiro - The Bolivian Rancher
+      fallback.push({ id: import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', name: 'Ramiro - The Bolivian Rancher' });
       setAssistants(fallback);
     }
 
@@ -133,6 +135,7 @@ export function GetStartedPage(_: PageProps) {
     const operationsId = import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb';
     const bdId = import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP';
     const marketingId = import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU';
+    const ramiroId = import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun';
 
     // Resolve a null id to the expected assistant id based on name, ensuring
     // we always have an assistant_id when sending messages.
@@ -175,6 +178,14 @@ export function GetStartedPage(_: PageProps) {
           role: "assistant",
           content:
             "Hello — I'm the Marketing and Communications assistant. I can help with strategy development, messaging, campaign planning, stakeholder communication, and brand positioning. Attach briefs, messaging documents, or communication plans for feedback.",
+        },
+      ];
+    } else if (name === "Ramiro - The Bolivian Rancher" || id === ramiroId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hola — I'm Ramiro, The Bolivian Rancher. I can help with smallholder livestock management, pasture rotation, local market pricing, and practical farm accounting. Ask about animal health, feed planning, or simple budgeting for your ranch operations.",
         },
       ];
     }
