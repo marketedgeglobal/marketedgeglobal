@@ -111,6 +111,14 @@ async function assistantProxyHandler(request, response) {
     const threadId = createData.id;
 
     // Post messages
+    // Convert incoming messages (array of { role, content }) into the
+    // Assistants API `content` shape. Use `input_text` entries so the
+    // assistant receives plain text instead of arbitrary objects which
+    // could be misinterpreted.
+    const contentPayload = Array.isArray(messages)
+      ? messages.map((m) => ({ type: "input_text", text: String(m.content) }))
+      : [{ type: "input_text", text: String(messages) }];
+
     await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
       method: "POST",
       headers: {
@@ -118,7 +126,7 @@ async function assistantProxyHandler(request, response) {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         "OpenAI-Beta": "assistants=v2",
       },
-      body: JSON.stringify({ role: "user", content: messages }),
+      body: JSON.stringify({ role: "user", content: contentPayload }),
     });
 
     // Run assistant
