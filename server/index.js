@@ -71,7 +71,9 @@ app.post("/agent", async (request, response) => {
 // Proxy for Assistants API (keeps OPENAI_API_KEY on server)
 // Accept requests at `/assistant` or `/<base>/assistant` (useful when the
 // frontend is served under a subpath like `/marketedgeglobal/`).
-app.post(/^(.+\/)?assistant$/, async (request, response) => {
+// Handler for assistant proxy; register both an explicit '/assistant' route
+// and the prefixed regex route so requests match reliably.
+async function assistantProxyHandler(request, response) {
   console.log("Assistant proxy received request", { path: request.path, origin: request.get("origin") });
   const { assistant_id, messages } = request.body ?? {};
 
@@ -188,7 +190,10 @@ app.post(/^(.+\/)?assistant$/, async (request, response) => {
     const message = err instanceof Error ? err.message : "Unexpected error";
     return response.status(500).json({ error: message });
   }
-});
+}
+
+app.post('/assistant', assistantProxyHandler);
+app.post(/^(.+\/)?assistant$/, assistantProxyHandler);
 
 // List assistants (server-side) so the frontend can discover assistants
 // without baking IDs into the client build.
