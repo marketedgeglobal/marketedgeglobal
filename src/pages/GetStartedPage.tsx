@@ -319,6 +319,28 @@ export function GetStartedPage(_: PageProps) {
             This experience allows us to embed intelligence where decisions occur, so AI supports action instead of adding parallel systems.
           </p>
 
+          <div className="mt-6 rounded-lg bg-gradient-to-r from-sky-800/60 to-sky-700/40 p-4 border border-sky-700">
+            <h4 className="text-sm font-semibold text-sky-100">Impact Snapshot</h4>
+            <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">1.2M+</div>
+                <div className="text-xs text-sky-200">People reached</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">45%</div>
+                <div className="text-xs text-sky-200">Avg. cost reduction</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">120</div>
+                <div className="text-xs text-sky-200">Organizations supported</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-white">8x</div>
+                <div className="text-xs text-sky-200">Faster reporting</div>
+              </div>
+            </div>
+          </div>
+
           <h3 className="mt-6 text-lg font-semibold">Shaped around how your organization actually works</h3>
 
           <p className="mt-3 text-slate-400">
@@ -349,6 +371,12 @@ export function GetStartedPage(_: PageProps) {
             As priorities and partnerships evolve, MarketEdge adapts PartnerAI™ to keep it relevant and useful.
           </p>
         </div>
+      </div>
+
+      <div className="mt-8 text-center text-sm text-slate-400">
+        <p>
+          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-sky-400 hover:underline">info@marketedgeglobal.com</a>
+        </p>
       </div>
 
       {isChatOpen && (
