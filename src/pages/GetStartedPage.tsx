@@ -323,8 +323,8 @@ export function GetStartedPage(_: PageProps) {
             <h4 className="text-sm font-semibold text-sky-100">Impact Snapshot</h4>
             <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">1.2M+</div>
-                <div className="text-xs text-sky-200">People reached</div>
+                  <div className="text-2xl font-bold text-white">Over 100k</div>
+                  <div className="text-xs text-sky-200">people reached</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">45%</div>
