@@ -297,6 +297,7 @@ app.get(/^(.+\/)?assistants$/, async (request, response) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Agent proxy listening on http://localhost:${port}`);
+const host = process.env.HOST || '0.0.0.0';
+app.listen(port, host, () => {
+  console.log(`Agent proxy listening on http://${host}:${port}`);
 });
