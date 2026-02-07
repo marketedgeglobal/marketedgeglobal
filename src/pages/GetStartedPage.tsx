@@ -240,7 +240,7 @@ export function GetStartedPage(_: PageProps) {
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-            <h3 className="text-lg font-semibold">Task Assistant Automations</h3>
+            <h3 className="text-lg font-semibold">On-the-Job Task Assistants</h3>
             <p className="mt-3 text-sm text-slate-400">
               Optimize workflows and improve productivity with AI-driven assistants for key
               organizational tasks.
