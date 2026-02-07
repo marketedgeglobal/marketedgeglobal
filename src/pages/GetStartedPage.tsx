@@ -270,7 +270,7 @@ export function GetStartedPage(_: PageProps) {
 
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
           <h2 className="text-2xl font-semibold">PartnerAI™</h2>
-          <p className="mt-3 text-slate-400">AI that turns insight into action across complex social impact systems</p>
+          <p className="mt-3 text-slate-400">Democratize AI for Social Impact</p>
 
           <p className="mt-3 text-slate-400">
             PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands.
