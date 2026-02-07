@@ -12,8 +12,9 @@ export function GetStartedPage(_: PageProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
   interface AssistantItem { id: string | null; name: string; description?: string }
   const [assistants, setAssistants] = useState<AssistantItem[]>([]);
+  const defaultFinancialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
   const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
-    import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? null
+    import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? defaultFinancialId
   );
   const [currentAssistantName, setCurrentAssistantName] = useState<string>(
     ""
@@ -128,7 +129,15 @@ export function GetStartedPage(_: PageProps) {
   
 
   const openAssistant = (id: string | null, name: string) => {
-    setCurrentAssistantId(id);
+    const financialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
+    const operationsId = import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb';
+    const bdId = import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP';
+    const marketingId = import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU';
+
+    // Resolve a null id to the expected assistant id based on name, ensuring
+    // we always have an assistant_id when sending messages.
+    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' ? operationsId : name === 'Business Development Support' ? bdId : name === 'Marketing and Communications' ? marketingId : null);
+    setCurrentAssistantId(resolvedId);
     setCurrentAssistantName(name);
     // Set initial messages per assistant so previews match the selected agent
     const financialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
