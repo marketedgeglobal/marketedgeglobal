@@ -104,6 +104,7 @@ async function assistantProxyHandler(request, response) {
 
     if (!createRes.ok) {
       const text = await createRes.text();
+      console.error("create thread error:", text);
       return response.status(createRes.status).json({ error: text });
     }
 
@@ -135,6 +136,7 @@ async function assistantProxyHandler(request, response) {
 
     if (!postMsgRes.ok) {
       const text = await postMsgRes.text();
+      console.error("post message error:", text);
       return response.status(postMsgRes.status).json({ error: text });
     }
 
@@ -156,6 +158,7 @@ async function assistantProxyHandler(request, response) {
 
     if (!runRes.ok) {
       const text = await runRes.text();
+      console.error("start run error:", text);
       return response.status(runRes.status).json({ error: text });
     }
 
@@ -175,6 +178,7 @@ async function assistantProxyHandler(request, response) {
 
       if (!statusRes.ok) {
         const text = await statusRes.text();
+        console.error("run status poll error:", text);
         return response.status(statusRes.status).json({ error: text });
       }
 
@@ -195,6 +199,7 @@ async function assistantProxyHandler(request, response) {
 
     if (!messagesRes.ok) {
       const text = await messagesRes.text();
+      console.error("fetch messages error:", text);
       return response.status(messagesRes.status).json({ error: text });
     }
 
