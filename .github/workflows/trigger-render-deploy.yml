@@ -1,0 +1,22 @@
+name: Trigger Render Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy via webhook
+        env:
+          RENDER_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$RENDER_HOOK" ]; then
+            echo "RENDER_DEPLOY_HOOK secret is not set. Skipping Render trigger.";
+            exit 0;
+          fi
+          echo "Calling Render webhook..."
+          curl -sS -X POST "$RENDER_HOOK" -o /tmp/render-deploy-response.txt || true
+          echo "Response:" && cat /tmp/render-deploy-response.txt || true
