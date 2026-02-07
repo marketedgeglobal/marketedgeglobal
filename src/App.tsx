@@ -347,9 +347,9 @@ function FeaturesPage() {
               Schedule a guided walkthrough tailored to your regions and reporting cadence.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-              <button className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold">
+              <a href="mailto:info@marketedgeglobal.com" className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold">
                 Schedule a demo
-              </button>
+              </a>
               <Link
                 className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
                 to="/explore-platform/"
