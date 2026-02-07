@@ -1,18 +1,18 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { GetStartedPage } from "./pages/GetStartedPage";
-            <a
-              className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-              href={`${import.meta.env.BASE_URL}get-started/`}
-            >
-              PartnerAI demo on site
-            </a>
-              <a
-                className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-                href={`${import.meta.env.BASE_URL}get-started/`}
-              >
-                PartnerAI demo on site
-              </a>
+
+const features = [
+  {
+    title: "Market intelligence",
+    description:
+      "Track trends, compare performance, and spot opportunities across regions and segments.",
+  },
+  {
+    title: "Operational insights",
+    description:
+      "Monitor key metrics with clear dashboards and actionable summaries.",
+  },
   {
     title: "Secure collaboration",
     description:
