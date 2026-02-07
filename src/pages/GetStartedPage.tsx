@@ -203,13 +203,15 @@ export function GetStartedPage(_: PageProps) {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col justify-between h-full">
-            <h3 className="text-lg font-semibold">Advanced Analytics</h3>
-            <p className="mt-3 text-sm text-slate-400">
-              Leverage our agents trained in advanced analytics for data-driven insights, streamlining
-              decision-making and program effectiveness.
-            </p>
-            <div className="mt-6">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
+            <div className="flex-1 space-y-3">
+              <h3 className="text-lg font-semibold">Advanced Analytics</h3>
+              <p className="text-sm text-slate-400">
+                Leverage our agents trained in advanced analytics for data-driven insights, streamlining
+                decision-making and program effectiveness.
+              </p>
+            </div>
+            <div className="mt-4">
               <a
                 href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                 target="_blank"
@@ -226,12 +228,14 @@ export function GetStartedPage(_: PageProps) {
               </button>
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col justify-between h-full">
-            <h3 className="text-lg font-semibold">Practice Engaging Stakeholders</h3>
-            <p className="mt-3 text-sm text-slate-400">
-              Explore different perspectives and prepare for your next engagement.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
+            <div className="flex-1 space-y-3">
+              <h3 className="text-lg font-semibold">Practice Engaging Stakeholders</h3>
+              <p className="text-sm text-slate-400">
+                Explore different perspectives and prepare for your next engagement.
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
               {assistants
                 .filter((a) => a.name.includes('Ramiro'))
                 .map((a) => (
@@ -257,13 +261,15 @@ export function GetStartedPage(_: PageProps) {
               </button>
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col justify-between h-full">
-            <h3 className="text-lg font-semibold">On-the-Job Task Assistants</h3>
-            <p className="mt-3 text-sm text-slate-400">
-              Optimize workflows and improve productivity with AI-driven assistants for key
-              organizational tasks.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
+            <div className="flex-1 space-y-3">
+              <h3 className="text-lg font-semibold">On-the-Job Task Assistants</h3>
+              <p className="text-sm text-slate-400">
+                Optimize workflows and improve productivity with AI-driven assistants for key
+                organizational tasks.
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
               {assistants
                 .filter((a) => !a.name.includes('Ramiro'))
                 .map((a) => {
@@ -278,13 +284,15 @@ export function GetStartedPage(_: PageProps) {
               })}
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col justify-between h-full">
-            <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
-            <p className="mt-3 text-sm text-slate-400">
-              Gain comprehensive assessments of organizational capacity and performance for strategic
-              growth and impact.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
+            <div className="flex-1 space-y-3">
+              <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
+              <p className="text-sm text-slate-400">
+                Gain comprehensive assessments of organizational capacity and performance for strategic
+                growth and impact.
+              </p>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href="https://form.typeform.com/to/QLgS0bbC"
                 target="_blank"
