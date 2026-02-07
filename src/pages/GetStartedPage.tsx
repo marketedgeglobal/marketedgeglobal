@@ -216,6 +216,19 @@ export function GetStartedPage(_: PageProps) {
               Enhance learning through AI-powered guidance, interactive simulations, and tailored
               learning pathways.
             </p>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {assistants
+                .filter((a) => a.name.includes('Ramiro'))
+                .map((a) => (
+                  <button
+                    key={a.name}
+                    className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-600"
+                    onClick={() => openAssistant(a.id, a.name)}
+                  >
+                    {a.name}
+                  </button>
+                ))}
+            </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
             <h3 className="text-lg font-semibold">Task Assistant Automations</h3>
@@ -224,7 +237,9 @@ export function GetStartedPage(_: PageProps) {
               organizational tasks.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
-              {assistants.map((a) => {
+              {assistants
+                .filter((a) => !a.name.includes('Ramiro'))
+                .map((a) => {
                 const name = a.name;
                 const cls = name.includes('Financial')
                   ? 'rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold hover:bg-emerald-700'
