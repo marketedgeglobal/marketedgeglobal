@@ -331,13 +331,14 @@ export function GetStartedPage(_: PageProps) {
                 <div className="text-xs text-sky-200">Avg. cost reduction</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-white">120</div>
-                <div className="text-xs text-sky-200">Organizations supported</div>
+                <div className="text-2xl font-bold text-white">120+</div>
+                <div className="text-xs text-sky-200">organizations strengthened</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">8x</div>
                 <div className="text-xs text-sky-200">Faster reporting</div>
               </div>
+              <div className="mt-3 text-sm text-slate-300">MarketEdge — Read MarketEdge Impact Statement</div>
             </div>
           </div>
 
