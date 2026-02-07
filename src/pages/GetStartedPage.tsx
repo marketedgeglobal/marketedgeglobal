@@ -373,7 +373,19 @@ export function GetStartedPage(_: PageProps) {
         </div>
       </div>
 
-      <div className="mt-8 text-center text-sm text-slate-400">
+      <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 text-slate-300">
+        <h3 className="text-lg font-semibold">MarketEdge Impact Over the Last Two Years</h3>
+        <p className="mt-3 text-sm">Delivered using PartnerAI-enabled workflows, analytics, and learning tools</p>
+
+        <ul className="mt-3 list-disc list-inside text-sm space-y-2">
+          <li>30+ engagements delivered for 20+ partners across development, humanitarian, and conservation portfolios.</li>
+          <li>Capacity strengthened for 130+ organizations,</li>
+          <li>140+ analytic and decision-support products delivered, including market landscapes, political economy analyses, and organizational strategies and action plans.</li>
+          <li>Over $10M in funding and investment catalyzed for partners and clients through AI-supported analysis and decision materials.</li>
+        </ul>
+      </div>
+
+      <div className="mt-6 text-center text-sm text-slate-400">
         <p>
           Contact: <a href="mailto:info@marketedgeglobal.com" className="text-sky-400 hover:underline">info@marketedgeglobal.com</a>
         </p>
