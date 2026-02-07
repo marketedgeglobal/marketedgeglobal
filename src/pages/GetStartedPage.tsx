@@ -241,12 +241,6 @@ export function GetStartedPage(_: PageProps) {
                     </button>
                 );
               })}
-              <button
-                className="rounded-full bg-pink-500 px-4 py-2 text-sm font-semibold hover:bg-pink-600"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', "Marketing and Communications")}
-              >
-                Marketing and Communications
-              </button>
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
