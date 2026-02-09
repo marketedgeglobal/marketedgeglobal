@@ -376,6 +376,12 @@ export function GetStartedPage(_: PageProps) {
                 >
                   Nilar Tun - Agribusiness Exporter from Myanmar
                 </button>
+                <button
+                  onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore- Senior Programme Manager at FCDO')}
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Sarah Whitmore- Senior Programme Manager at FCDO
+                </button>
               </div>
             </div>
           </div>
