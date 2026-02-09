@@ -109,6 +109,9 @@ export function GetStartedPage(_: PageProps) {
     const userMessage: ChatMessage = { role: "user", content: messageText };
     const placeholderText = "Thinking...";
     const assistantPlaceholder: ChatMessage = { role: "assistant", content: placeholderText };
+    // Compute the index where the placeholder will be inserted so we can
+    // reliably replace or remove it later even if messages update.
+    const placeholderIndex = messages.length + 1;
     const nextMessages = [...messages, userMessage, assistantPlaceholder];
     setMessages(nextMessages);
     setInputValue("");
@@ -122,18 +125,19 @@ export function GetStartedPage(_: PageProps) {
       }
       const reply = await sendMessage(messageText, currentAssistantId);
       setMessages((prev) => {
-        // Replace the last assistant placeholder (if present) with the real reply.
-        const lastPlaceholderIndex = prev.map((m) => m.content).lastIndexOf(placeholderText);
-        if (lastPlaceholderIndex !== -1) {
-          const copy = [...prev];
-          copy[lastPlaceholderIndex] = { role: "assistant", content: reply };
+        const copy = [...prev];
+        if (copy[placeholderIndex] && copy[placeholderIndex].content === placeholderText) {
+          copy[placeholderIndex] = { role: "assistant", content: reply };
           return copy;
         }
+        // Fallback: append if placeholder not found
         return [...prev, { role: "assistant", content: reply }];
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unexpected error";
       setErrorMessage(message);
+      // Remove the placeholder if present so the UI doesn't show a stale "Thinking..." message
+      setMessages((prev) => prev.filter((_, idx) => idx !== placeholderIndex));
     } finally {
       setIsSending(false);
     }
