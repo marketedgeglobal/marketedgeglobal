@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { sendMessage, type ChatMessage } from "../lib/openai";
 
 type PageProps = {};
@@ -187,6 +187,77 @@ export function GetStartedPage(_: PageProps) {
     }
     setMessages(initialMessages);
     setIsChatOpen(true);
+  };
+
+  const formatMessageContent = (content: string): ReactNode => {
+    if (!content) return null;
+    const lines = content.replace(/\r\n/g, "\n").split("\n");
+    const nodes: ReactNode[] = [];
+    let i = 0;
+    let keyIndex = 0;
+
+    while (i < lines.length) {
+      // skip leading blank lines
+      if (lines[i].trim() === "") {
+        i++;
+        continue;
+      }
+
+      // unordered list (lines starting with - or *)
+      if (/^\s*([-*])\s+/.test(lines[i])) {
+        const items: string[] = [];
+        while (i < lines.length && /^\s*([-*])\s+/.test(lines[i])) {
+          items.push(lines[i].replace(/^\s*([-*])\s+/, ""));
+          i++;
+        }
+        nodes.push(
+          <ul key={`ul-${keyIndex++}`} className="mt-2 list-disc list-inside">
+            {items.map((it, idx) => (
+              <li key={idx}>{it}</li>
+            ))}
+          </ul>
+        );
+        continue;
+      }
+
+      // ordered list (lines starting with 1. 2. etc.)
+      if (/^\s*\d+\.\s+/.test(lines[i])) {
+        const items: string[] = [];
+        while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
+          items.push(lines[i].replace(/^\s*\d+\.\s+/, ""));
+          i++;
+        }
+        nodes.push(
+          <ol key={`ol-${keyIndex++}`} className="mt-2 list-decimal list-inside">
+            {items.map((it, idx) => (
+              <li key={idx}>{it}</li>
+            ))}
+          </ol>
+        );
+        continue;
+      }
+
+      // paragraph (one or more lines until a blank or a list)
+      const paraLines: string[] = [];
+      while (i < lines.length && lines[i].trim() !== "" && !/^\s*([-*]|\d+\.)\s+/.test(lines[i])) {
+        paraLines.push(lines[i]);
+        i++;
+      }
+
+      const children: ReactNode[] = [];
+      paraLines.forEach((pl, idx) => {
+        if (idx > 0) children.push(<br key={`br-${idx}`} />);
+        children.push(pl);
+      });
+
+      nodes.push(
+        <p key={`p-${keyIndex++}`} className="text-sm">
+          {children}
+        </p>
+      );
+    }
+
+    return nodes;
   };
 
   return (
@@ -427,7 +498,7 @@ export function GetStartedPage(_: PageProps) {
                         : "bg-slate-900 text-slate-200"
                     }`}
                   >
-                    {message.content}
+                    {formatMessageContent(message.content)}
                   </div>
                 </div>
               ))}
