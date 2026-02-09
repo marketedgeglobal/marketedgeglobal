@@ -1,6 +1,9 @@
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+import multer from "multer";
+import fs from "fs";
+import path from "path";
 
 dotenv.config();
 
@@ -15,6 +18,16 @@ app.use(
   })
 );
 app.use(express.json({ limit: "1mb" }));
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(process.cwd(), "server", "uploads");
+try {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+} catch (e) {
+  // ignore
+}
+
+const upload = multer({ dest: uploadsDir, limits: { fileSize: 5 * 1024 * 1024 } });
 
 app.get("/health", (_request, response) => {
   response.json({ status: "ok" });
@@ -66,6 +79,13 @@ app.post("/agent", async (request, response) => {
     const message = error instanceof Error ? error.message : "Unexpected error";
     return response.status(500).json({ error: message });
   }
+});
+
+// File upload endpoint (MVP: accepts text-like files and stores them)
+app.post("/upload", upload.array("files"), (req, res) => {
+  const files = req.files || [];
+  const saved = files.map((f) => ({ id: f.filename || f.filename, name: f.originalname, mime: f.mimetype, size: f.size }));
+  return res.json({ files: saved });
 });
 
 // Proxy for Assistants API (keeps OPENAI_API_KEY on server)
