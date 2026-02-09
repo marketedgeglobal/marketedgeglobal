@@ -102,45 +102,75 @@ export function GetStartedPage(_: PageProps) {
     if (!inputValue.trim() || isSending) {
       return;
     }
-
-    let messageText = inputValue.trim();
-    if (attachedFiles.length > 0) {
-      messageText += `\n\n[Attachments: ${attachedFiles.map((f) => f.name).join(", ")}]`;
-    }
+    const messageText = inputValue.trim();
 
     const userMessage: ChatMessage = { role: "user", content: messageText };
-    const placeholderText = "Thinking...";
-    const assistantPlaceholder: ChatMessage = { role: "assistant", content: placeholderText };
-    // Compute the index where the placeholder will be inserted so we can
-    // reliably replace or remove it later even if messages update.
-    const placeholderIndex = messages.length + 1;
-    const nextMessages = [...messages, userMessage, assistantPlaceholder];
-    setMessages(nextMessages);
+    // Append the user's message first (don't show "Thinking..." while uploading files)
+    setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
-    setAttachedFiles([]);
-    setIsSending(true);
     setErrorMessage(null);
+    setIsSending(true);
+
+    // Upload files if present
+    let uploaded: { id: string; name: string }[] = [];
+    if (attachedFiles.length > 0) {
+      try {
+        const agentApi = import.meta.env.VITE_AGENT_API_URL as string | undefined;
+        let uploadUrl: string;
+        if (agentApi) {
+          uploadUrl = new URL('upload', agentApi).toString();
+        } else if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
+          uploadUrl = new URL('upload', window.location.origin + (import.meta.env.BASE_URL ?? '/')).toString();
+        } else {
+          uploadUrl = '/upload';
+        }
+
+        const form = new FormData();
+        attachedFiles.forEach((f) => {
+          if (f.file) form.append('files', f.file);
+        });
+
+        const upResp = await fetch(uploadUrl, { method: 'POST', body: form });
+        if (!upResp.ok) {
+          const txt = await upResp.text();
+          throw new Error(`Upload failed: ${txt}`);
+        }
+        const upData = await upResp.json();
+        uploaded = upData.files || [];
+      } catch (err) {
+        const message = err instanceof Error ? err.message : 'Upload failed';
+        setErrorMessage(message);
+        setIsSending(false);
+        return;
+      }
+    }
+
+    // Show thinking placeholder while waiting for assistant response
+    const placeholderText = 'Thinking...';
+    const assistantPlaceholder: ChatMessage = { role: 'assistant', content: placeholderText };
+    setMessages((prev) => [...prev, assistantPlaceholder]);
 
     try {
-      if (!currentAssistantId) {
-        throw new Error("No assistant selected");
-      }
-      const reply = await sendMessage(messageText, currentAssistantId);
+      if (!currentAssistantId) throw new Error('No assistant selected');
+
+      const reply = await sendMessage(messageText, currentAssistantId, uploaded.length ? uploaded : undefined);
+
       setMessages((prev) => {
         const copy = [...prev];
-        if (copy[placeholderIndex] && copy[placeholderIndex].content === placeholderText) {
-          copy[placeholderIndex] = { role: "assistant", content: reply };
+        const lastIdx = copy.map((m) => m.content).lastIndexOf(placeholderText);
+        if (lastIdx !== -1) {
+          copy[lastIdx] = { role: 'assistant', content: reply };
           return copy;
         }
-        // Fallback: append if placeholder not found
-        return [...prev, { role: "assistant", content: reply }];
+        return [...prev, { role: 'assistant', content: reply }];
       });
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Unexpected error";
+      const message = error instanceof Error ? error.message : 'Unexpected error';
       setErrorMessage(message);
-      // Remove the placeholder if present so the UI doesn't show a stale "Thinking..." message
-      setMessages((prev) => prev.filter((_, idx) => idx !== placeholderIndex));
+      // Remove placeholder
+      setMessages((prev) => prev.filter((m) => m.content !== placeholderText));
     } finally {
+      setAttachedFiles([]);
       setIsSending(false);
     }
   };
