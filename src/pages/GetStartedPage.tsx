@@ -282,7 +282,7 @@ export function GetStartedPage(_: PageProps) {
                 decision-making and program effectiveness.
               </p>
             </div>
-            <div className="mt-4">
+            <div className="mt-2">
               <a
                 href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                 target="_blank"
@@ -363,7 +363,7 @@ export function GetStartedPage(_: PageProps) {
                 growth and impact.
               </p>
             </div>
-            <div className="mt-4 flex flex-wrap gap-3">
+            <div className="mt-2 flex flex-wrap gap-3">
               <a
                 href="https://form.typeform.com/to/QLgS0bbC"
                 target="_blank"
