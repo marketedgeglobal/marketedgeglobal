@@ -107,7 +107,9 @@ export function GetStartedPage(_: PageProps) {
     }
 
     const userMessage: ChatMessage = { role: "user", content: messageText };
-    const nextMessages = [...messages, userMessage];
+    const placeholderText = "Thinking...";
+    const assistantPlaceholder: ChatMessage = { role: "assistant", content: placeholderText };
+    const nextMessages = [...messages, userMessage, assistantPlaceholder];
     setMessages(nextMessages);
     setInputValue("");
     setAttachedFiles([]);
@@ -119,7 +121,16 @@ export function GetStartedPage(_: PageProps) {
         throw new Error("No assistant selected");
       }
       const reply = await sendMessage(messageText, currentAssistantId);
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      setMessages((prev) => {
+        // Replace the last assistant placeholder (if present) with the real reply.
+        const lastPlaceholderIndex = prev.map((m) => m.content).lastIndexOf(placeholderText);
+        if (lastPlaceholderIndex !== -1) {
+          const copy = [...prev];
+          copy[lastPlaceholderIndex] = { role: "assistant", content: reply };
+          return copy;
+        }
+        return [...prev, { role: "assistant", content: reply }];
+      });
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unexpected error";
       setErrorMessage(message);
