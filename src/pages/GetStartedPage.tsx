@@ -183,10 +183,11 @@ export function GetStartedPage(_: PageProps) {
     const bdId = import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP';
     const marketingId = import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU';
     const ramiroId = import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun';
+    const sarahId = 'asst_9KTRSFnH5aFCZtAmWNaeRLVZ';
 
     // Resolve a null id to the expected assistant id based on name, ensuring
     // we always have an assistant_id when sending messages.
-    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' ? operationsId : name === 'Business Development Support' ? bdId : name === 'Marketing and Communications' ? marketingId : null);
+    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' ? operationsId : name === 'Business Development Support' ? bdId : name === 'Marketing and Communications' ? marketingId : name === 'Sarah Whitmore- Senior Programme Manager at FCDO' ? sarahId : null);
     setCurrentAssistantId(resolvedId);
     setCurrentAssistantName(name);
     // Set initial messages per assistant so previews match the selected agent
@@ -229,6 +230,14 @@ export function GetStartedPage(_: PageProps) {
           role: "assistant",
           content:
             "Hola — I'm Ramiro, The Bolivian Rancher. I can help with smallholder livestock management, pasture rotation, local market pricing, and practical farm accounting. Ask about animal health, feed planning, or simple budgeting for your ranch operations.",
+        },
+      ];
+    } else if (name === "Sarah Whitmore- Senior Programme Manager at FCDO" || id === sarahId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hello — I'm Sarah Whitmore, Senior Programme Manager at FCDO. I can help you prepare for stakeholder engagement, clarify program priorities, and anticipate donor expectations. Ask about risk management, value-for-money, results frameworks, or partnership alignment.",
         },
       ];
     }
