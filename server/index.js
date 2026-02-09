@@ -133,6 +133,30 @@ async function assistantProxyHandler(request, response) {
     const threadId = threadData.id;
     console.log('Created thread:', { threadId, assistant_id });
 
+    // Add attachment contents (if provided) as system messages before the user message
+    const attachments = request.body?.attachments || [];
+    for (const a of attachments) {
+      try {
+        const filePath = path.join(uploadsDir, a.id);
+        if (fs.existsSync(filePath)) {
+          const buf = fs.readFileSync(filePath);
+          // Only include text-like files in the MVP. Binary files are skipped.
+          const text = buf.toString('utf8').slice(0, 20000);
+          await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+              'OpenAI-Beta': 'assistants=v2',
+            },
+            body: JSON.stringify({ role: 'system', content: `Attachment: ${a.name}\n\n${text}` }),
+          });
+        }
+      } catch (e) {
+        console.warn('Failed to attach file to thread', a.name, e?.message || e);
+      }
+    }
+
     // Add the user's message to the thread
     // Use only the last message (most recent user input) to avoid cluttering the thread
     const lastMessage = messages[messages.length - 1];
