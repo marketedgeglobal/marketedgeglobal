@@ -6,6 +6,7 @@ type PageProps = {};
 interface AttachedFile {
   name: string;
   size: number;
+  file?: File;
 }
 
 export function GetStartedPage(_: PageProps) {
@@ -83,6 +84,7 @@ export function GetStartedPage(_: PageProps) {
       const newFiles: AttachedFile[] = Array.from(files).map((file) => ({
         name: file.name,
         size: file.size,
+        file,
       }));
       setAttachedFiles((prev) => [...prev, ...newFiles]);
     }
