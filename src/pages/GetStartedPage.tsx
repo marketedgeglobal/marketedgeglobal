@@ -281,22 +281,22 @@ export function GetStartedPage(_: PageProps) {
                 Leverage our agents trained in advanced analytics for data-driven insights, streamlining
                 decision-making and program effectiveness.
               </p>
-            </div>
-            <div className="mt-2">
-              <a
-                href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-              >
-                Ranking Tool
-              </a>
-              <button
-                onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
-                className="ml-3 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-              >
-                Publication Review
-              </button>
+              <div className="mt-3">
+                <a
+                  href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Ranking Tool
+                </a>
+                <button
+                  onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
+                  className="ml-3 rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Publication Review
+                </button>
+              </div>
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
@@ -305,31 +305,31 @@ export function GetStartedPage(_: PageProps) {
               <p className="text-sm text-slate-400">
                 Explore different perspectives and prepare for your next engagement.
               </p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              {assistants
-                .filter((a) => a.name.includes('Ramiro'))
-                .map((a) => (
-                  <button
-                    key={a.name}
-                    className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-                    onClick={() => openAssistant(a.id, a.name)}
-                  >
-                    {a.name}
-                  </button>
-                ))}
-              <button
-                onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
-                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-              >
-                Jannatul - Bangladeshi University Student
-              </button>
-              <button
-                onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Nilar Tun - Agribusiness Exporter from Myanmar')}
-                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-              >
-                Nilar Tun - Agribusiness Exporter from Myanmar
-              </button>
+              <div className="mt-3 flex flex-wrap gap-3">
+                {assistants
+                  .filter((a) => a.name.includes('Ramiro'))
+                  .map((a) => (
+                    <button
+                      key={a.name}
+                      className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                      onClick={() => openAssistant(a.id, a.name)}
+                    >
+                      {a.name}
+                    </button>
+                  ))}
+                <button
+                  onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Jannatul - Bangladeshi University Student
+                </button>
+                <button
+                  onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Nilar Tun - Agribusiness Exporter from Myanmar')}
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Nilar Tun - Agribusiness Exporter from Myanmar
+                </button>
+              </div>
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
@@ -339,20 +339,20 @@ export function GetStartedPage(_: PageProps) {
                 Optimize workflows and improve productivity with AI-driven assistants for key
                 organizational tasks.
               </p>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-3">
-              {assistants
-                .filter((a) => !a.name.includes('Ramiro'))
-                .map((a) => {
-                const name = a.name;
-                const cls = 'rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600';
+              <div className="mt-3 flex flex-wrap gap-3">
+                {assistants
+                  .filter((a) => !a.name.includes('Ramiro'))
+                  .map((a) => {
+                  const name = a.name;
+                  const cls = 'rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600';
 
-                return (
-                  <button key={name} className={cls} onClick={() => openAssistant(a.id, a.name)}>
-                      {a.name}
-                    </button>
-                );
-              })}
+                  return (
+                    <button key={name} className={cls} onClick={() => openAssistant(a.id, a.name)}>
+                        {a.name}
+                      </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
@@ -362,22 +362,22 @@ export function GetStartedPage(_: PageProps) {
                 Gain comprehensive assessments of organizational capacity and performance for strategic
                 growth and impact.
               </p>
-            </div>
-            <div className="mt-2 flex flex-wrap gap-3">
-              <a
-                href="https://form.typeform.com/to/QLgS0bbC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-              >
-                Organization Self-Assessment Survey
-              </a>
-              <button
-                onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
-                className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-              >
-                Organization Diagnostic Virtual Coach
-              </button>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <a
+                  href="https://form.typeform.com/to/QLgS0bbC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Organization Self-Assessment Survey
+                </a>
+                <button
+                  onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Organization Diagnostic Virtual Coach
+                </button>
+              </div>
             </div>
           </div>
         </div>
