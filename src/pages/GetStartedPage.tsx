@@ -211,7 +211,7 @@ export function GetStartedPage(_: PageProps) {
           i++;
         }
         nodes.push(
-          <ul key={`ul-${keyIndex++}`} className="mt-2 list-disc list-inside">
+          <ul key={`ul-${keyIndex++}`} className="mt-2 list-disc list-inside space-y-2">
             {items.map((it, idx) => (
               <li key={idx}>{it}</li>
             ))}
@@ -228,7 +228,7 @@ export function GetStartedPage(_: PageProps) {
           i++;
         }
         nodes.push(
-          <ol key={`ol-${keyIndex++}`} className="mt-2 list-decimal list-inside">
+          <ol key={`ol-${keyIndex++}`} className="mt-2 list-decimal list-inside space-y-2">
             {items.map((it, idx) => (
               <li key={idx}>{it}</li>
             ))}
@@ -251,7 +251,7 @@ export function GetStartedPage(_: PageProps) {
       });
 
       nodes.push(
-        <p key={`p-${keyIndex++}`} className="text-sm">
+        <p key={`p-${keyIndex++}`} className="text-sm mt-2">
           {children}
         </p>
       );
