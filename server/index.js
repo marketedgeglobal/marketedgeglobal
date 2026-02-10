@@ -213,9 +213,22 @@ async function assistantProxyHandler(request, response) {
       }
     }
 
-    console.log('Added', messages.length, 'messages to thread:', { threadId });
+    console.log('Added', messages.length, 'messages to thread:', { threadId, uploadedFileCount: uploadedFileIds.length });
 
-    // Run the assistant on the thread
+    // Run the assistant on the thread with proper tool configuration
+    const runConfig = {
+      assistant_id: assistant_id,
+    };
+    
+    // If we have uploaded files, ensure the assistant can use file_search tool
+    if (uploadedFileIds.length > 0) {
+      runConfig.tool_resources = {
+        file_search: {
+          vector_store_ids: [], // The assistant will use its configured vector store if available
+        },
+      };
+    }
+
     const runRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
       method: 'POST',
       headers: {
@@ -223,9 +236,7 @@ async function assistantProxyHandler(request, response) {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         'OpenAI-Beta': 'assistants=v2',
       },
-      body: JSON.stringify({
-        assistant_id: assistant_id,
-      }),
+      body: JSON.stringify(runConfig),
     });
 
     if (!runRes.ok) {
@@ -293,10 +304,43 @@ async function assistantProxyHandler(request, response) {
 
     console.log('Retrieved assistant response:', { threadId, reply: reply.substring(0, 100) });
 
+    // Clean up: Delete uploaded files from OpenAI to avoid clutter
+    for (const fileId of uploadedFileIds) {
+      try {
+        const delRes = await fetch(`https://api.openai.com/v1/files/${fileId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          },
+        });
+        if (delRes.ok) {
+          console.log('Deleted file from OpenAI:', { fileId });
+        } else {
+          console.warn('Failed to delete file from OpenAI:', { fileId, status: delRes.status });
+        }
+      } catch (e) {
+        console.warn('Error deleting file from OpenAI:', { fileId, error: e?.message });
+      }
+    }
+
     return response.json({ reply });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unexpected error";
     console.error('Assistant proxy error:', message);
+    
+    // Attempt to clean up files even on error
+    for (const fileId of uploadedFileIds) {
+      try {
+        await fetch(`https://api.openai.com/v1/files/${fileId}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          },
+        });
+      } catch (e) {
+        // Silently ignore cleanup errors
+      }
+    }
     return response.status(500).json({ error: message });
   }
 }
