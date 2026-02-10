@@ -156,12 +156,11 @@ export function GetStartedPage(_: PageProps) {
 
       // Send the full conversation history (excluding the "Thinking..." placeholder and initial greeting messages)
       // Initial greeting messages are for UI display only and should not be sent to the Assistants API
-      const conversationHistory = messages.filter((m, index) => {
-        if (m.content === placeholderText) return false;
-        // Skip initial greeting messages (they're before the first actual user message)
-        if (index < initialMessageCountRef.current) return false;
-        return true;
-      });
+      // IMPORTANT: Use the userMessage directly since React state updates are async and `messages` is stale
+      const conversationHistory = messages
+        .slice(initialMessageCountRef.current) // Skip initial greeting messages
+        .filter((m) => m.content !== placeholderText); // Skip thinking placeholder
+      conversationHistory.push(userMessage); // Add the user's current message
       const reply = await sendMessage(conversationHistory, currentAssistantId, uploaded.length ? uploaded : undefined);
 
       setMessages((prev) => {
