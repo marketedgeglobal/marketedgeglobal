@@ -136,6 +136,7 @@ async function assistantProxyHandler(request, response) {
     // Upload attachments to OpenAI Files API and add them to the thread
     const attachments = request.body?.attachments || [];
     const uploadedFileIds = [];
+    const attachmentContents = [];
     
     for (const a of attachments) {
       try {
@@ -144,33 +145,76 @@ async function assistantProxyHandler(request, response) {
           const fileBuffer = fs.readFileSync(filePath);
           const fileName = a.name || `file-${a.id}`;
           
-          // Import form-data dynamically (it's a dependency of multer)
-          const FormData = (await import('form-data')).default;
-          const form = new FormData();
-          
-          form.append('file', fileBuffer, { filename: fileName });
-          form.append('purpose', 'assistants');
-          
-          const uploadRes = await fetch('https://api.openai.com/v1/files', {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-              ...form.getHeaders(),
-            },
-            body: form,
-          });
-          
-          if (uploadRes.ok) {
-            const fileData = await uploadRes.json();
-            uploadedFileIds.push(fileData.id);
-            console.log('Uploaded file to OpenAI:', { fileName, openaiFileId: fileData.id });
-          } else {
-            const errorText = await uploadRes.text();
-            console.warn('Failed to upload file to OpenAI:', { fileName, status: uploadRes.status, error: errorText });
+          // Try to upload to OpenAI Files API
+          try {
+            const FormDataModule = await import('form-data');
+            const FormData = FormDataModule.default;
+            const form = new FormData();
+            
+            form.append('file', fileBuffer, { filename: fileName });
+            form.append('purpose', 'assistants');
+            
+            const uploadRes = await fetch('https://api.openai.com/v1/files', {
+              method: 'POST',
+              headers: {
+                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+                ...form.getHeaders(),
+              },
+              body: form,
+            });
+            
+            if (uploadRes.ok) {
+              const fileData = await uploadRes.json();
+              uploadedFileIds.push(fileData.id);
+              console.log('Uploaded file to OpenAI:', { fileName, openaiFileId: fileData.id });
+            } else {
+              const errorText = await uploadRes.text();
+              console.warn('Failed to upload file to OpenAI:', { fileName, status: uploadRes.status, error: errorText });
+              // Fall through to content inclusion below
+            }
+          } catch (uploadErr) {
+            console.warn('Failed to use OpenAI Files API:', uploadErr?.message || uploadErr);
+            // Fall through to content inclusion below
           }
+          
+          // Always include file content in the message as a fallback/supplement
+          // Try to decode as text first, then base64 if that fails
+          let contentText = '';
+          try {
+            contentText = fileBuffer.toString('utf8');
+          } catch (e) {
+            // If UTF-8 fails, use base64 encoding
+            contentText = '[Binary file - base64 encoded]\n\n' + fileBuffer.toString('base64');
+          }
+          
+          attachmentContents.push({
+            name: fileName,
+            content: contentText.slice(0, 50000), // Include more content, but still have a reasonable limit
+          });
         }
       } catch (e) {
         console.warn('Failed to process attachment', a.name, e?.message || e);
+      }
+    }
+
+    // Add attachment content messages before the conversation history
+    // This ensures the assistant has access to file contents
+    for (const attachment of attachmentContents) {
+      try {
+        await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            'OpenAI-Beta': 'assistants=v2',
+          },
+          body: JSON.stringify({
+            role: 'user',
+            content: `Here is the content of "${attachment.name}" for your review:\n\n${attachment.content}`,
+          }),
+        });
+      } catch (e) {
+        console.warn('Failed to add attachment content message:', attachment.name, e?.message || e);
       }
     }
 
@@ -188,7 +232,7 @@ async function assistantProxyHandler(request, response) {
         content: content,
       };
       
-      // Add file attachments to the last user message only
+      // Add file attachments to the last user message only (if upload succeeded)
       if (isLastMessage && role === 'user' && uploadedFileIds.length > 0) {
         messageBody.attachments = uploadedFileIds.map((fileId) => ({
           file_id: fileId,
