@@ -25,6 +25,7 @@ export function GetStartedPage(_: PageProps) {
   const [inputValue, setInputValue] = useState("");
   const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const initialMessageCountRef = useRef(0); // Track how many initial greeting messages were added
   const inputRef = useRef<HTMLInputElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
@@ -153,8 +154,14 @@ export function GetStartedPage(_: PageProps) {
     try {
       if (!currentAssistantId) throw new Error('No assistant selected');
 
-      // Send the full conversation history (excluding the "Thinking..." placeholder)
-      const conversationHistory = messages.filter((m) => m.content !== placeholderText);
+      // Send the full conversation history (excluding the "Thinking..." placeholder and initial greeting messages)
+      // Initial greeting messages are for UI display only and should not be sent to the Assistants API
+      const conversationHistory = messages.filter((m, index) => {
+        if (m.content === placeholderText) return false;
+        // Skip initial greeting messages (they're before the first actual user message)
+        if (index < initialMessageCountRef.current) return false;
+        return true;
+      });
       const reply = await sendMessage(conversationHistory, currentAssistantId, uploaded.length ? uploaded : undefined);
 
       setMessages((prev) => {
@@ -243,6 +250,7 @@ export function GetStartedPage(_: PageProps) {
         },
       ];
     }
+    initialMessageCountRef.current = initialMessages.length;
     setMessages(initialMessages);
     setIsChatOpen(true);
   };
