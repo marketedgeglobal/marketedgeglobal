@@ -215,20 +215,8 @@ async function assistantProxyHandler(request, response) {
 
     console.log('Added', messages.length, 'messages to thread:', { threadId, uploadedFileCount: uploadedFileIds.length });
 
-    // Run the assistant on the thread with proper tool configuration
-    const runConfig = {
-      assistant_id: assistant_id,
-    };
-    
-    // If we have uploaded files, ensure the assistant can use file_search tool
-    if (uploadedFileIds.length > 0) {
-      runConfig.tool_resources = {
-        file_search: {
-          vector_store_ids: [], // The assistant will use its configured vector store if available
-        },
-      };
-    }
-
+    // Run the assistant on the thread
+    // Note: File attachments are handled via message attachments, not tool_resources
     const runRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
       method: 'POST',
       headers: {
@@ -236,7 +224,9 @@ async function assistantProxyHandler(request, response) {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         'OpenAI-Beta': 'assistants=v2',
       },
-      body: JSON.stringify(runConfig),
+      body: JSON.stringify({
+        assistant_id: assistant_id,
+      }),
     });
 
     if (!runRes.ok) {
