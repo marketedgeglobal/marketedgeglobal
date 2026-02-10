@@ -133,35 +133,68 @@ async function assistantProxyHandler(request, response) {
     const threadId = threadData.id;
     console.log('Created thread:', { threadId, assistant_id });
 
-    // Add attachment contents (if provided) as system messages before the user message
+    // Upload attachments to OpenAI Files API and add them to the thread
     const attachments = request.body?.attachments || [];
+    const uploadedFileIds = [];
+    
     for (const a of attachments) {
       try {
         const filePath = path.join(uploadsDir, a.id);
         if (fs.existsSync(filePath)) {
-          const buf = fs.readFileSync(filePath);
-          // Only include text-like files in the MVP. Binary files are skipped.
-          const text = buf.toString('utf8').slice(0, 20000);
-          await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+          // Read the file and create FormData for the Files API
+          const fileBuffer = fs.readFileSync(filePath);
+          const fileName = a.name || `file-${a.id}`;
+          
+          // Create FormData to upload to OpenAI
+          const formData = new FormData();
+          const blob = new Blob([fileBuffer], { type: a.mime || 'application/octet-stream' });
+          formData.append('file', blob, fileName);
+          formData.append('purpose', 'assistants');
+          
+          const uploadRes = await fetch('https://api.openai.com/v1/files', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json',
               Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-              'OpenAI-Beta': 'assistants=v2',
             },
-            body: JSON.stringify({ role: 'system', content: `Attachment: ${a.name}\n\n${text}` }),
+            body: formData,
           });
+          
+          if (uploadRes.ok) {
+            const fileData = await uploadRes.json();
+            uploadedFileIds.push(fileData.id);
+            console.log('Uploaded file to OpenAI:', { fileName, openaiFileId: fileData.id });
+          } else {
+            const errorText = await uploadRes.text();
+            console.warn('Failed to upload file to OpenAI:', { fileName, status: uploadRes.status, error: errorText });
+          }
         }
       } catch (e) {
-        console.warn('Failed to attach file to thread', a.name, e?.message || e);
+        console.warn('Failed to process attachment', a.name, e?.message || e);
       }
     }
 
     // Add all messages to the thread for proper context
     // This ensures the assistant has conversation history
-    for (const msg of messages) {
+    for (let msgIdx = 0; msgIdx < messages.length; msgIdx++) {
+      const msg = messages[msgIdx];
       const content = typeof msg === 'string' ? msg : msg.content;
       const role = typeof msg === 'string' ? 'user' : msg.role;
+      const isLastMessage = msgIdx === messages.length - 1;
+      
+      // Prepare the message body
+      const messageBody = {
+        role: role,
+        content: content,
+      };
+      
+      // Add file attachments to the last user message only
+      if (isLastMessage && role === 'user' && uploadedFileIds.length > 0) {
+        messageBody.attachments = uploadedFileIds.map((fileId) => ({
+          file_id: fileId,
+          tools: [{ type: 'file_search' }],
+        }));
+        console.log('Added file attachments to last user message:', { count: uploadedFileIds.length, fileIds: uploadedFileIds });
+      }
       
       const msgRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
         method: 'POST',
@@ -170,10 +203,7 @@ async function assistantProxyHandler(request, response) {
           Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           'OpenAI-Beta': 'assistants=v2',
         },
-        body: JSON.stringify({
-          role: role,
-          content: content,
-        }),
+        body: JSON.stringify(messageBody),
       });
 
       if (!msgRes.ok) {
