@@ -141,22 +141,23 @@ async function assistantProxyHandler(request, response) {
       try {
         const filePath = path.join(uploadsDir, a.id);
         if (fs.existsSync(filePath)) {
-          // Read the file and create FormData for the Files API
           const fileBuffer = fs.readFileSync(filePath);
           const fileName = a.name || `file-${a.id}`;
           
-          // Create FormData to upload to OpenAI
-          const formData = new FormData();
-          const blob = new Blob([fileBuffer], { type: a.mime || 'application/octet-stream' });
-          formData.append('file', blob, fileName);
-          formData.append('purpose', 'assistants');
+          // Import form-data dynamically (it's a dependency of multer)
+          const FormData = (await import('form-data')).default;
+          const form = new FormData();
+          
+          form.append('file', fileBuffer, { filename: fileName });
+          form.append('purpose', 'assistants');
           
           const uploadRes = await fetch('https://api.openai.com/v1/files', {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+              ...form.getHeaders(),
             },
-            body: formData,
+            body: form,
           });
           
           if (uploadRes.ok) {
