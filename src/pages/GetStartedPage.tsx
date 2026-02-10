@@ -153,7 +153,9 @@ export function GetStartedPage(_: PageProps) {
     try {
       if (!currentAssistantId) throw new Error('No assistant selected');
 
-      const reply = await sendMessage(messageText, currentAssistantId, uploaded.length ? uploaded : undefined);
+      // Send the full conversation history (excluding the "Thinking..." placeholder)
+      const conversationHistory = messages.filter((m) => m.content !== placeholderText);
+      const reply = await sendMessage(conversationHistory, currentAssistantId, uploaded.length ? uploaded : undefined);
 
       setMessages((prev) => {
         const copy = [...prev];

@@ -157,31 +157,33 @@ async function assistantProxyHandler(request, response) {
       }
     }
 
-    // Add the user's message to the thread
-    // Use only the last message (most recent user input) to avoid cluttering the thread
-    const lastMessage = messages[messages.length - 1];
-    const userContent = typeof lastMessage === 'string' ? lastMessage : lastMessage.content;
+    // Add all messages to the thread for proper context
+    // This ensures the assistant has conversation history
+    for (const msg of messages) {
+      const content = typeof msg === 'string' ? msg : msg.content;
+      const role = typeof msg === 'string' ? 'user' : msg.role;
+      
+      const msgRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          'OpenAI-Beta': 'assistants=v2',
+        },
+        body: JSON.stringify({
+          role: role,
+          content: content,
+        }),
+      });
 
-    const addMessageRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        'OpenAI-Beta': 'assistants=v2',
-      },
-      body: JSON.stringify({
-        role: 'user',
-        content: userContent,
-      }),
-    });
-
-    if (!addMessageRes.ok) {
-      const errorText = await addMessageRes.text();
-      console.error('Failed to add message to thread:', errorText);
-      return response.status(addMessageRes.status).json({ error: 'Failed to add message', details: errorText });
+      if (!msgRes.ok) {
+        const errorText = await msgRes.text();
+        console.error('Failed to add message to thread:', errorText);
+        return response.status(msgRes.status).json({ error: 'Failed to add message', details: errorText });
+      }
     }
 
-    console.log('Added message to thread:', { threadId });
+    console.log('Added', messages.length, 'messages to thread:', { threadId });
 
     // Run the assistant on the thread
     const runRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
@@ -209,7 +211,7 @@ async function assistantProxyHandler(request, response) {
     // Poll for completion (with timeout)
     let runStatus = runData.status;
     let attempts = 0;
-    const maxAttempts = 60; // 30 seconds with 500ms polls
+    const maxAttempts = 100; // 30 seconds with 300ms polls
 
     while (runStatus === 'queued' || runStatus === 'in_progress') {
       if (attempts >= maxAttempts) {
@@ -217,7 +219,7 @@ async function assistantProxyHandler(request, response) {
         return response.status(504).json({ error: 'Assistant response timed out' });
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
       const checkRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs/${runId}`, {
         headers: {

@@ -1,7 +1,7 @@
 export type ChatMessage = { role: "user" | "assistant"; content: string };
 
 // The client should call the server-side proxy to keep the OpenAI API key secret.
-async function sendMessage(message: string, assistantId: string, attachments?: { id: string; name: string }[]): Promise<string> {
+async function sendMessage(messages: ChatMessage[], assistantId: string, attachments?: { id: string; name: string }[]): Promise<string> {
 	// Prefer an explicitly configured backend (`VITE_AGENT_API_URL`) so the client
 	// calls the real server (useful in dev where the backend runs on another port).
 	const agentApi = import.meta.env.VITE_AGENT_API_URL as string | undefined;
@@ -21,7 +21,8 @@ async function sendMessage(message: string, assistantId: string, attachments?: {
 	const resp = await fetch(url, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ assistant_id: assistantId, messages: [ { role: "user", content: message } ], attachments: attachments ?? [] }),
+		body: JSON.stringify({ assistant_id: assistantId, messages: messages, attachments: attachments ?? [] }),
+		signal: AbortSignal.timeout(45000), // 45 second timeout
 	});
 
 	if (!resp.ok) {
