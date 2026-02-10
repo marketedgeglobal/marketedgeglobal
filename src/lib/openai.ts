@@ -18,20 +18,31 @@ async function sendMessage(messages: ChatMessage[], assistantId: string, attachm
 		url = '/assistant';
 	}
 
-	const resp = await fetch(url, {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ assistant_id: assistantId, messages: messages, attachments: attachments ?? [] }),
-		signal: AbortSignal.timeout(45000), // 45 second timeout
-	});
+	try {
+		const resp = await fetch(url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ assistant_id: assistantId, messages: messages, attachments: attachments ?? [] }),
+			signal: AbortSignal.timeout(45000), // 45 second timeout
+		});
 
-	if (!resp.ok) {
-		const text = await resp.text();
-		throw new Error(`Proxy request failed: ${text}`);
+		if (!resp.ok) {
+			const text = await resp.text();
+			throw new Error(`Proxy request failed: ${text}`);
+		}
+
+		const data = await resp.json();
+		return data.reply ?? "";
+	} catch (err) {
+		// Provide more helpful error messages
+		if (err instanceof Error) {
+			if (err.name === 'AbortError') {
+				throw new Error('Request timed out. The server took too long to respond.');
+			}
+			throw err;
+		}
+		throw new Error(`Failed to fetch: ${String(err)}`);
 	}
-
-	const data = await resp.json();
-	return data.reply ?? "";
 }
 
 export { sendMessage };
