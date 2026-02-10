@@ -133,9 +133,8 @@ async function assistantProxyHandler(request, response) {
     const threadId = threadData.id;
     console.log('Created thread:', { threadId, assistant_id });
 
-    // Upload attachments to OpenAI Files API and add them to the thread
+    // Read attachments and prepare their content for inclusion in messages
     const attachments = request.body?.attachments || [];
-    const uploadedFileIds = [];
     const attachmentContents = [];
     
     for (const a of attachments) {
@@ -145,55 +144,30 @@ async function assistantProxyHandler(request, response) {
           const fileBuffer = fs.readFileSync(filePath);
           const fileName = a.name || `file-${a.id}`;
           
-          // Try to upload to OpenAI Files API
-          try {
-            const FormDataModule = await import('form-data');
-            const FormData = FormDataModule.default;
-            const form = new FormData();
-            
-            form.append('file', fileBuffer, { filename: fileName });
-            form.append('purpose', 'assistants');
-            
-            const uploadRes = await fetch('https://api.openai.com/v1/files', {
-              method: 'POST',
-              headers: {
-                Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-                ...form.getHeaders(),
-              },
-              body: form,
-            });
-            
-            if (uploadRes.ok) {
-              const fileData = await uploadRes.json();
-              uploadedFileIds.push(fileData.id);
-              console.log('Uploaded file to OpenAI:', { fileName, openaiFileId: fileData.id });
-            } else {
-              const errorText = await uploadRes.text();
-              console.warn('Failed to upload file to OpenAI:', { fileName, status: uploadRes.status, error: errorText });
-              // Fall through to content inclusion below
-            }
-          } catch (uploadErr) {
-            console.warn('Failed to use OpenAI Files API:', uploadErr?.message || uploadErr);
-            // Fall through to content inclusion below
-          }
-          
-          // Always include file content in the message as a fallback/supplement
-          // Try to decode as text first, then base64 if that fails
+          // Extract text content from the file
           let contentText = '';
           try {
+            // Try to decode as UTF-8 text
             contentText = fileBuffer.toString('utf8');
+            // Validate it's actually text by checking for too many control characters
+            const controlCharCount = (contentText.match(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g) || []).length;
+            if (controlCharCount > contentText.length * 0.1) {
+              // More than 10% control chars, likely not text
+              throw new Error('Binary file detected');
+            }
           } catch (e) {
-            // If UTF-8 fails, use base64 encoding
-            contentText = '[Binary file - base64 encoded]\n\n' + fileBuffer.toString('base64');
+            // If UTF-8 decode fails or too many control chars, encode as base64
+            contentText = '[Binary file - base64 encoded]\n\n' + fileBuffer.toString('base64').slice(0, 30000);
           }
           
           attachmentContents.push({
             name: fileName,
-            content: contentText.slice(0, 50000), // Include more content, but still have a reasonable limit
+            content: contentText.slice(0, 50000), // Include up to 50KB per file
           });
+          console.log('Prepared attachment for review:', { name: fileName, size: fileBuffer.length });
         }
       } catch (e) {
-        console.warn('Failed to process attachment', a.name, e?.message || e);
+        console.warn('Failed to process attachment', a?.name, e?.message || e);
       }
     }
 
@@ -224,22 +198,6 @@ async function assistantProxyHandler(request, response) {
       const msg = messages[msgIdx];
       const content = typeof msg === 'string' ? msg : msg.content;
       const role = typeof msg === 'string' ? 'user' : msg.role;
-      const isLastMessage = msgIdx === messages.length - 1;
-      
-      // Prepare the message body
-      const messageBody = {
-        role: role,
-        content: content,
-      };
-      
-      // Add file attachments to the last user message only (if upload succeeded)
-      if (isLastMessage && role === 'user' && uploadedFileIds.length > 0) {
-        messageBody.attachments = uploadedFileIds.map((fileId) => ({
-          file_id: fileId,
-          tools: [{ type: 'file_search' }],
-        }));
-        console.log('Added file attachments to last user message:', { count: uploadedFileIds.length, fileIds: uploadedFileIds });
-      }
       
       const msgRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
         method: 'POST',
@@ -248,7 +206,10 @@ async function assistantProxyHandler(request, response) {
           Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
           'OpenAI-Beta': 'assistants=v2',
         },
-        body: JSON.stringify(messageBody),
+        body: JSON.stringify({
+          role: role,
+          content: content,
+        }),
       });
 
       if (!msgRes.ok) {
@@ -258,7 +219,7 @@ async function assistantProxyHandler(request, response) {
       }
     }
 
-    console.log('Added', messages.length, 'messages to thread:', { threadId, uploadedFileCount: uploadedFileIds.length });
+    console.log('Added', messages.length, 'messages and', attachmentContents.length, 'attachments to thread:', { threadId });
 
     // Run the assistant on the thread
     // Note: File attachments are handled via message attachments, not tool_resources
@@ -339,43 +300,10 @@ async function assistantProxyHandler(request, response) {
 
     console.log('Retrieved assistant response:', { threadId, reply: reply.substring(0, 100) });
 
-    // Clean up: Delete uploaded files from OpenAI to avoid clutter
-    for (const fileId of uploadedFileIds) {
-      try {
-        const delRes = await fetch(`https://api.openai.com/v1/files/${fileId}`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-          },
-        });
-        if (delRes.ok) {
-          console.log('Deleted file from OpenAI:', { fileId });
-        } else {
-          console.warn('Failed to delete file from OpenAI:', { fileId, status: delRes.status });
-        }
-      } catch (e) {
-        console.warn('Error deleting file from OpenAI:', { fileId, error: e?.message });
-      }
-    }
-
     return response.json({ reply });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unexpected error";
     console.error('Assistant proxy error:', message);
-    
-    // Attempt to clean up files even on error
-    for (const fileId of uploadedFileIds) {
-      try {
-        await fetch(`https://api.openai.com/v1/files/${fileId}`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-          },
-        });
-      } catch (e) {
-        // Silently ignore cleanup errors
-      }
-    }
     return response.status(500).json({ error: message });
   }
 }
