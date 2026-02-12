@@ -183,7 +183,7 @@ function HomePage() {
         <div className="grid gap-8 md:grid-cols-[0.9fr_1.1fr]">
           <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Insight feed</p>
-            <h3 className="mt-3 text-2xl font-semibold">Daily highlights</h3>
+            <h3 className="mt-3 text-2xl font-semibold">Highlights</h3>
             <ul className="mt-6 space-y-4 text-sm text-slate-300">
               <li>• 18 new opportunities flagged across enterprise accounts.</li>
               <li>• Competitive pricing shifted in 3 priority segments.</li>
