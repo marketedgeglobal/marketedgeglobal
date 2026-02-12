@@ -222,12 +222,18 @@ function HomePage() {
               Tell us about your team and we will tailor a walkthrough to your goals.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-              <a href="mailto:info@marketedgeglobal.com" className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold">
+              <a
+                href="mailto:info@marketedgeglobal.com"
+                className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
+              >
                 Schedule a demo
               </a>
-              <button className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200">
+              <a
+                href="mailto:info@marketedgeglobal.com"
+                className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
+              >
                 Contact sales
-              </button>
+              </a>
             </div>
           </div>
         </div>
