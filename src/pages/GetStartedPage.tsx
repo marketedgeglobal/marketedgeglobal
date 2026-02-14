@@ -361,6 +361,16 @@ export function GetStartedPage(_: PageProps) {
                 >
                   Publication Review
                 </button>
+                <div className="mt-2">
+                  <a
+                    href="https://marketedgeglobal.github.io/marketintelligence/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  >
+                    Market Intelligence
+                  </a>
+                </div>
               </div>
             </div>
           </div>
