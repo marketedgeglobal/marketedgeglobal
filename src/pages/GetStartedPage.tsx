@@ -346,28 +346,26 @@ export function GetStartedPage(_: PageProps) {
                 Leverage our agents trained in advanced analytics for data-driven insights, streamlining
                 decision-making and program effectiveness.
               </p>
-              <div className="mt-3 space-y-2">
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-                  >
-                    Ranking Tool
-                  </a>
-                  <button
-                    onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
-                    className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
-                  >
-                    Publication Review
-                  </button>
-                </div>
+              <div className="mt-3 flex flex-wrap gap-3">
+                <a
+                  href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Ranking Tool
+                </a>
+                <button
+                  onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Publication Review
+                </button>
                 <a
                   href="https://marketedgeglobal.github.io/marketintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
                 >
                   Market Intelligence
                 </a>
