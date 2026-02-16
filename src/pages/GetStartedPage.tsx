@@ -12,8 +12,15 @@ interface AttachedFile {
 export function GetStartedPage(_: PageProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
   interface AssistantItem { id: string | null; name: string; description?: string }
-  const [assistants, setAssistants] = useState<AssistantItem[]>([]);
   const defaultFinancialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
+  const buildFallbackAssistants = (): AssistantItem[] => ([
+    { id: import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', name: 'Financial Management Help' },
+    { id: import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', name: 'Operations Systems' },
+    { id: import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', name: 'Business Development Support' },
+    { id: import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', name: 'Marketing and Communications' },
+    { id: import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', name: 'Ramiro - The Bolivian Rancher' },
+  ]);
+  const [assistants, setAssistants] = useState<AssistantItem[]>(() => buildFallbackAssistants());
   const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
     import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? defaultFinancialId
   );
@@ -53,7 +60,18 @@ export function GetStartedPage(_: PageProps) {
         if (resp.ok) {
           const data = await resp.json();
           if (Array.isArray(data?.assistants)) {
-            setAssistants(data.assistants);
+            const normalized = data.assistants
+              .filter((assistant: AssistantItem | null) => assistant && typeof assistant.name === 'string')
+              .map((assistant: AssistantItem) => ({
+                id: assistant.id ?? null,
+                name: assistant.name.trim(),
+                description: assistant.description,
+              }))
+              .filter((assistant: AssistantItem) => assistant.name.length > 0);
+            if (normalized.length > 0) {
+              setAssistants(normalized);
+              return;
+            }
             return;
           }
         }
@@ -62,14 +80,7 @@ export function GetStartedPage(_: PageProps) {
       }
 
       // Fallback: build assistant list from env vars / hard-coded defaults
-      const fallback = [] as AssistantItem[];
-      fallback.push({ id: import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', name: 'Financial Management Help' });
-      fallback.push({ id: import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', name: 'Operations Systems' });
-      fallback.push({ id: import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', name: 'Business Development Support' });
-      fallback.push({ id: import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', name: 'Marketing and Communications' });
-      // New Learning Companion assistant: Ramiro - The Bolivian Rancher
-      fallback.push({ id: import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', name: 'Ramiro - The Bolivian Rancher' });
-      setAssistants(fallback);
+      setAssistants(buildFallbackAssistants());
     }
 
     void loadAssistants();
