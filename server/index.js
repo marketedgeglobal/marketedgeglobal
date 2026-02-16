@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import multer from "multer";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import fs from "fs";
 import path from "path";
 
@@ -10,14 +12,69 @@ dotenv.config();
 const app = express();
 const port = parseInt(process.env.PORT || "", 10) || 8787;
 
-const allowedOrigin = process.env.ALLOWED_ORIGIN || "*";
+const allowedOrigins = (process.env.ALLOWED_ORIGIN || "")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
-app.use(
-  cors({
-    origin: allowedOrigin,
-  })
-);
+const requestTimeoutMs = parseInt(process.env.REQUEST_TIMEOUT_MS || "", 10) || 20000;
+const rateLimitWindowMs = parseInt(process.env.RATE_LIMIT_WINDOW_MS || "", 10) || 60000;
+const rateLimitMax = parseInt(process.env.RATE_LIMIT_MAX || "", 10) || 60;
+const maxUploadFiles = parseInt(process.env.MAX_UPLOAD_FILES || "", 10) || 5;
+const maxUploadSize = parseInt(process.env.MAX_UPLOAD_SIZE || "", 10) || 2 * 1024 * 1024;
+
+const allowedMimeTypes = new Set([
+  "application/json",
+  "application/pdf",
+  "application/xml",
+  "text/csv",
+  "text/plain",
+  "text/markdown",
+]);
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin) {
+      return callback(null, true);
+    }
+    if (allowedOrigins.length === 0) {
+      return callback(null, true);
+    }
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
+};
+
+const apiLimiter = rateLimit({
+  windowMs: rateLimitWindowMs,
+  max: rateLimitMax,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const fetchWithTimeout = async (url, options, timeoutMs) => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+};
+
+app.use(helmet());
+app.use(cors(corsOptions));
 app.use(express.json({ limit: "1mb" }));
+app.use((request, response, next) => {
+  const start = Date.now();
+  response.on("finish", () => {
+    const duration = Date.now() - start;
+    console.log(`${request.method} ${request.originalUrl} ${response.statusCode} ${duration}ms`);
+  });
+  next();
+});
 
 // Ensure uploads directory exists
 const uploadsDir = path.join(process.cwd(), "server", "uploads");
@@ -25,13 +82,25 @@ if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-const upload = multer({ dest: uploadsDir });
+const upload = multer({
+  dest: uploadsDir,
+  limits: {
+    files: maxUploadFiles,
+    fileSize: maxUploadSize,
+  },
+  fileFilter: (_request, file, callback) => {
+    if (file.mimetype.startsWith("text/") || allowedMimeTypes.has(file.mimetype)) {
+      return callback(null, true);
+    }
+    return callback(new Error("Unsupported file type"));
+  },
+});
 
 app.get("/health", (_request, response) => {
   response.json({ status: "ok" });
 });
 
-app.post("/agent", async (request, response) => {
+app.post("/agent", apiLimiter, async (request, response) => {
   const { messages } = request.body ?? {};
 
   if (!Array.isArray(messages)) {
@@ -49,14 +118,18 @@ app.post("/agent", async (request, response) => {
       temperature: 0.3,
     };
 
-    const apiResponse = await fetch("https://api.openai.com/v1/responses", {
+    const apiResponse = await fetchWithTimeout(
+      "https://api.openai.com/v1/responses",
+      {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify(payload),
-    });
+      },
+      requestTimeoutMs
+    );
 
     if (!apiResponse.ok) {
       const errorText = await apiResponse.text();
@@ -74,13 +147,16 @@ app.post("/agent", async (request, response) => {
 
     return response.json({ reply: outputText || "Sorry, I couldn’t generate a reply." });
   } catch (error) {
+    if (error instanceof Error && error.name === "AbortError") {
+      return response.status(504).json({ error: "Upstream timeout" });
+    }
     const message = error instanceof Error ? error.message : "Unexpected error";
     return response.status(500).json({ error: message });
   }
 });
 
 // File upload endpoint (MVP: accepts text-like files and stores them)
-app.post("/upload", upload.array("files"), (req, res) => {
+app.post("/upload", apiLimiter, upload.array("files"), (req, res) => {
   const files = req.files || [];
   const saved = files.map((f) => ({ id: f.filename || f.filename, name: f.originalname, mime: f.mimetype, size: f.size }));
   return res.json({ files: saved });
@@ -111,15 +187,19 @@ async function assistantProxyHandler(request, response) {
     console.log("Assistant proxy body", { assistant_id, messages_length: Array.isArray(messages) ? messages.length : 0 });
     
     // Create a thread for this conversation
-    const threadRes = await fetch('https://api.openai.com/v1/threads', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        'OpenAI-Beta': 'assistants=v2',
+    const threadRes = await fetchWithTimeout(
+      "https://api.openai.com/v1/threads",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "OpenAI-Beta": "assistants=v2",
+        },
+        body: JSON.stringify({}),
       },
-      body: JSON.stringify({}),
-    });
+      requestTimeoutMs
+    );
 
     if (!threadRes.ok) {
       const errorText = await threadRes.text();
@@ -173,18 +253,22 @@ async function assistantProxyHandler(request, response) {
     // This ensures the assistant has access to file contents
     for (const attachment of attachmentContents) {
       try {
-        await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-            'OpenAI-Beta': 'assistants=v2',
+        await fetchWithTimeout(
+          `https://api.openai.com/v1/threads/${threadId}/messages`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+              "OpenAI-Beta": "assistants=v2",
+            },
+            body: JSON.stringify({
+              role: "user",
+              content: `Here is the content of "${attachment.name}" for your review:\n\n${attachment.content}`,
+            }),
           },
-          body: JSON.stringify({
-            role: 'user',
-            content: `Here is the content of "${attachment.name}" for your review:\n\n${attachment.content}`,
-          }),
-        });
+          requestTimeoutMs
+        );
       } catch (e) {
         console.warn('Failed to add attachment content message:', attachment.name, e?.message || e);
       }
@@ -197,18 +281,22 @@ async function assistantProxyHandler(request, response) {
       const content = typeof msg === 'string' ? msg : msg.content;
       const role = typeof msg === 'string' ? 'user' : msg.role;
       
-      const msgRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-          'OpenAI-Beta': 'assistants=v2',
+      const msgRes = await fetchWithTimeout(
+        `https://api.openai.com/v1/threads/${threadId}/messages`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            "OpenAI-Beta": "assistants=v2",
+          },
+          body: JSON.stringify({
+            role: role,
+            content: content,
+          }),
         },
-        body: JSON.stringify({
-          role: role,
-          content: content,
-        }),
-      });
+        requestTimeoutMs
+      );
 
       if (!msgRes.ok) {
         const errorText = await msgRes.text();
@@ -221,17 +309,21 @@ async function assistantProxyHandler(request, response) {
 
     // Run the assistant on the thread
     // Note: File attachments are handled via message attachments, not tool_resources
-    const runRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        'OpenAI-Beta': 'assistants=v2',
+    const runRes = await fetchWithTimeout(
+      `https://api.openai.com/v1/threads/${threadId}/runs`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "OpenAI-Beta": "assistants=v2",
+        },
+        body: JSON.stringify({
+          assistant_id: assistant_id,
+        }),
       },
-      body: JSON.stringify({
-        assistant_id: assistant_id,
-      }),
-    });
+      requestTimeoutMs
+    );
 
     if (!runRes.ok) {
       const errorText = await runRes.text();
@@ -256,12 +348,16 @@ async function assistantProxyHandler(request, response) {
 
       await new Promise((resolve) => setTimeout(resolve, 300));
 
-      const checkRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs/${runId}`, {
-        headers: {
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-          'OpenAI-Beta': 'assistants=v2',
+      const checkRes = await fetchWithTimeout(
+        `https://api.openai.com/v1/threads/${threadId}/runs/${runId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+            "OpenAI-Beta": "assistants=v2",
+          },
         },
-      });
+        requestTimeoutMs
+      );
 
       if (checkRes.ok) {
         const checkData = await checkRes.json();
@@ -278,12 +374,16 @@ async function assistantProxyHandler(request, response) {
     }
 
     // Retrieve the assistant's response from the thread
-    const messagesRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
-      headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        'OpenAI-Beta': 'assistants=v2',
+    const messagesRes = await fetchWithTimeout(
+      `https://api.openai.com/v1/threads/${threadId}/messages`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+          "OpenAI-Beta": "assistants=v2",
+        },
       },
-    });
+      requestTimeoutMs
+    );
 
     if (!messagesRes.ok) {
       const errorText = await messagesRes.text();
@@ -300,14 +400,17 @@ async function assistantProxyHandler(request, response) {
 
     return response.json({ reply });
   } catch (err) {
+    if (err instanceof Error && err.name === "AbortError") {
+      return response.status(504).json({ error: "Upstream timeout" });
+    }
     const message = err instanceof Error ? err.message : "Unexpected error";
     console.error('Assistant proxy error:', message);
     return response.status(500).json({ error: message });
   }
 }
 
-app.post('/assistant', assistantProxyHandler);
-app.post(/^(.+\/)?assistant$/, assistantProxyHandler);
+app.post('/assistant', apiLimiter, assistantProxyHandler);
+app.post(/^(.+\/)?assistant$/, apiLimiter, assistantProxyHandler);
 
 // List assistants (server-side) so the frontend can discover assistants
 // without baking IDs into the client build.
@@ -317,9 +420,13 @@ const assistantsHandler = async (request, response) => {
   }
 
   try {
-    const r = await fetch("https://api.openai.com/v1/assistants", {
-      headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
-    });
+    const r = await fetchWithTimeout(
+      "https://api.openai.com/v1/assistants",
+      {
+        headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
+      },
+      requestTimeoutMs
+    );
 
     if (!r.ok) {
       const text = await r.text();
@@ -335,13 +442,30 @@ const assistantsHandler = async (request, response) => {
 
     return response.json({ assistants });
   } catch (err) {
+    if (err instanceof Error && err.name === "AbortError") {
+      return response.status(504).json({ error: "Upstream timeout" });
+    }
     const message = err instanceof Error ? err.message : "Unexpected error";
     return response.status(500).json({ error: message });
   }
 };
 
-app.get('/assistants', assistantsHandler);
-app.get(/^(.+\/)?assistants$/, assistantsHandler);
+app.get('/assistants', apiLimiter, assistantsHandler);
+app.get(/^(.+\/)?assistants$/, apiLimiter, assistantsHandler);
+
+app.use((err, _request, response, _next) => {
+  if (err instanceof multer.MulterError) {
+    return response.status(400).json({ error: err.message });
+  }
+  if (err instanceof Error && err.message === "Unsupported file type") {
+    return response.status(400).json({ error: err.message });
+  }
+  if (err instanceof Error && err.message === "Not allowed by CORS") {
+    return response.status(403).json({ error: "CORS rejected" });
+  }
+  console.error("Unhandled error:", err);
+  return response.status(500).json({ error: "Unexpected error" });
+});
 
 const host = process.env.HOST || '0.0.0.0';
 const server = app.listen(port, host, () => {

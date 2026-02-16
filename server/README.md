@@ -21,6 +21,15 @@ The server listens on http://localhost:8787 and exposes:
 - GET /health
 - POST /agent
 
+## Optional hardening env vars
+
+- ALLOWED_ORIGIN (comma-separated allowlist)
+- REQUEST_TIMEOUT_MS (default 20000)
+- RATE_LIMIT_WINDOW_MS (default 60000)
+- RATE_LIMIT_MAX (default 60)
+- MAX_UPLOAD_FILES (default 5)
+- MAX_UPLOAD_SIZE (default 2097152 bytes)
+
 ## Request shape
 
 POST /agent
