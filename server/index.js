@@ -21,7 +21,14 @@ app.use(express.json({ limit: "1mb" }));
 
 // Ensure uploads directory exists
 const uploadsDir = path.join(process.cwd(), "server", "uploads");
-https://github.com/marketedgeglobal/marketedgeglobal/actions/runs/22011319220  response.json({ status: "ok" });
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
+const upload = multer({ dest: uploadsDir });
+
+app.get("/health", (_request, response) => {
+  response.json({ status: "ok" });
 });
 
 app.post("/agent", async (request, response) => {
