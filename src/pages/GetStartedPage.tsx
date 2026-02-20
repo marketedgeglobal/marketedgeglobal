@@ -388,6 +388,14 @@ export function GetStartedPage(_: PageProps) {
                 >
                   RFP Intelligence
                 </a>
+                <a
+                  href="https://marketedgeglobal.github.io/BASIN/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  Mekong Market Assessment
+                </a>
               </div>
             </div>
           </div>
