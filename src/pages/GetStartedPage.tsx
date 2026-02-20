@@ -380,6 +380,14 @@ export function GetStartedPage(_: PageProps) {
                 >
                   Market Intelligence
                 </a>
+                <a
+                  href="https://marketedgeglobal.github.io/rfpintelligence/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                >
+                  RFP Intelligence
+                </a>
               </div>
             </div>
           </div>
