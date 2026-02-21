@@ -11,16 +11,7 @@ interface AttachedFile {
 
 export function GetStartedPage(_: PageProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
-  interface AssistantItem { id: string | null; name: string; description?: string }
   const defaultFinancialId = import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM';
-  const buildFallbackAssistants = (): AssistantItem[] => ([
-    { id: import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', name: 'Financial Management Help' },
-    { id: import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', name: 'Operations Systems' },
-    { id: import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', name: 'Business Development Support' },
-    { id: import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', name: 'Marketing and Communications' },
-    { id: import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', name: 'Ramiro - The Bolivian Rancher' },
-  ]);
-  const [assistants, setAssistants] = useState<AssistantItem[]>(() => buildFallbackAssistants());
   const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
     import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? defaultFinancialId
   );
@@ -41,50 +32,6 @@ export function GetStartedPage(_: PageProps) {
     if (!isChatOpen) return;
     inputRef.current?.focus();
   }, [isChatOpen]);
-
-  useEffect(() => {
-    async function loadAssistants() {
-      // Build URL similar to sendMessage so this works under a subpath or with a remote agent API
-      const agentApi = import.meta.env.VITE_AGENT_API_URL as string | undefined;
-      let url: string;
-      if (agentApi) {
-        url = new URL('assistants', agentApi).toString();
-      } else if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
-        url = new URL('assistants', window.location.origin + (import.meta.env.BASE_URL ?? '/')).toString();
-      } else {
-        url = '/assistants';
-      }
-
-      try {
-        const resp = await fetch(url);
-        if (resp.ok) {
-          const data = await resp.json();
-          if (Array.isArray(data?.assistants)) {
-            const normalized = data.assistants
-              .filter((assistant: AssistantItem | null) => assistant && typeof assistant.name === 'string')
-              .map((assistant: AssistantItem) => ({
-                id: assistant.id ?? null,
-                name: assistant.name.trim(),
-                description: assistant.description,
-              }))
-              .filter((assistant: AssistantItem) => assistant.name.length > 0);
-            if (normalized.length > 0) {
-              setAssistants(normalized);
-              return;
-            }
-            return;
-          }
-        }
-      } catch (err) {
-        // ignore and fall back to env-built list
-      }
-
-      // Fallback: build assistant list from env vars / hard-coded defaults
-      setAssistants(buildFallbackAssistants());
-    }
-
-    void loadAssistants();
-  }, []);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -206,7 +153,7 @@ export function GetStartedPage(_: PageProps) {
 
     // Resolve a null id to the expected assistant id based on name, ensuring
     // we always have an assistant_id when sending messages.
-    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' ? operationsId : name === 'Business Development Support' ? bdId : name === 'Marketing and Communications' ? marketingId : name === 'Sarah Whitmore- Senior Programme Manager at FCDO' ? sarahId : null);
+    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' || name === 'Operations Systems Support' ? operationsId : name === 'Business Development Support' || name === 'Business Development Assistant' ? bdId : name === 'Marketing and Communications' ? marketingId : name === 'Sarah Whitmore- Senior Programme Manager at FCDO' || name === 'Sarah Whitmore - Senior Programme Manager at FCDO' ? sarahId : null);
     setCurrentAssistantId(resolvedId);
     setCurrentAssistantName(name);
     // Set initial messages per assistant so previews match the selected agent
@@ -219,7 +166,7 @@ export function GetStartedPage(_: PageProps) {
             "Hello — I'm here to help with financial management, budgeting, and reporting. Ask about forecasts, cashflow, expense categorization, or attach financial documents for review.",
         },
       ];
-    } else if (name === "Operations Systems" || id === operationsId) {
+    } else if (name === "Operations Systems" || name === "Operations Systems Support" || id === operationsId) {
       initialMessages = [
         {
           role: "assistant",
@@ -227,7 +174,7 @@ export function GetStartedPage(_: PageProps) {
             "Hi — I'm the Operations Systems assistant. I can help with system architecture, deployments, monitoring, integrations, runbooks, and automations. Attach diagrams, configs, or logs and I'll review them.",
         },
       ];
-    } else if (name === "Business Development Support" || id === bdId) {
+    } else if (name === "Business Development Support" || name === "Business Development Assistant" || id === bdId) {
       initialMessages = [
         {
           role: "assistant",
@@ -344,39 +291,64 @@ export function GetStartedPage(_: PageProps) {
           <h1 className="mt-1 text-4xl font-semibold leading-tight md:text-5xl">
             Democratizing AI for Social Impact.
           </h1>
-          <p className="mt-2 text-lg text-slate-300 max-w-3xl">
-            PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands.
-          </p>
+          <div className="mt-3 max-w-3xl text-slate-300">
+            <p className="text-lg">PartnerAI embeds AI directly into:</p>
+            <ul className="mt-2 list-disc list-inside space-y-1 text-lg">
+              <li>Delivery workflows</li>
+              <li>Portfolio management</li>
+              <li>Reporting and compliance</li>
+              <li>Decision-making processes</li>
+            </ul>
+            <p className="mt-2 text-base text-slate-300">
+              All within a secure, role-based dashboard tailored to mission-driven organizations.
+            </p>
+          </div>
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div>
+              <button
+                type="button"
+                className="rounded-full bg-[#116dff] px-5 py-3 text-sm font-semibold text-white hover:bg-[#3899ec] transition-colors"
+              >
+                Request a Live Demo from Our Team
+              </button>
+              <p className="mt-2 text-xs text-slate-400">See how PartnerAI applies to your specific workflow.</p>
+            </div>
+          </div>
         </div>
 
+        <h2 className="text-xl font-semibold text-slate-100">Explore How PartnerAI Supports Your Work</h2>
+
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-2">
-              <h3 className="text-lg font-semibold">Advanced Analytics</h3>
+          <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M4 19h16" />
+                    <path d="M6 16V8" />
+                    <path d="M12 16V5" />
+                    <path d="M18 16v-6" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold">AI Analytics & Data Insights</h3>
+              </div>
               <p className="text-sm text-slate-400">
-                Leverage our agents trained in advanced analytics for data-driven insights, streamlining
-                decision-making and program effectiveness.
+                Turn documents and live data into structured insights and visual dashboards.
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
                 <a
                   href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
                   Ranking Tool
                 </a>
-                <button
-                  onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
-                >
-                  Publication Review
-                </button>
                 <a
                   href="https://marketedgeglobal.github.io/marketintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
                   Market Intelligence
                 </a>
@@ -384,104 +356,137 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/rfpintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
                   RFP Intelligence
                 </a>
-                <a
-                  href="https://marketedgeglobal.github.io/BASIN/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
-                >
-                  Mekong Market Assessment
-                </a>
               </div>
+              <a
+                href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-sky-300 hover:text-sky-200 underline-offset-4 hover:underline"
+              >
+                View all analytics tools
+              </a>
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-2">
-              <h3 className="text-lg font-semibold">Practice Engaging Stakeholders</h3>
+          <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M12 3v4" />
+                    <path d="M8 7h8" />
+                    <path d="M6 11h12" />
+                    <path d="M6 15h8" />
+                    <path d="M6 19h6" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold">On-the-Job AI Assistants</h3>
+              </div>
               <p className="text-sm text-slate-400">
-                Explore different perspectives and prepare for your next engagement.
+                AI-powered task companions embedded into real workflows.
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
-                {assistants
-                  .filter((a) => a.name.includes('Ramiro'))
-                  .map((a) => (
-                    <button
-                      key={a.name}
-                      className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
-                      onClick={() => openAssistant(a.id, a.name)}
-                    >
-                      {a.name}
-                    </button>
-                  ))}
                 <button
-                  onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  type="button"
+                  onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', 'Financial Management Help')}
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
-                  Jannatul - Bangladeshi University Student
+                  Financial Management Help
                 </button>
                 <button
-                  onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Nilar Tun - Agribusiness Exporter from Myanmar')}
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  type="button"
+                  onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', 'Operations Systems Support')}
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
-                  Nilar Tun - Agribusiness Exporter from Myanmar
+                  Operations Systems Support
                 </button>
                 <button
-                  onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore- Senior Programme Manager at FCDO')}
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  type="button"
+                  onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', 'Business Development Assistant')}
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
-                  Sarah Whitmore- Senior Programme Manager at FCDO
+                  Business Development Assistant
                 </button>
               </div>
+              <button
+                type="button"
+                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? defaultFinancialId, 'PartnerAI Assistant')}
+                className="text-sm text-sky-300 hover:text-sky-200 underline-offset-4 hover:underline text-left"
+              >
+                View all assistants
+              </button>
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-2">
-              <h3 className="text-lg font-semibold">On-the-Job Task Assistants</h3>
+          <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <circle cx="8" cy="9" r="3" />
+                    <circle cx="17" cy="8" r="2.5" />
+                    <path d="M3.5 19c1.5-2.5 4-4 6.5-4" />
+                    <path d="M14 19c.8-1.6 2.3-2.6 4.5-2.8" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold">Stakeholder Personas & Simulation</h3>
+              </div>
               <p className="text-sm text-slate-400">
-                Optimize workflows and improve productivity with AI-driven assistants for key
-                organizational tasks.
+                Engage AI-powered stakeholder personas for training and strategy testing.
               </p>
-              <div className="mt-2 flex flex-wrap gap-3">
-                {assistants
-                  .filter((a) => !a.name.includes('Ramiro'))
-                  .map((a) => {
-                  const name = a.name;
-                  const cls = 'rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors';
-
-                  return (
-                    <button key={name} className={cls} onClick={() => openAssistant(a.id, a.name)}>
-                        {a.name}
-                      </button>
-                  );
-                })}
+              <div className="mt-2 grid gap-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">RA</div>
+                  <div className="text-sm text-slate-200">Ramiro - The Bolivian Rancher</div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">JU</div>
+                  <div className="text-sm text-slate-200">Jannatul - Bangladeshi University Student</div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">NT</div>
+                  <div className="text-sm text-slate-200">Niar Tun - Agribusiness Exporter from Myanmar</div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">SW</div>
+                  <div className="text-sm text-slate-200">Sarah Whitmore - Senior Programme Manager at FCDO</div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-2">
-              <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
+          <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+            <div className="flex-1 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path d="M5 6h14" />
+                    <path d="M5 12h14" />
+                    <path d="M5 18h9" />
+                    <path d="M16 18l2 2 4-4" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold">Organizational Diagnostics</h3>
+              </div>
               <p className="text-sm text-slate-400">
-                Gain comprehensive assessments of organizational capacity and performance for strategic
-                growth and impact.
+                Run structured capacity and performance assessments.
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
                 <a
                   href="https://form.typeform.com/to/QLgS0bbC"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
                   Organization Self-Assessment Survey
                 </a>
                 <button
-                  onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  type="button"
+                  onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Diagnostic Virtual Coach')}
+                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
                 >
-                  Organization Diagnostic Virtual Coach
+                  Diagnostic Virtual Coach
                 </button>
               </div>
             </div>
