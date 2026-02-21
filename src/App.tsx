@@ -2,6 +2,10 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { GetStartedPage } from "./pages/GetStartedPage";
 import { PartnerAIPage } from "./pages/PartnerAIPage";
+import { AnalyticsPage } from "./pages/AnalyticsPage";
+import { AssistantsPage } from "./pages/AssistantsPage";
+import { PersonasPage } from "./pages/PersonasPage";
+import { DiagnosticsPage } from "./pages/DiagnosticsPage";
 
 const features = [
   {
@@ -495,6 +499,10 @@ function App() {
             path="/explore-platform/"
             element={<ExplorePlatformPage onOpenChat={() => setIsChatOpen(true)} />}
           />
+          <Route path="/analytics/" element={<AnalyticsPage />} />
+          <Route path="/assistants/" element={<AssistantsPage />} />
+          <Route path="/personas/" element={<PersonasPage />} />
+          <Route path="/diagnostics/" element={<DiagnosticsPage />} />
         </Routes>
       </Layout>
 
