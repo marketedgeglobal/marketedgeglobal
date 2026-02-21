@@ -338,37 +338,37 @@ export function GetStartedPage(_: PageProps) {
 
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <div className="space-y-8">
+      <div className="space-y-6">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-slate-500">PartnerAI™</p>
-          <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
+          <h1 className="mt-1 text-4xl font-semibold leading-tight md:text-5xl">
             Democratizing AI for Social Impact.
           </h1>
-          <p className="mt-4 text-lg text-slate-300 max-w-3xl">
+          <p className="mt-2 text-lg text-slate-300 max-w-3xl">
             PartnerAI™ is a proprietary, trademarked AI platform developed and owned by MarketEdge. It embeds AI directly into delivery, portfolio management, and decision-making workflows for social impact organizations operating across multiple stakeholders, incentives, and reporting demands.
           </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 space-y-2">
               <h3 className="text-lg font-semibold">Advanced Analytics</h3>
               <p className="text-sm text-slate-400">
                 Leverage our agents trained in advanced analytics for data-driven insights, streamlining
                 decision-making and program effectiveness.
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              <div className="mt-2 flex flex-wrap gap-3">
                 <a
                   href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Ranking Tool
                 </a>
                 <button
                   onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Publication Review
                 </button>
@@ -376,7 +376,7 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/marketintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Market Intelligence
                 </a>
@@ -384,7 +384,7 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/rfpintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   RFP Intelligence
                 </a>
@@ -392,7 +392,7 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/BASIN/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Mekong Market Assessment
                 </a>
@@ -400,18 +400,18 @@ export function GetStartedPage(_: PageProps) {
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 space-y-2">
               <h3 className="text-lg font-semibold">Practice Engaging Stakeholders</h3>
               <p className="text-sm text-slate-400">
                 Explore different perspectives and prepare for your next engagement.
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              <div className="mt-2 flex flex-wrap gap-3">
                 {assistants
                   .filter((a) => a.name.includes('Ramiro'))
                   .map((a) => (
                     <button
                       key={a.name}
-                      className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                      className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                       onClick={() => openAssistant(a.id, a.name)}
                     >
                       {a.name}
@@ -419,19 +419,19 @@ export function GetStartedPage(_: PageProps) {
                   ))}
                 <button
                   onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Jannatul - Bangladeshi University Student
                 </button>
                 <button
                   onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Nilar Tun - Agribusiness Exporter from Myanmar')}
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Nilar Tun - Agribusiness Exporter from Myanmar
                 </button>
                 <button
                   onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore- Senior Programme Manager at FCDO')}
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Sarah Whitmore- Senior Programme Manager at FCDO
                 </button>
@@ -439,18 +439,18 @@ export function GetStartedPage(_: PageProps) {
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 space-y-2">
               <h3 className="text-lg font-semibold">On-the-Job Task Assistants</h3>
               <p className="text-sm text-slate-400">
                 Optimize workflows and improve productivity with AI-driven assistants for key
                 organizational tasks.
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              <div className="mt-2 flex flex-wrap gap-3">
                 {assistants
                   .filter((a) => !a.name.includes('Ramiro'))
                   .map((a) => {
                   const name = a.name;
-                  const cls = 'rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600';
+                  const cls = 'rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors';
 
                   return (
                     <button key={name} className={cls} onClick={() => openAssistant(a.id, a.name)}>
@@ -462,24 +462,24 @@ export function GetStartedPage(_: PageProps) {
             </div>
           </div>
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 flex flex-col h-full">
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 space-y-2">
               <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
               <p className="text-sm text-slate-400">
                 Gain comprehensive assessments of organizational capacity and performance for strategic
                 growth and impact.
               </p>
-              <div className="mt-3 flex flex-wrap gap-3">
+              <div className="mt-2 flex flex-wrap gap-3">
                 <a
                   href="https://form.typeform.com/to/QLgS0bbC"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Organization Self-Assessment Survey
                 </a>
                 <button
                   onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
-                  className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold hover:bg-sky-600"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Organization Diagnostic Virtual Coach
                 </button>
@@ -490,61 +490,61 @@ export function GetStartedPage(_: PageProps) {
 
         <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
           <h2 className="text-2xl font-semibold">PartnerAI™</h2>
-          <h3 className="text-lg font-semibold">Built for adoption, not deployment</h3>
+          <h3 className="mt-1 text-lg font-semibold">Built for adoption, not deployment</h3>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             PartnerAI™ works because MarketEdge stays involved and knows how social impact systems actually operate. Our team brings decades of experience advising donors, investors, large implementing partners, and on-the-ground NGOs and social enterprises.
           </p>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             We have seen where delivery breaks down, where reporting distorts incentives, and where insight fails to translate into action. Most AI tools ignore these realities. MarketEdge treats PartnerAI™ as an organizational capability shaped by governance, incentives, and decision authority, not a software install.
           </p>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             This experience allows us to embed intelligence where decisions occur, so AI supports action instead of adding parallel systems.
           </p>
 
-          <div className="mt-6 rounded-lg bg-gradient-to-r from-sky-800/60 to-sky-700/40 p-4 border border-sky-700">
-            <h4 className="text-sm font-semibold text-sky-100">Impact Snapshot</h4>
-            <div className="mt-3 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="mt-5 rounded-lg bg-gradient-to-r from-[#116dff]/30 to-[#3899ec]/20 p-4 border border-[#116dff]/50">
+            <h4 className="text-sm font-semibold text-blue-100">Impact Snapshot</h4>
+            <div className="mt-2 grid grid-cols-2 gap-4 sm:grid-cols-4">
               <div className="text-center">
                   <div className="text-2xl font-bold text-white">Over 100k</div>
-                  <div className="text-xs text-sky-200">people reached</div>
+                  <div className="text-xs text-blue-200">people reached</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">45%</div>
-                <div className="text-xs text-sky-200">Avg. cost reduction</div>
+                <div className="text-xs text-blue-200">Avg. cost reduction</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">120+</div>
-                <div className="text-xs text-sky-200">organizations strengthened</div>
+                <div className="text-xs text-blue-200">organizations strengthened</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">8x</div>
-                <div className="text-xs text-sky-200">Faster reporting</div>
+                <div className="text-xs text-blue-200">Faster reporting</div>
               </div>
               </div>
           </div>
 
-          <h3 className="mt-6 text-lg font-semibold">Shaped around how your organization actually works</h3>
+          <h3 className="mt-5 text-lg font-semibold">Shaped around how your organization actually works</h3>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             MarketEdge starts with your reality, not a template. We analyze how delivery, portfolio management, and governance function today: who decides, what evidence carries weight, where coordination slows, and where reporting adds friction.
           </p>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             We then tailor PartnerAI™ to those dynamics, aligning agents, dashboards, and outputs to roles, incentives, and decision cadence across teams and partners.
           </p>
 
-          <h3 className="mt-6 text-lg font-semibold">Embedded into live work</h3>
+          <h3 className="mt-5 text-lg font-semibold">Embedded into live work</h3>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             PartnerAI™ integrates directly into day-to-day delivery. MarketEdge configures workflows that support proposal development, diagnostics, synthesis, learning, and oversight inside the processes teams already use.
           </p>
 
-          <p className="mt-3 text-slate-400">Our work typically includes:</p>
+          <p className="mt-2 text-slate-400">Our work typically includes:</p>
 
-          <ul className="mt-3 list-disc list-inside text-slate-400 space-y-2">
+          <ul className="mt-2 list-disc list-inside text-slate-400 space-y-1">
             <li>Mapping delivery and governance workflows</li>
             <li>Clarifying decision rights and evidence needs</li>
             <li>Configuring role-specific agents and dashboards</li>
@@ -552,17 +552,17 @@ export function GetStartedPage(_: PageProps) {
             <li>Supporting adoption through targeted change management and iteration</li>
           </ul>
 
-          <p className="mt-3 text-slate-400">
+          <p className="mt-2 text-slate-400">
             As priorities and partnerships evolve, MarketEdge adapts PartnerAI™ to keep it relevant and useful.
           </p>
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 text-slate-300">
+      <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-900/60 p-6 text-slate-300">
         <h3 className="text-lg font-semibold">MarketEdge Impact Over the Last Two Years</h3>
-        <p className="mt-3 text-sm">Delivered using PartnerAI-enabled workflows, analytics, and learning tools</p>
+        <p className="mt-1 text-sm">Delivered using PartnerAI-enabled workflows, analytics, and learning tools</p>
 
-        <ul className="mt-3 list-disc list-inside text-sm space-y-2">
+        <ul className="mt-2 list-disc list-inside text-sm space-y-1">
           <li>30+ engagements delivered for 20+ partners across development, humanitarian, and conservation portfolios.</li>
           <li>Capacity strengthened for 130+ organizations,</li>
           <li>140+ analytic and decision-support products delivered, including market landscapes, political economy analyses, and organizational strategies and action plans.</li>
@@ -572,7 +572,7 @@ export function GetStartedPage(_: PageProps) {
 
       <div className="mt-6 text-center text-sm text-slate-400">
         <p>
-          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-sky-400 hover:underline">info@marketedgeglobal.com</a>
+          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-[#3899ec] hover:text-[#7fccf7] hover:underline">info@marketedgeglobal.com</a>
         </p>
       </div>
 
@@ -600,7 +600,7 @@ export function GetStartedPage(_: PageProps) {
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                       message.role === "user"
-                        ? "bg-indigo-500 text-white"
+                        ? "bg-[#116dff] text-white"
                         : "bg-slate-900 text-slate-200"
                     }`}
                   >
@@ -657,7 +657,7 @@ export function GetStartedPage(_: PageProps) {
               <div className="flex items-center gap-3">
                 <input
                   ref={inputRef}
-                  className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none focus:border-indigo-500"
+                  className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none focus:border-[#116dff]"
                     placeholder={isChatOpen ? `Ask ${currentAssistantName}...` : "Ask the coach..."}
                   value={inputValue}
                   onChange={(event) => setInputValue(event.target.value)}
@@ -669,7 +669,7 @@ export function GetStartedPage(_: PageProps) {
                   }}
                 />
                 <button
-                  className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold hover:bg-indigo-600 disabled:opacity-50"
+                  className="rounded-full bg-[#116dff] px-6 py-3 text-sm font-semibold hover:bg-[#3899ec] disabled:opacity-50 transition-colors"
                   onClick={() => void handleSend()}
                   disabled={isSending}
                 >
