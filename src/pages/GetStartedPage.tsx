@@ -287,11 +287,11 @@ export function GetStartedPage(_: PageProps) {
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="space-y-6">
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-500">PartnerAI™</p>
-          <h1 className="mt-1 text-4xl font-semibold leading-tight md:text-5xl">
+          <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">PartnerAI™</p>
+          <h1 className="mt-1 text-4xl font-semibold leading-tight text-[var(--color-heading)] md:text-5xl">
             Democratizing AI for Social Impact.
           </h1>
-          <div className="mt-3 max-w-3xl text-[#C7D3DD]">
+          <div className="mt-3 max-w-3xl text-[var(--color-body)]">
             <p className="text-lg">PartnerAI embeds AI directly into:</p>
             <ul className="mt-2 list-disc list-inside space-y-1 text-lg">
               <li>Delivery workflows</li>
@@ -299,7 +299,7 @@ export function GetStartedPage(_: PageProps) {
               <li>Reporting and compliance</li>
               <li>Decision-making processes</li>
             </ul>
-            <p className="mt-2 text-base text-[#C7D3DD]">
+            <p className="mt-2 text-base text-[var(--color-body)]">
               All within a secure, role-based dashboard tailored to mission-driven organizations.
             </p>
           </div>
@@ -307,22 +307,22 @@ export function GetStartedPage(_: PageProps) {
             <div>
               <button
                 type="button"
-                className="rounded-full bg-gradient-to-r from-[#1FA6A3] to-[#167C88] px-6 py-3 text-sm font-semibold text-white hover:brightness-110 transition"
+                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
               >
                 Request a Live Demo from Our Team
               </button>
-              <p className="mt-2 text-xs text-[#C7D3DD]">See how PartnerAI applies to your specific workflow.</p>
+              <p className="mt-2 text-xs text-[var(--color-muted)]">See how PartnerAI applies to your specific workflow.</p>
             </div>
           </div>
         </div>
 
-        <h2 className="text-xl font-semibold text-slate-100">Explore How PartnerAI Supports Your Work</h2>
+        <h2 className="text-xl font-semibold text-[var(--color-heading)]">Explore How PartnerAI Supports Your Work</h2>
 
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl border border-white/5 bg-gradient-to-b from-[#122B40] to-[#0F2436] p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#122B40] text-[#3BA6A3]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M4 19h16" />
                     <path d="M6 16V8" />
@@ -332,7 +332,7 @@ export function GetStartedPage(_: PageProps) {
                 </div>
                 <h3 className="text-lg font-semibold">Advanced Analytics</h3>
               </div>
-              <p className="text-sm text-[#C7D3DD]">
+              <p className="text-sm text-[var(--color-body)]">
                 Turn documents and live data into structured insights and visual dashboards.
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
@@ -342,7 +342,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Score and compare partners, sectors, or proposals using weighted criteria."
                   aria-label="Score and compare partners, sectors, or proposals using weighted criteria."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Ranking Tool
                 </a>
@@ -351,7 +351,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
                   title="Summarize long reports and extract key findings, themes, and recommendations."
                   aria-label="Summarize long reports and extract key findings, themes, and recommendations."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Publication Review
                 </button>
@@ -361,7 +361,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Scan sectors and markets. Identify trends, risks, and opportunity signals."
                   aria-label="Scan sectors and markets. Identify trends, risks, and opportunity signals."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Market Intelligence
                 </a>
@@ -371,7 +371,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Extract requirements, deadlines, and compliance gaps from funding calls."
                   aria-label="Extract requirements, deadlines, and compliance gaps from funding calls."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   RFP Intelligence
                 </a>
@@ -381,17 +381,17 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Example structured market assessment. Replace with your own country or sector."
                   aria-label="Example structured market assessment. Replace with your own country or sector."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Market Assessment (Sample: Mekong)
                 </a>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-white/5 bg-gradient-to-b from-[#122B40] to-[#0F2436] p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#122B40] text-[#3BA6A3]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M12 3v4" />
                     <path d="M8 7h8" />
@@ -402,7 +402,7 @@ export function GetStartedPage(_: PageProps) {
                 </div>
                 <h3 className="text-lg font-semibold">On-the-Job AI Assistants</h3>
               </div>
-              <p className="text-sm text-[#C7D3DD]">
+              <p className="text-sm text-[var(--color-body)]">
                 AI-powered task companions embedded into real workflows.
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
@@ -411,7 +411,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', 'Financial Management Help')}
                   title="Draft budgets, reconcile reports, and flag compliance gaps."
                   aria-label="Draft budgets, reconcile reports, and flag compliance gaps."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Financial Management Help
                 </button>
@@ -420,7 +420,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', 'Operations Systems Support')}
                   title="Improve SOPs, process maps, internal workflows, and coordination systems."
                   aria-label="Improve SOPs, process maps, internal workflows, and coordination systems."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Operations Systems Support
                 </button>
@@ -429,7 +429,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', 'Business Development Assistant')}
                   title="Draft proposal sections, check RFP alignment, and analyze partner fit."
                   aria-label="Draft proposal sections, check RFP alignment, and analyze partner fit."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Business Development Assistant
                 </button>
@@ -438,17 +438,17 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', 'Marketing & Communications Assistant')}
                   title="Generate donor updates, messaging drafts, and strategic communications."
                   aria-label="Generate donor updates, messaging drafts, and strategic communications."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Marketing & Communications Assistant
                 </button>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-white/5 bg-gradient-to-b from-[#122B40] to-[#0F2436] p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#122B40] text-[#3BA6A3]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <circle cx="8" cy="9" r="3" />
                     <circle cx="17" cy="8" r="2.5" />
@@ -458,7 +458,7 @@ export function GetStartedPage(_: PageProps) {
                 </div>
                 <h3 className="text-lg font-semibold">Stakeholder Personas & Simulation</h3>
               </div>
-              <p className="text-sm text-[#C7D3DD]">
+              <p className="text-sm text-[var(--color-body)]">
                 Engage AI-powered stakeholder personas for training and strategy testing.
               </p>
               <div className="mt-2 grid gap-3">
@@ -467,48 +467,48 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', 'Ramiro - The Bolivian Rancher')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-white/5 bg-[#0F2436] px-3 py-2 text-left transition hover:border-[#3BA6A3] hover:bg-[#122B40]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">RA</div>
-                  <div className="text-sm text-slate-200">Ramiro - The Bolivian Rancher</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">RA</div>
+                  <div className="text-sm text-[var(--color-body)]">Ramiro - The Bolivian Rancher</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-white/5 bg-[#0F2436] px-3 py-2 text-left transition hover:border-[#3BA6A3] hover:bg-[#122B40]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">JU</div>
-                  <div className="text-sm text-slate-200">Jannatul - Bangladeshi University Student</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">JU</div>
+                  <div className="text-sm text-[var(--color-body)]">Jannatul - Bangladeshi University Student</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Niar Tun - Agribusiness Exporter from Myanmar')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-white/5 bg-[#0F2436] px-3 py-2 text-left transition hover:border-[#3BA6A3] hover:bg-[#122B40]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">NT</div>
-                  <div className="text-sm text-slate-200">Niar Tun - Agribusiness Exporter from Myanmar</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">NT</div>
+                  <div className="text-sm text-[var(--color-body)]">Niar Tun - Agribusiness Exporter from Myanmar</div>
                 </button>
                 <button
                   type="button"
                   onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore - Senior Programme Manager at FCDO')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-white/5 bg-[#0F2436] px-3 py-2 text-left transition hover:border-[#3BA6A3] hover:bg-[#122B40]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">SW</div>
-                  <div className="text-sm text-slate-200">Sarah Whitmore - Senior Programme Manager at FCDO</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">SW</div>
+                  <div className="text-sm text-[var(--color-body)]">Sarah Whitmore - Senior Programme Manager at FCDO</div>
                 </button>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-white/5 bg-gradient-to-b from-[#122B40] to-[#0F2436] p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#122B40] text-[#3BA6A3]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M5 6h14" />
                     <path d="M5 12h14" />
@@ -518,7 +518,7 @@ export function GetStartedPage(_: PageProps) {
                 </div>
                 <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
               </div>
-              <p className="text-sm text-[#C7D3DD]">
+              <p className="text-sm text-[var(--color-body)]">
                 Run structured capacity and performance assessments.
               </p>
               <div className="mt-2 flex flex-wrap gap-3">
@@ -528,7 +528,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Structured capacity assessment with scoring and gap analysis."
                   aria-label="Structured capacity assessment with scoring and gap analysis."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Organization Self-Assessment Survey
                 </a>
@@ -537,7 +537,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
                   title="AI-guided diagnostic with recommendations and improvement roadmap."
                   aria-label="AI-guided diagnostic with recommendations and improvement roadmap."
-                  className="rounded-full bg-[rgba(46,125,175,0.15)] px-4 py-2 text-sm font-semibold text-[#7BC4E8] border border-[rgba(46,125,175,0.3)] hover:bg-[rgba(46,125,175,0.25)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
                 >
                   Organization Diagnostic Virtual Coach
                 </button>
@@ -546,63 +546,63 @@ export function GetStartedPage(_: PageProps) {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/5 bg-gradient-to-b from-[#122B40] to-[#0F2436] p-8">
-          <h2 className="text-2xl font-semibold">PartnerAI™</h2>
-          <h3 className="mt-1 text-lg font-semibold">Built for adoption, not deployment</h3>
+        <div className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+          <h2 className="text-2xl font-semibold text-[var(--color-heading)]">PartnerAI™</h2>
+          <h3 className="mt-1 text-lg font-semibold text-[var(--color-heading)]">Built for adoption, not deployment</h3>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             PartnerAI™ works because MarketEdge stays involved and knows how social impact systems actually operate. Our team brings decades of experience advising donors, investors, large implementing partners, and on-the-ground NGOs and social enterprises.
           </p>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             We have seen where delivery breaks down, where reporting distorts incentives, and where insight fails to translate into action. Most AI tools ignore these realities. MarketEdge treats PartnerAI™ as an organizational capability shaped by governance, incentives, and decision authority, not a software install.
           </p>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             This experience allows us to embed intelligence where decisions occur, so AI supports action instead of adding parallel systems.
           </p>
 
-          <div className="mt-5 rounded-lg bg-gradient-to-r from-[#1FA6A3]/25 to-[#167C88]/15 p-4 border border-white/5">
-            <h4 className="text-sm font-semibold text-[#C7D3DD]">Impact Snapshot</h4>
+          <div className="mt-5 rounded-lg bg-gradient-to-r from-[var(--color-cta-gradient-top)]/25 to-[var(--color-cta-gradient-bottom)]/15 p-4 border border-[var(--color-card-border)]">
+            <h4 className="text-sm font-semibold text-[var(--color-heading)]">Impact Snapshot</h4>
             <div className="mt-2 grid grid-cols-2 gap-4 sm:grid-cols-4">
               <div className="text-center">
                   <div className="text-2xl font-bold text-white">Over 100k</div>
-                  <div className="text-xs text-[#C7D3DD]">people reached</div>
+                  <div className="text-xs text-[var(--color-muted)]">people reached</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">45%</div>
-                <div className="text-xs text-[#C7D3DD]">Avg. cost reduction</div>
+                <div className="text-xs text-[var(--color-muted)]">Avg. cost reduction</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">120+</div>
-                <div className="text-xs text-[#C7D3DD]">organizations strengthened</div>
+                <div className="text-xs text-[var(--color-muted)]">organizations strengthened</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-white">8x</div>
-                <div className="text-xs text-[#C7D3DD]">Faster reporting</div>
+                <div className="text-xs text-[var(--color-muted)]">Faster reporting</div>
               </div>
               </div>
           </div>
 
-          <h3 className="mt-5 text-lg font-semibold">Shaped around how your organization actually works</h3>
+          <h3 className="mt-5 text-lg font-semibold text-[var(--color-heading)]">Shaped around how your organization actually works</h3>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             MarketEdge starts with your reality, not a template. We analyze how delivery, portfolio management, and governance function today: who decides, what evidence carries weight, where coordination slows, and where reporting adds friction.
           </p>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             We then tailor PartnerAI™ to those dynamics, aligning agents, dashboards, and outputs to roles, incentives, and decision cadence across teams and partners.
           </p>
 
-          <h3 className="mt-5 text-lg font-semibold">Embedded into live work</h3>
+          <h3 className="mt-5 text-lg font-semibold text-[var(--color-heading)]">Embedded into live work</h3>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             PartnerAI™ integrates directly into day-to-day delivery. MarketEdge configures workflows that support proposal development, diagnostics, synthesis, learning, and oversight inside the processes teams already use.
           </p>
 
-          <p className="mt-2 text-[#C7D3DD]">Our work typically includes:</p>
+          <p className="mt-2 text-[var(--color-body)]">Our work typically includes:</p>
 
-          <ul className="mt-2 list-disc list-inside text-[#C7D3DD] space-y-1">
+          <ul className="mt-2 list-disc list-inside text-[var(--color-body)] space-y-1">
             <li>Mapping delivery and governance workflows</li>
             <li>Clarifying decision rights and evidence needs</li>
             <li>Configuring role-specific agents and dashboards</li>
@@ -610,14 +610,14 @@ export function GetStartedPage(_: PageProps) {
             <li>Supporting adoption through targeted change management and iteration</li>
           </ul>
 
-          <p className="mt-2 text-[#C7D3DD]">
+          <p className="mt-2 text-[var(--color-body)]">
             As priorities and partnerships evolve, MarketEdge adapts PartnerAI™ to keep it relevant and useful.
           </p>
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/5 bg-gradient-to-b from-[#122B40] to-[#0F2436] p-6 text-[#C7D3DD]">
-        <h3 className="text-lg font-semibold">MarketEdge Impact Over the Last Two Years</h3>
+      <div className="mt-6 rounded-2xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 text-[var(--color-body)]">
+        <h3 className="text-lg font-semibold text-[var(--color-heading)]">MarketEdge Impact Over the Last Two Years</h3>
         <p className="mt-1 text-sm">Delivered using PartnerAI-enabled workflows, analytics, and learning tools</p>
 
         <ul className="mt-2 list-disc list-inside text-sm space-y-1">
@@ -628,22 +628,22 @@ export function GetStartedPage(_: PageProps) {
         </ul>
       </div>
 
-      <div className="mt-6 text-center text-sm text-[#C7D3DD]">
+      <div className="mt-6 text-center text-sm text-[var(--color-muted)]">
         <p>
-          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-[#7BC4E8] hover:text-[#9ad2ee] hover:underline">info@marketedgeglobal.com</a>
+          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-[var(--color-pill-text)] hover:text-[var(--color-heading)] hover:underline">info@marketedgeglobal.com</a>
         </p>
       </div>
 
       {isChatOpen && (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="flex w-full max-w-2xl h-[80vh] flex-col overflow-hidden rounded-3xl border border-white/5 bg-[#0F2436] shadow-2xl">
-            <div className="flex items-center justify-between border-b border-white/5 px-6 py-4">
+          <div className="flex w-full max-w-2xl h-[80vh] flex-col overflow-hidden rounded-3xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-bottom)] shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[var(--color-card-border)] px-6 py-4">
               <div>
                 <div className="text-lg font-semibold">{currentAssistantName}</div>
-                <div className="text-sm text-[#C7D3DD]">Ask about messaging, finance, or workflows. Attach files for review.</div>
+                <div className="text-sm text-[var(--color-body)]">Ask about messaging, finance, or workflows. Attach files for review.</div>
               </div>
               <button
-                className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#C7D3DD] hover:text-white"
+                className="rounded-full border border-[var(--color-card-border)] px-3 py-1 text-xs text-[var(--color-body)] hover:text-[var(--color-heading)]"
                 onClick={() => setIsChatOpen(false)}
               >
                 Close
@@ -658,8 +658,8 @@ export function GetStartedPage(_: PageProps) {
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                       message.role === "user"
-                        ? "bg-[#1FA6A3] text-white"
-                        : "bg-[#122B40] text-[#C7D3DD]"
+                        ? "bg-[var(--color-cta-gradient-top)] text-[var(--color-cta-text)]"
+                        : "bg-[var(--color-card-gradient-top)] text-[var(--color-body)]"
                     }`}
                   >
                     {formatMessageContent(message.content)}
@@ -669,23 +669,23 @@ export function GetStartedPage(_: PageProps) {
               <div ref={messageEndRef} />
             </div>
             {errorMessage && (
-              <div className="border-t border-white/5 px-6 py-3 text-sm text-rose-300">
+              <div className="border-t border-[var(--color-card-border)] px-6 py-3 text-sm text-rose-300">
                 {errorMessage}
               </div>
             )}
             {attachedFiles.length > 0 && (
-              <div className="border-t border-white/5 px-6 py-3">
-                <div className="text-xs text-[#C7D3DD] mb-2">Attached files:</div>
+              <div className="border-t border-[var(--color-card-border)] px-6 py-3">
+                <div className="text-xs text-[var(--color-muted)] mb-2">Attached files:</div>
                 <div className="space-y-2">
                   {attachedFiles.map((file, index) => (
-                    <div key={index} className="flex items-center justify-between bg-[#122B40] rounded-lg px-3 py-2">
-                      <div className="text-sm text-[#C7D3DD]">
+                    <div key={index} className="flex items-center justify-between bg-[var(--color-card-gradient-top)] rounded-lg px-3 py-2">
+                      <div className="text-sm text-[var(--color-body)]">
                         <span className="truncate max-w-xs">{file.name}</span>
-                        <span className="text-xs text-[#C7D3DD] ml-2">({(file.size / 1024).toFixed(1)} KB)</span>
+                        <span className="text-xs text-[var(--color-muted)] ml-2">({(file.size / 1024).toFixed(1)} KB)</span>
                       </div>
                       <button
                         onClick={() => removeFile(index)}
-                        className="text-[#C7D3DD] hover:text-rose-300 ml-2"
+                        className="text-[var(--color-muted)] hover:text-rose-300 ml-2"
                       >
                         ✕
                       </button>
@@ -694,7 +694,7 @@ export function GetStartedPage(_: PageProps) {
                 </div>
               </div>
             )}
-            <div className="border-t border-white/5 p-4">
+            <div className="border-t border-[var(--color-card-border)] p-4">
               <div className="flex items-center gap-2 mb-3">
                 <input
                   ref={fileInputRef}
@@ -706,7 +706,7 @@ export function GetStartedPage(_: PageProps) {
                 />
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="rounded-full border border-white/10 px-3 py-2 text-xs font-semibold text-[#C7D3DD] hover:bg-[#122B40]"
+                  className="rounded-full border border-[var(--color-card-border)] px-3 py-2 text-xs font-semibold text-[var(--color-body)] hover:bg-[var(--color-card-gradient-top)]"
                   title="Attach files (PDF, Word, Excel, images, etc.)"
                 >
                   📎 Attach
@@ -715,7 +715,7 @@ export function GetStartedPage(_: PageProps) {
               <div className="flex items-center gap-3">
                 <input
                   ref={inputRef}
-                  className="flex-1 rounded-full border border-white/5 bg-[#122B40] px-4 py-3 text-sm text-[#C7D3DD] outline-none focus:border-[#1FA6A3]"
+                  className="flex-1 rounded-full border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-4 py-3 text-sm text-[var(--color-body)] outline-none focus:border-[var(--color-icon-accent)]"
                     placeholder={isChatOpen ? `Ask ${currentAssistantName}...` : "Ask the coach..."}
                   value={inputValue}
                   onChange={(event) => setInputValue(event.target.value)}
@@ -727,7 +727,7 @@ export function GetStartedPage(_: PageProps) {
                   }}
                 />
                 <button
-                  className="rounded-full bg-gradient-to-r from-[#1FA6A3] to-[#167C88] px-6 py-3 text-sm font-semibold text-white hover:brightness-110 disabled:opacity-50 transition"
+                  className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)] disabled:opacity-50"
                   onClick={() => void handleSend()}
                   disabled={isSending}
                 >

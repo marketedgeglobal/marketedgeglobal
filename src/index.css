@@ -5,11 +5,35 @@
 :root {
   color-scheme: dark;
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --color-bg-primary: #0f2233;
+  --color-bg-secondary: #0b1e2d;
+  --color-card-gradient-top: #122b40;
+  --color-card-gradient-bottom: #0f2436;
+  --color-card-border: rgba(255, 255, 255, 0.05);
+  --color-heading: #f2f6f8;
+  --color-body: #c7d3dd;
+  --color-muted: #9fb3c2;
+  --color-cta-gradient-top: #1fa6a3;
+  --color-cta-gradient-bottom: #167c88;
+  --color-cta-hover-top: #23b5b1;
+  --color-cta-hover-bottom: #1b8f9a;
+  --color-cta-text: #ffffff;
+  --color-pill-bg: rgba(46, 125, 175, 0.18);
+  --color-pill-border: rgba(124, 200, 220, 0.35);
+  --color-pill-text: #8fd3f4;
+  --color-pill-hover-bg: rgba(46, 125, 175, 0.28);
+  --color-pill-hover-border: rgba(124, 200, 220, 0.5);
+  --color-icon-accent: #3ba6a3;
+  --color-persona-bg: rgba(18, 43, 64, 0.6);
+  --color-persona-border: rgba(124, 200, 220, 0.15);
+  --color-persona-hover: rgba(18, 43, 64, 0.85);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-cta: 0 6px 18px rgba(31, 166, 163, 0.25);
 }
 
 body {
   margin: 0;
-  background-color: #0f2233;
+  background-color: var(--color-bg-primary);
 }
 
 * {
