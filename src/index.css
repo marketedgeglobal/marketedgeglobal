@@ -7,9 +7,9 @@
   font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --color-bg-primary: #0f2233;
   --color-bg-secondary: #0b1e2d;
-  --color-card-gradient-top: #122b40;
-  --color-card-gradient-bottom: #0f2436;
-  --color-card-border: rgba(255, 255, 255, 0.05);
+  --color-card-gradient-top: #17354D;
+  --color-card-gradient-bottom: #122F45;
+  --color-card-border: rgba(124, 200, 220, 0.12);
   --color-heading: #f2f6f8;
   --color-body: #c7d3dd;
   --color-muted: #9fb3c2;
@@ -27,7 +27,7 @@
   --color-persona-bg: rgba(18, 43, 64, 0.6);
   --color-persona-border: rgba(124, 200, 220, 0.15);
   --color-persona-hover: rgba(18, 43, 64, 0.85);
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.32);
   --shadow-cta: 0 6px 18px rgba(31, 166, 163, 0.25);
 }
 
@@ -43,3 +43,16 @@ body {
 * {
   box-sizing: border-box;
 }
+
+/* Card hover effects */
+.card-hover,
+[class*="rounded-"][class*="border-"][class*="bg-gradient-to-b"] {
+  transition: all 180ms ease-out;
+}
+
+.card-hover:hover,
+[class*="rounded-3xl"][class*="border-"][class*="bg-gradient-to-b"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
+}
+

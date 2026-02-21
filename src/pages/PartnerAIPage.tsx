@@ -2,7 +2,7 @@ export function PartnerAIPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <div className="space-y-8">
-        <div className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <div className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
           <h2 className="text-2xl font-semibold text-[var(--color-heading)]">PartnerAI™</h2>
           <h3 className="mt-1 text-lg font-semibold text-[var(--color-heading)]">Built for adoption, not deployment</h3>
 
@@ -71,7 +71,7 @@ export function PartnerAIPage() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 text-[var(--color-body)]">
+        <div className="rounded-2xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 text-[var(--color-body)] shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">MarketEdge Impact Over the Last Two Years</h3>
           <p className="mt-1 text-sm">Delivered using PartnerAI-enabled workflows, analytics, and learning tools</p>
 

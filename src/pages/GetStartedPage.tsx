@@ -319,7 +319,7 @@ export function GetStartedPage(_: PageProps) {
         <h2 className="text-xl font-semibold text-[var(--color-heading)]">Explore How PartnerAI Supports Your Work</h2>
 
         <div className="grid gap-6 gap-y-12 md:grid-cols-2">
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
             <a href="#analytics" className="absolute inset-0 z-10" aria-label="Jump to AI analytics details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
@@ -389,7 +389,7 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
             <a href="#assistants" className="absolute inset-0 z-10" aria-label="Jump to on-the-job assistant details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
@@ -447,7 +447,7 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
             <a href="#personas" className="absolute inset-0 z-10" aria-label="Jump to stakeholder persona details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
@@ -508,7 +508,7 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
             <a href="#diagnostics" className="absolute inset-0 z-10" aria-label="Jump to diagnostics details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">

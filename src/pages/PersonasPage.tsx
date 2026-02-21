@@ -1,7 +1,7 @@
 export function PersonasPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <section id="personas" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+      <section id="personas" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
         <div className="space-y-4">
           <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Stakeholder Personas & Simulation</h3>
           <p className="text-sm text-[var(--color-body)]">
