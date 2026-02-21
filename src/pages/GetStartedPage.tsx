@@ -550,36 +550,6 @@ export function GetStartedPage(_: PageProps) {
           </div>
         </div>
 
-        <div className="mt-20 space-y-6">
-          <h2 className="text-2xl font-semibold text-[var(--color-heading)]">Explore PartnerAI Capabilities</h2>
-          <div className="grid gap-4 md:grid-cols-2">
-            <a
-              href="/analytics/"
-              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
-            >
-              Advanced Analytics
-            </a>
-            <a
-              href="/assistants/"
-              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
-            >
-              On-the-Job AI Assistants
-            </a>
-            <a
-              href="/personas/"
-              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
-            >
-              Stakeholder Personas & Simulation
-            </a>
-            <a
-              href="/diagnostics/"
-              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
-            >
-              Rapid Diagnostics
-            </a>
-          </div>
-        </div>
-
         <div className="mt-20 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
           <h2 className="text-2xl font-semibold text-[var(--color-heading)]">About PartnerAI™</h2>
           <p className="mt-2 text-[var(--color-body)]">
