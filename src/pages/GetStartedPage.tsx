@@ -18,6 +18,7 @@ export function GetStartedPage(_: PageProps) {
   const [currentAssistantName, setCurrentAssistantName] = useState<string>(
     ""
   );
+  const [currentAssistantDescription, setCurrentAssistantDescription] = useState<string>("");
   const [isSending, setIsSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [inputValue, setInputValue] = useState("");
@@ -150,12 +151,36 @@ export function GetStartedPage(_: PageProps) {
     const marketingId = import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU';
     const ramiroId = import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun';
     const sarahId = 'asst_9KTRSFnH5aFCZtAmWNaeRLVZ';
+    const jannatulId = 'asst_Efsxetzg8NyymK7AIit4knip';
+    const niarTunId = 'asst_zHLROcxpPw6Ho1AOlZh3Sv7N';
 
     // Resolve a null id to the expected assistant id based on name, ensuring
     // we always have an assistant_id when sending messages.
-    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' || name === 'Operations Systems Support' ? operationsId : name === 'Business Development Support' || name === 'Business Development Assistant' ? bdId : name === 'Marketing and Communications' ? marketingId : name === 'Sarah Whitmore- Senior Programme Manager at FCDO' || name === 'Sarah Whitmore - Senior Programme Manager at FCDO' ? sarahId : null);
+    const resolvedId = id ?? (name === 'Financial Management Help' ? financialId : name === 'Operations Systems' || name === 'Operations Systems Support' ? operationsId : name === 'Business Development Support' || name === 'Business Development Assistant' ? bdId : name === 'Marketing and Communications' ? marketingId : name === 'Sarah Whitmore- Senior Programme Manager at FCDO' || name === 'Sarah Whitmore - Senior Programme Manager at FCDO' ? sarahId : name === 'Jannatul - Bangladeshi University Student' ? jannatulId : name === 'Niar Tun - Agribusiness Exporter from Myanmar' ? niarTunId : null);
     setCurrentAssistantId(resolvedId);
     setCurrentAssistantName(name);
+    
+    // Set description per assistant
+    let description = "";
+    if (name === "Financial Management Help" || id === financialId) {
+      description = "Ask about financial management, budgeting, forecasts, and reporting.";
+    } else if (name === "Operations Systems" || name === "Operations Systems Support" || id === operationsId) {
+      description = "Ask about system architecture, deployments, integrations, and automations.";
+    } else if (name === "Business Development Support" || name === "Business Development Assistant" || id === bdId) {
+      description = "Ask about partnership outreach, market research, and engagement strategies.";
+    } else if (name === "Marketing and Communications" || id === marketingId) {
+      description = "Ask about messaging strategy, campaign planning, and brand positioning.";
+    } else if (name === "Ramiro - The Bolivian Rancher" || id === ramiroId) {
+      description = "Practice stakeholder conversations focused on rural production, value chains, and sustainability.";
+    } else if (name === "Jannatul - Bangladeshi University Student" || id === jannatulId) {
+      description = "Practice engaging young professionals on employment, skills development, and social impact.";
+    } else if (name === "Niar Tun - Agribusiness Exporter from Myanmar" || id === niarTunId) {
+      description = "Role-play export market dynamics, compliance challenges, and commercial partnerships.";
+    } else if (name === "Sarah Whitmore- Senior Programme Manager at FCDO" || name === "Sarah Whitmore - Senior Programme Manager at FCDO" || id === sarahId) {
+      description = "Practice stakeholder engagement, program priorities, and donor expectations.";
+    }
+    setCurrentAssistantDescription(description);
+    
     // Set initial messages per assistant so previews match the selected agent
     let initialMessages: ChatMessage[] = [];
     if (name === "Financial Management Help" || id === financialId) {
@@ -196,6 +221,22 @@ export function GetStartedPage(_: PageProps) {
           role: "assistant",
           content:
             "Hola — I'm Ramiro, The Bolivian Rancher. I can help with smallholder livestock management, pasture rotation, local market pricing, and practical farm accounting. Ask about animal health, feed planning, or simple budgeting for your ranch operations.",
+        },
+      ];
+    } else if (name === "Jannatul - Bangladeshi University Student" || id === jannatulId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hello — I'm Jannatul, a Bangladeshi University Student. I can help you practice conversations about employment, skills development, and social impact. Ask about career pathways, training opportunities, or youth engagement in development initiatives.",
+        },
+      ];
+    } else if (name === "Niar Tun - Agribusiness Exporter from Myanmar" || id === niarTunId) {
+      initialMessages = [
+        {
+          role: "assistant",
+          content:
+            "Hello — I'm Niar Tun, an Agribusiness Exporter from Myanmar. I can help you explore export market dynamics, navigate compliance challenges, and discuss commercial partnerships. Ask about trade facilitation, market access, or quality standards.",
         },
       ];
     } else if (name === "Sarah Whitmore- Senior Programme Manager at FCDO" || id === sarahId) {
@@ -581,7 +622,7 @@ export function GetStartedPage(_: PageProps) {
             <div className="flex items-center justify-between border-b border-[var(--color-card-border)] px-6 py-4">
               <div>
                 <div className="text-lg font-semibold">{currentAssistantName}</div>
-                <div className="text-sm text-[var(--color-body)]">Ask about messaging, finance, or workflows. Attach files for review.</div>
+                <div className="text-sm text-[var(--color-body)]">{currentAssistantDescription}</div>
               </div>
               <button
                 className="rounded-full border border-[var(--color-card-border)] px-3 py-1 text-xs text-[var(--color-body)] hover:text-[var(--color-heading)]"
