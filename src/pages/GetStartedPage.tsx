@@ -307,7 +307,7 @@ export function GetStartedPage(_: PageProps) {
             <div>
               <button
                 type="button"
-                className="rounded-full bg-[#116dff] px-5 py-3 text-sm font-semibold text-white hover:bg-[#3899ec] transition-colors"
+                className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-400 transition-colors"
               >
                 Request a Live Demo from Our Team
               </button>
@@ -322,7 +322,7 @@ export function GetStartedPage(_: PageProps) {
           <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-indigo-200">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M4 19h16" />
                     <path d="M6 16V8" />
@@ -342,7 +342,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Score and compare partners, sectors, or proposals using weighted criteria."
                   aria-label="Score and compare partners, sectors, or proposals using weighted criteria."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Ranking Tool
                 </a>
@@ -351,7 +351,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
                   title="Summarize long reports and extract key findings, themes, and recommendations."
                   aria-label="Summarize long reports and extract key findings, themes, and recommendations."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Publication Review
                 </button>
@@ -361,7 +361,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Scan sectors and markets. Identify trends, risks, and opportunity signals."
                   aria-label="Scan sectors and markets. Identify trends, risks, and opportunity signals."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Market Intelligence
                 </a>
@@ -371,7 +371,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Extract requirements, deadlines, and compliance gaps from funding calls."
                   aria-label="Extract requirements, deadlines, and compliance gaps from funding calls."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   RFP Intelligence
                 </a>
@@ -381,7 +381,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Example structured market assessment. Replace with your own country or sector."
                   aria-label="Example structured market assessment. Replace with your own country or sector."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Market Assessment (Sample: Mekong)
                 </a>
@@ -391,7 +391,7 @@ export function GetStartedPage(_: PageProps) {
           <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-indigo-200">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M12 3v4" />
                     <path d="M8 7h8" />
@@ -411,7 +411,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', 'Financial Management Help')}
                   title="Draft budgets, reconcile reports, and flag compliance gaps."
                   aria-label="Draft budgets, reconcile reports, and flag compliance gaps."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Financial Management Help
                 </button>
@@ -420,7 +420,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', 'Operations Systems Support')}
                   title="Improve SOPs, process maps, internal workflows, and coordination systems."
                   aria-label="Improve SOPs, process maps, internal workflows, and coordination systems."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Operations Systems Support
                 </button>
@@ -429,7 +429,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', 'Business Development Assistant')}
                   title="Draft proposal sections, check RFP alignment, and analyze partner fit."
                   aria-label="Draft proposal sections, check RFP alignment, and analyze partner fit."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Business Development Assistant
                 </button>
@@ -438,7 +438,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', 'Marketing & Communications Assistant')}
                   title="Generate donor updates, messaging drafts, and strategic communications."
                   aria-label="Generate donor updates, messaging drafts, and strategic communications."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Marketing & Communications Assistant
                 </button>
@@ -448,7 +448,7 @@ export function GetStartedPage(_: PageProps) {
           <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-indigo-200">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <circle cx="8" cy="9" r="3" />
                     <circle cx="17" cy="8" r="2.5" />
@@ -508,7 +508,7 @@ export function GetStartedPage(_: PageProps) {
           <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-sky-200">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-800/70 text-indigo-200">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
                     <path d="M5 6h14" />
                     <path d="M5 12h14" />
@@ -528,7 +528,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Structured capacity assessment with scoring and gap analysis."
                   aria-label="Structured capacity assessment with scoring and gap analysis."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Organization Self-Assessment Survey
                 </a>
@@ -537,7 +537,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
                   title="AI-guided diagnostic with recommendations and improvement roadmap."
                   aria-label="AI-guided diagnostic with recommendations and improvement roadmap."
-                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                  className="rounded-full bg-indigo-500 px-4 py-2 text-sm font-semibold hover:bg-indigo-400 transition-colors"
                 >
                   Organization Diagnostic Virtual Coach
                 </button>
@@ -562,7 +562,7 @@ export function GetStartedPage(_: PageProps) {
             This experience allows us to embed intelligence where decisions occur, so AI supports action instead of adding parallel systems.
           </p>
 
-          <div className="mt-5 rounded-lg bg-gradient-to-r from-[#116dff]/30 to-[#3899ec]/20 p-4 border border-[#116dff]/50">
+          <div className="mt-5 rounded-lg bg-gradient-to-r from-indigo-500/30 to-indigo-400/20 p-4 border border-indigo-500/50">
             <h4 className="text-sm font-semibold text-blue-100">Impact Snapshot</h4>
             <div className="mt-2 grid grid-cols-2 gap-4 sm:grid-cols-4">
               <div className="text-center">
@@ -630,7 +630,7 @@ export function GetStartedPage(_: PageProps) {
 
       <div className="mt-6 text-center text-sm text-slate-400">
         <p>
-          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-[#3899ec] hover:text-[#7fccf7] hover:underline">info@marketedgeglobal.com</a>
+          Contact: <a href="mailto:info@marketedgeglobal.com" className="text-indigo-400 hover:text-indigo-300 hover:underline">info@marketedgeglobal.com</a>
         </p>
       </div>
 
@@ -658,7 +658,7 @@ export function GetStartedPage(_: PageProps) {
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                       message.role === "user"
-                        ? "bg-[#116dff] text-white"
+                        ? "bg-indigo-500 text-white"
                         : "bg-slate-900 text-slate-200"
                     }`}
                   >
@@ -715,7 +715,7 @@ export function GetStartedPage(_: PageProps) {
               <div className="flex items-center gap-3">
                 <input
                   ref={inputRef}
-                  className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none focus:border-[#116dff]"
+                  className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-100 outline-none focus:border-indigo-400"
                     placeholder={isChatOpen ? `Ask ${currentAssistantName}...` : "Ask the coach..."}
                   value={inputValue}
                   onChange={(event) => setInputValue(event.target.value)}
@@ -727,7 +727,7 @@ export function GetStartedPage(_: PageProps) {
                   }}
                 />
                 <button
-                  className="rounded-full bg-[#116dff] px-6 py-3 text-sm font-semibold hover:bg-[#3899ec] disabled:opacity-50 transition-colors"
+                  className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold hover:bg-indigo-400 disabled:opacity-50 transition-colors"
                   onClick={() => void handleSend()}
                   disabled={isSending}
                 >
