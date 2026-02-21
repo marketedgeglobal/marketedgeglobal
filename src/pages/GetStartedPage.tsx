@@ -329,7 +329,7 @@ export function GetStartedPage(_: PageProps) {
       <div className="space-y-6">
         <div>
           <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-muted)]">PartnerAI™</p>
-          <h1 className="mt-1 text-4xl font-semibold leading-tight text-[var(--color-heading)] md:text-5xl">
+          <h1 className="mt-1 text-[clamp(32px,7vw,56px)] font-semibold leading-[1.08] text-[var(--color-heading)]">
             Democratizing AI for Social Impact.
           </h1>
           <div className="mt-3 max-w-3xl text-[var(--color-body)]">

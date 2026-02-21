@@ -41,6 +41,11 @@ body {
   background-color: var(--color-bg-primary);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -60,5 +65,58 @@ body {
 /* Anchor target scroll positioning for fixed header */
 [id] {
   scroll-margin-top: calc(var(--header-offset) + 24px);
+}
+
+footer {
+  position: static;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-offset: 64px;
+  }
+
+  .app-header {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .app-header-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .header-cta {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  .app-logo {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(32px, 7vw, 56px);
+    line-height: 1.08;
+  }
+
+  .mx-auto.max-w-6xl.px-6.py-20 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .rounded-3xl.p-8 {
+    padding: 1.5rem;
+  }
+
+  .gap-6 {
+    gap: 1rem;
+  }
+
+  .mt-16 {
+    margin-top: 2.5rem;
+  }
 }
 

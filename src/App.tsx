@@ -401,9 +401,9 @@ function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-heading)]">
-      <header className="sticky top-0 z-40 border-b border-[var(--color-card-border)] bg-[rgba(11,30,45,0.9)] backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-          <Link className="text-lg font-semibold tracking-wide" to="/">
+      <header className="app-header sticky top-0 z-40 border-b border-[var(--color-card-border)] bg-[rgba(11,30,45,0.9)] backdrop-blur">
+        <div className="app-header-inner mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 md:py-6">
+          <Link className="app-logo text-base font-semibold tracking-wide md:text-lg" to="/">
             PartnerAI™
           </Link>
           <nav className="hidden items-center gap-6 text-sm text-[var(--color-body)] md:flex">
@@ -441,7 +441,7 @@ function Layout({ children }: { children: ReactNode }) {
           </nav>
           <a
             href="mailto:info@marketedgeglobal.com?subject=PartnerAI Inquiry&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in learning more about PartnerAI.%0D%0A%0D%0AThank you."
-            className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-4 py-2 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+            className="header-cta rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-3 py-2 text-xs font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)] md:px-4 md:text-sm"
           >
             Request demo
           </a>

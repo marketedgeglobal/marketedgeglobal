@@ -232,6 +232,44 @@ select {
   text-align: left;
 }
 
+@media (max-width: 768px) {
+  .site-header-inner {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .site-brand {
+    font-size: 1rem;
+  }
+
+  .site-cta {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.8rem;
+  }
+
+  .page-header {
+    padding: 1.25rem 1rem 0.75rem;
+  }
+
+  main {
+    padding: 0 1rem 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    line-height: 1.1;
+  }
+
+  .controls,
+  .card {
+    padding: 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 details summary {
   cursor: pointer;
   color: #a5b4fc;
