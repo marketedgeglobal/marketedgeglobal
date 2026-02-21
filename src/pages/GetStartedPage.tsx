@@ -330,7 +330,7 @@ export function GetStartedPage(_: PageProps) {
                     <path d="M18 16v-6" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold">AI Analytics & Data Insights</h3>
+                <h3 className="text-lg font-semibold">Advanced Analytics</h3>
               </div>
               <p className="text-sm text-slate-400">
                 Turn documents and live data into structured insights and visual dashboards.
@@ -340,14 +340,27 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Score and compare partners, sectors, or proposals using weighted criteria."
+                  aria-label="Score and compare partners, sectors, or proposals using weighted criteria."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Ranking Tool
                 </a>
+                <button
+                  type="button"
+                  onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
+                  title="Summarize long reports and extract key findings, themes, and recommendations."
+                  aria-label="Summarize long reports and extract key findings, themes, and recommendations."
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                >
+                  Publication Review
+                </button>
                 <a
                   href="https://marketedgeglobal.github.io/marketintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Scan sectors and markets. Identify trends, risks, and opportunity signals."
+                  aria-label="Scan sectors and markets. Identify trends, risks, and opportunity signals."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Market Intelligence
@@ -356,9 +369,21 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/rfpintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Extract requirements, deadlines, and compliance gaps from funding calls."
+                  aria-label="Extract requirements, deadlines, and compliance gaps from funding calls."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   RFP Intelligence
+                </a>
+                <a
+                  href="https://marketedgeglobal.github.io/BASIN/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Example structured market assessment. Replace with your own country or sector."
+                  aria-label="Example structured market assessment. Replace with your own country or sector."
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                >
+                  Market Assessment (Sample: Mekong)
                 </a>
               </div>
             </div>
@@ -384,6 +409,8 @@ export function GetStartedPage(_: PageProps) {
                 <button
                   type="button"
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', 'Financial Management Help')}
+                  title="Draft budgets, reconcile reports, and flag compliance gaps."
+                  aria-label="Draft budgets, reconcile reports, and flag compliance gaps."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Financial Management Help
@@ -391,6 +418,8 @@ export function GetStartedPage(_: PageProps) {
                 <button
                   type="button"
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', 'Operations Systems Support')}
+                  title="Improve SOPs, process maps, internal workflows, and coordination systems."
+                  aria-label="Improve SOPs, process maps, internal workflows, and coordination systems."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Operations Systems Support
@@ -398,9 +427,20 @@ export function GetStartedPage(_: PageProps) {
                 <button
                   type="button"
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', 'Business Development Assistant')}
+                  title="Draft proposal sections, check RFP alignment, and analyze partner fit."
+                  aria-label="Draft proposal sections, check RFP alignment, and analyze partner fit."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Business Development Assistant
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', 'Marketing & Communications Assistant')}
+                  title="Generate donor updates, messaging drafts, and strategic communications."
+                  aria-label="Generate donor updates, messaging drafts, and strategic communications."
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
+                >
+                  Marketing & Communications Assistant
                 </button>
               </div>
             </div>
@@ -422,22 +462,46 @@ export function GetStartedPage(_: PageProps) {
                 Engage AI-powered stakeholder personas for training and strategy testing.
               </p>
               <div className="mt-2 grid gap-3">
-                <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => openAssistant(import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', 'Ramiro - The Bolivian Rancher')}
+                  title="Practice stakeholder conversations and test messaging in a safe simulation."
+                  aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
+                  className="flex items-center gap-3 text-left"
+                >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">RA</div>
                   <div className="text-sm text-slate-200">Ramiro - The Bolivian Rancher</div>
-                </div>
-                <div className="flex items-center gap-3">
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
+                  title="Practice stakeholder conversations and test messaging in a safe simulation."
+                  aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
+                  className="flex items-center gap-3 text-left"
+                >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">JU</div>
                   <div className="text-sm text-slate-200">Jannatul - Bangladeshi University Student</div>
-                </div>
-                <div className="flex items-center gap-3">
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Niar Tun - Agribusiness Exporter from Myanmar')}
+                  title="Practice stakeholder conversations and test messaging in a safe simulation."
+                  aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
+                  className="flex items-center gap-3 text-left"
+                >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">NT</div>
                   <div className="text-sm text-slate-200">Niar Tun - Agribusiness Exporter from Myanmar</div>
-                </div>
-                <div className="flex items-center gap-3">
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore - Senior Programme Manager at FCDO')}
+                  title="Practice stakeholder conversations and test messaging in a safe simulation."
+                  aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
+                  className="flex items-center gap-3 text-left"
+                >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">SW</div>
                   <div className="text-sm text-slate-200">Sarah Whitmore - Senior Programme Manager at FCDO</div>
-                </div>
+                </button>
               </div>
             </div>
           </div>
@@ -452,7 +516,7 @@ export function GetStartedPage(_: PageProps) {
                     <path d="M16 18l2 2 4-4" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold">Organizational Diagnostics</h3>
+                <h3 className="text-lg font-semibold">Rapid Diagnostics</h3>
               </div>
               <p className="text-sm text-slate-400">
                 Run structured capacity and performance assessments.
@@ -462,16 +526,20 @@ export function GetStartedPage(_: PageProps) {
                   href="https://form.typeform.com/to/QLgS0bbC"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Structured capacity assessment with scoring and gap analysis."
+                  aria-label="Structured capacity assessment with scoring and gap analysis."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Organization Self-Assessment Survey
                 </a>
                 <button
                   type="button"
-                  onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Diagnostic Virtual Coach')}
+                  onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
+                  title="AI-guided diagnostic with recommendations and improvement roadmap."
+                  aria-label="AI-guided diagnostic with recommendations and improvement roadmap."
                   className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
-                  Diagnostic Virtual Coach
+                  Organization Diagnostic Virtual Coach
                 </button>
               </div>
             </div>
