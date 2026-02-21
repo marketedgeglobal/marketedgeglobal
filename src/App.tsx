@@ -228,13 +228,13 @@ function HomePage() {
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
               <a
-                href="mailto:info@marketedgeglobal.com"
+                href="mailto:info@marketedgeglobal.com?subject=PartnerAI Demo Request&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in scheduling a demo of PartnerAI for my team.%0D%0A%0D%0AThank you."
                 className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
               >
                 Schedule a demo
               </a>
               <a
-                href="mailto:info@marketedgeglobal.com"
+                href="mailto:info@marketedgeglobal.com?subject=Sales Inquiry&body=Hello MarketEdge team,%0D%0A%0D%0AI would like to connect with the sales team to discuss pricing and implementation options.%0D%0A%0D%0AThank you."
                 className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
               >
                 Contact sales
@@ -358,7 +358,7 @@ function FeaturesPage() {
               Schedule a guided walkthrough tailored to your regions and reporting cadence.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-              <a href="mailto:info@marketedgeglobal.com" className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold">
+              <a href="mailto:info@marketedgeglobal.com?subject=PartnerAI Demo Request&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in scheduling a demo of PartnerAI for my team.%0D%0A%0D%0AThank you." className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold">
                 Schedule a demo
               </a>
               <Link
@@ -440,7 +440,7 @@ function Layout({ children }: { children: ReactNode }) {
             </div>
           </nav>
           <a
-            href="mailto:info@marketedgeglobal.com"
+            href="mailto:info@marketedgeglobal.com?subject=PartnerAI Inquiry&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in learning more about PartnerAI.%0D%0A%0D%0AThank you."
             className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-4 py-2 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
           >
             Request demo

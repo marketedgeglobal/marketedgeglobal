@@ -14,12 +14,12 @@ export function AnalyticsPage() {
             <li>Report summaries that highlight findings, risks, and recommendations.</li>
             <li>RFP requirement extraction and compliance checks.</li>
           </ul>
-          <button
-            type="button"
-            className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+          <a
+            href="mailto:info@marketedgeglobal.com?subject=PartnerAI Inquiry - Advanced Analytics&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in learning more about the Advanced Analytics tools in PartnerAI.%0D%0A%0D%0AThank you."
+            className="inline-block rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
           >
             Request a Live Demo from Our Team
-          </button>
+          </a>
         </div>
       </section>
 

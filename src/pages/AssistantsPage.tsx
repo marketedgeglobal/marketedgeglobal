@@ -14,12 +14,12 @@ export function AssistantsPage() {
             <li>SOP and process updates to improve internal coordination.</li>
             <li>Proposal drafting with clear alignment to RFP criteria.</li>
           </ul>
-          <button
-            type="button"
-            className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+          <a
+            href="mailto:info@marketedgeglobal.com?subject=PartnerAI Inquiry - AI Assistants&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in learning more about the AI Assistants in PartnerAI.%0D%0A%0D%0AThank you."
+            className="inline-block rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
           >
             Request a Live Demo from Our Team
-          </button>
+          </a>
         </div>
       </section>
 
