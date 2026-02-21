@@ -24,39 +24,17 @@ export function AssistantsPage() {
       </section>
 
       <div className="mt-16 space-y-8">
-        <div>
-          <h3 className="text-xl font-semibold text-[var(--color-heading)] mb-4">Available Assistants</h3>
-          <div className="flex flex-wrap gap-3">
+        <section id="financial-management" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Financial Management Help</h3>
             <a
               href="#financial-management"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Financial Management Help
             </a>
-            <a
-              href="#operations-systems"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              Operations Systems Support
-            </a>
-            <a
-              href="#business-development"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              Business Development Assistant
-            </a>
-            <a
-              href="#marketing-comms"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              Marketing & Communications Assistant
-            </a>
           </div>
-        </div>
-
-        <section id="financial-management" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Financial Management Help</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Draft budgets, reconcile reports, and flag compliance gaps.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Budget templates, transaction data, financial policies, compliance requirements.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Budget drafts, reconciliation summaries, compliance checklists, risk flags.</div>
@@ -64,8 +42,16 @@ export function AssistantsPage() {
         </section>
 
         <section id="operations-systems" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Operations Systems Support</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Operations Systems Support</h3>
+            <a
+              href="#operations-systems"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Operations Systems Support
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Improve SOPs, process maps, internal workflows, and coordination systems.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Current SOPs, workflow diagrams, staff feedback, operational challenges.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Revised SOPs, process improvements, coordination guides, implementation plans.</div>
@@ -73,8 +59,16 @@ export function AssistantsPage() {
         </section>
 
         <section id="business-development" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Business Development Assistant</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Business Development Assistant</h3>
+            <a
+              href="#business-development"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Business Development Assistant
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Draft proposal sections, check RFP alignment, and analyze partner fit.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> RFP documents, organizational capabilities, previous proposals, partner profiles.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Proposal drafts, RFP compliance analysis, partner assessment, competitive positioning.</div>
@@ -82,8 +76,16 @@ export function AssistantsPage() {
         </section>
 
         <section id="marketing-comms" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Marketing & Communications Assistant</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Marketing & Communications Assistant</h3>
+            <a
+              href="#marketing-comms"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Marketing & Communications Assistant
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Generate donor updates, messaging drafts, and strategic communications.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Program results, impact data, donor briefs, communication objectives.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Donor updates, messaging frameworks, communications drafts, impact narratives.</div>

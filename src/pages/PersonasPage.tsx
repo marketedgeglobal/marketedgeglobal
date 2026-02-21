@@ -59,8 +59,16 @@ export function PersonasPage() {
         </div>
 
         <section id="ramiro" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ramiro – The Bolivian Rancher</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ramiro – The Bolivian Rancher</h3>
+            <a
+              href="#ramiro"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Ramiro
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Practice stakeholder conversations focused on rural production, value chains, and sustainability incentives.</div>
             <div className="space-y-1">
               <span className="font-medium text-[var(--color-heading)] block">Typical scenarios:</span>
@@ -75,8 +83,16 @@ export function PersonasPage() {
         </section>
 
         <section id="jannatul" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Jannatul – Bangladeshi University Student</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Jannatul – Bangladeshi University Student</h3>
+            <a
+              href="#jannatul"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Jannatul
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Practice engaging young professionals on employment, skills development, and social impact.</div>
             <div className="space-y-1">
               <span className="font-medium text-[var(--color-heading)] block">Typical scenarios:</span>
@@ -91,8 +107,16 @@ export function PersonasPage() {
         </section>
 
         <section id="niar-tun" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Niar Tun – Agribusiness Exporter from Myanmar</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Niar Tun – Agribusiness Exporter from Myanmar</h3>
+            <a
+              href="#niar-tun"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Niar Tun
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Role-play export market dynamics, compliance challenges, and commercial partnership discussions.</div>
             <div className="space-y-1">
               <span className="font-medium text-[var(--color-heading)] block">Typical scenarios:</span>
@@ -107,8 +131,16 @@ export function PersonasPage() {
         </section>
 
         <section id="sarah-whitmore" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Sarah Whitmore – Senior Programme Manager at FCDO</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Sarah Whitmore – Senior Programme Manager at FCDO</h3>
+            <a
+              href="#sarah-whitmore"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Sarah Whitmore
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Practice donor engagement, results communication, and strategic program alignment with bilateral priorities.</div>
             <div className="space-y-1">
               <span className="font-medium text-[var(--color-heading)] block">Typical scenarios:</span>

@@ -24,45 +24,17 @@ export function AnalyticsPage() {
       </section>
 
       <div className="mt-16 space-y-8">
-        <div>
-          <h3 className="text-xl font-semibold text-[var(--color-heading)] mb-4">Available Tools</h3>
-          <div className="flex flex-wrap gap-3">
+        <section id="ranking-tool" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ranking Tool</h3>
             <a
               href="#ranking-tool"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Ranking Tool
             </a>
-            <a
-              href="#publication-review"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              Publication Review
-            </a>
-            <a
-              href="#market-intelligence"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              Market Intelligence
-            </a>
-            <a
-              href="#rfp-intelligence"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              RFP Intelligence
-            </a>
-            <a
-              href="#market-assessment"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
-            >
-              Market Assessment (Sample: Mekong)
-            </a>
           </div>
-        </div>
-
-        <section id="ranking-tool" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ranking Tool</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Score and compare partners, sectors, or proposals using weighted criteria.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Candidate list, evaluation criteria, scoring rubric.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Ranked comparison matrix, scoring breakdown, recommendations.</div>
@@ -70,8 +42,16 @@ export function AnalyticsPage() {
         </section>
 
         <section id="publication-review" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Publication Review</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Publication Review</h3>
+            <a
+              href="#publication-review"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Publication Review
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Summarize long reports and extract key findings, themes, and recommendations.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Reports, research papers, policy documents (PDF, text).</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Executive summary, key findings list, thematic analysis.</div>
@@ -79,8 +59,16 @@ export function AnalyticsPage() {
         </section>
 
         <section id="market-intelligence" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Intelligence</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Intelligence</h3>
+            <a
+              href="#market-intelligence"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Market Intelligence
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Scan sectors and markets to identify trends, risks, and opportunity signals.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Sector, geography, timeframe, focus areas.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Trend analysis, competitive landscape, risk assessment.</div>
@@ -88,8 +76,16 @@ export function AnalyticsPage() {
         </section>
 
         <section id="rfp-intelligence" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">RFP Intelligence</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">RFP Intelligence</h3>
+            <a
+              href="#rfp-intelligence"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              RFP Intelligence
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Extract requirements, deadlines, and compliance gaps from funding calls.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> RFP documents, funding calls, grant guidelines.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Requirements summary, compliance checklist, deadline calendar.</div>
@@ -97,8 +93,16 @@ export function AnalyticsPage() {
         </section>
 
         <section id="market-assessment" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Assessment (Sample: Mekong)</h3>
-          <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Assessment (Sample: Mekong)</h3>
+            <a
+              href="#market-assessment"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Market Assessment (Sample: Mekong)
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Example structured market assessment for countries or sectors (replace with your own context).</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Regional data, socioeconomic indicators, sector performance metrics.</div>
             <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Market overview, opportunity map, strategic recommendations.</div>
