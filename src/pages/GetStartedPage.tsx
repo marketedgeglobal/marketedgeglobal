@@ -550,96 +550,37 @@ export function GetStartedPage(_: PageProps) {
           </div>
         </div>
 
-        <div className="mt-20 space-y-20">
-          <section id="analytics" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Advanced Analytics</h3>
-              <p className="text-sm text-[var(--color-body)]">
-                Turn documents and live data into structured insights and visual dashboards. Use these tools to compare
-                options, surface priorities, and keep reporting aligned across delivery and portfolio work. The outputs
-                below reflect what teams request most often.
-              </p>
-              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
-                <li>Weighted partner and sector rankings for clear comparisons.</li>
-                <li>Report summaries that highlight findings, risks, and recommendations.</li>
-                <li>RFP requirement extraction and compliance checks.</li>
-              </ul>
-              <button
-                type="button"
-                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
-              >
-                Request a Live Demo from Our Team
-              </button>
-            </div>
-          </section>
-
-          <section id="assistants" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">On-the-Job AI Assistants</h3>
-              <p className="text-sm text-[var(--color-body)]">
-                AI-powered task companions embedded into real workflows. These assistants help teams move faster on
-                budgeting, operations, and proposal development without leaving existing processes. The examples below
-                mirror typical day-to-day usage.
-              </p>
-              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
-                <li>Budget drafts, reconciliations, and compliance checks.</li>
-                <li>SOP and process updates to improve internal coordination.</li>
-                <li>Proposal drafting with clear alignment to RFP criteria.</li>
-              </ul>
-              <button
-                type="button"
-                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
-              >
-                Request a Live Demo from Our Team
-              </button>
-            </div>
-          </section>
-
-          <section id="personas" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Stakeholder Personas & Simulation</h3>
-              <p className="text-sm text-[var(--color-body)]">
-                Engage AI-powered stakeholder personas for training and strategy testing. Use these simulations to
-                practice engagement, refine messaging, and pressure-test decisions before real conversations. The
-                scenarios below reflect how teams prepare for high-stakes engagements.
-              </p>
-              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
-                <li>Role-play donor briefings and stakeholder updates.</li>
-                <li>Test value propositions with producers and exporters.</li>
-                <li>Practice risk and impact communications.</li>
-              </ul>
-              <button
-                type="button"
-                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
-              >
-                Request a Live Demo from Our Team
-              </button>
-            </div>
-          </section>
-
-          <section id="diagnostics" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Rapid Diagnostics</h3>
-              <p className="text-sm text-[var(--color-body)]">
-                Run structured capacity and performance assessments. These diagnostics guide teams through evidence
-                gathering and deliver clear improvement roadmaps. The outputs below reflect common assessment needs.
-              </p>
-              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
-                <li>Capacity scorecards with clear gap analysis.</li>
-                <li>Prioritized recommendations tied to delivery constraints.</li>
-                <li>Coaching prompts that guide next-step improvements.</li>
-              </ul>
-              <button
-                type="button"
-                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
-              >
-                Request a Live Demo from Our Team
-              </button>
-            </div>
-          </section>
+        <div className="mt-20 space-y-6">
+          <h2 className="text-2xl font-semibold text-[var(--color-heading)]">Explore PartnerAI Capabilities</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <a
+              href="/analytics/"
+              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
+            >
+              Advanced Analytics
+            </a>
+            <a
+              href="/assistants/"
+              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
+            >
+              On-the-Job AI Assistants
+            </a>
+            <a
+              href="/personas/"
+              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
+            >
+              Stakeholder Personas & Simulation
+            </a>
+            <a
+              href="/diagnostics/"
+              className="rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-6 py-4 text-center font-semibold text-[var(--color-body)] transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-card-gradient-bottom)]"
+            >
+              Rapid Diagnostics
+            </a>
+          </div>
         </div>
 
-        <div className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <div className="mt-20 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
           <h2 className="text-2xl font-semibold text-[var(--color-heading)]">About PartnerAI™</h2>
           <p className="mt-2 text-[var(--color-body)]">
             PartnerAI™ works because MarketEdge stays involved and knows how social impact systems actually operate. Our team brings decades of experience advising donors, investors, large implementing partners, and on-the-ground NGOs and social enterprises.
