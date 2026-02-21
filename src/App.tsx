@@ -372,33 +372,24 @@ function FeaturesPage() {
 
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="border-b border-slate-800">
+    <div className="min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-heading)]">
+      <header className="sticky top-0 z-40 border-b border-[var(--color-card-border)] bg-[rgba(11,30,45,0.9)] backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
           <Link className="text-lg font-semibold tracking-wide" to="/">
             PartnerAI™
           </Link>
-          <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-            <Link className="hover:text-white" to="/features/">
-              Features
+          <nav className="hidden items-center gap-6 text-sm text-[var(--color-body)] md:flex">
+            <Link className="hover:text-[var(--color-heading)]" to="/">
+              Home
             </Link>
-            <a className="hover:text-white" href={`${import.meta.env.BASE_URL}#insights`}>
-              Insights
-            </a>
-            <Link className="hover:text-white" to="/explore-platform/">
-              Explore platform
-            </Link>
-            <a
-              className="hover:text-white"
-              href={`${import.meta.env.BASE_URL}explore-platform/ranking-tool/`}
-            >
-              Ranking tool
-            </a>
-            <a className="hover:text-white" href={`${import.meta.env.BASE_URL}#contact`}>
-              Contact
+            <a className="hover:text-[var(--color-heading)]" href={`${import.meta.env.BASE_URL}#analytics`}>
+              Demo
             </a>
           </nav>
-          <a href="mailto:info@marketedgeglobal.com" className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900">
+          <a
+            href="mailto:info@marketedgeglobal.com"
+            className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-4 py-2 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+          >
             Request demo
           </a>
         </div>

@@ -31,6 +31,10 @@
   --shadow-cta: 0 6px 18px rgba(31, 166, 163, 0.25);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background-color: var(--color-bg-primary);

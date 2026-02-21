@@ -319,8 +319,9 @@ export function GetStartedPage(_: PageProps) {
         <h2 className="text-xl font-semibold text-[var(--color-heading)]">Explore How PartnerAI Supports Your Work</h2>
 
         <div className="grid gap-6 gap-y-12 md:grid-cols-2">
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
-            <div className="flex-1 space-y-3">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+            <a href="#analytics" className="absolute inset-0 z-10" aria-label="Jump to AI analytics details" />
+            <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -388,8 +389,9 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
-            <div className="flex-1 space-y-3">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+            <a href="#assistants" className="absolute inset-0 z-10" aria-label="Jump to on-the-job assistant details" />
+            <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -445,8 +447,9 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
-            <div className="flex-1 space-y-3">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+            <a href="#personas" className="absolute inset-0 z-10" aria-label="Jump to stakeholder persona details" />
+            <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -505,8 +508,9 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
-            <div className="flex-1 space-y-3">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+            <a href="#diagnostics" className="absolute inset-0 z-10" aria-label="Jump to diagnostics details" />
+            <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
                   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -544,6 +548,95 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mt-20 space-y-20">
+          <section id="analytics" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Advanced Analytics</h3>
+              <p className="text-sm text-[var(--color-body)]">
+                Turn documents and live data into structured insights and visual dashboards. Use these tools to compare
+                options, surface priorities, and keep reporting aligned across delivery and portfolio work. The outputs
+                below reflect what teams request most often.
+              </p>
+              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
+                <li>Weighted partner and sector rankings for clear comparisons.</li>
+                <li>Report summaries that highlight findings, risks, and recommendations.</li>
+                <li>RFP requirement extraction and compliance checks.</li>
+              </ul>
+              <button
+                type="button"
+                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+              >
+                Request a Live Demo from Our Team
+              </button>
+            </div>
+          </section>
+
+          <section id="assistants" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">On-the-Job AI Assistants</h3>
+              <p className="text-sm text-[var(--color-body)]">
+                AI-powered task companions embedded into real workflows. These assistants help teams move faster on
+                budgeting, operations, and proposal development without leaving existing processes. The examples below
+                mirror typical day-to-day usage.
+              </p>
+              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
+                <li>Budget drafts, reconciliations, and compliance checks.</li>
+                <li>SOP and process updates to improve internal coordination.</li>
+                <li>Proposal drafting with clear alignment to RFP criteria.</li>
+              </ul>
+              <button
+                type="button"
+                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+              >
+                Request a Live Demo from Our Team
+              </button>
+            </div>
+          </section>
+
+          <section id="personas" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Stakeholder Personas & Simulation</h3>
+              <p className="text-sm text-[var(--color-body)]">
+                Engage AI-powered stakeholder personas for training and strategy testing. Use these simulations to
+                practice engagement, refine messaging, and pressure-test decisions before real conversations. The
+                scenarios below reflect how teams prepare for high-stakes engagements.
+              </p>
+              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
+                <li>Role-play donor briefings and stakeholder updates.</li>
+                <li>Test value propositions with producers and exporters.</li>
+                <li>Practice risk and impact communications.</li>
+              </ul>
+              <button
+                type="button"
+                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+              >
+                Request a Live Demo from Our Team
+              </button>
+            </div>
+          </section>
+
+          <section id="diagnostics" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Rapid Diagnostics</h3>
+              <p className="text-sm text-[var(--color-body)]">
+                Run structured capacity and performance assessments. These diagnostics guide teams through evidence
+                gathering and deliver clear improvement roadmaps. The outputs below reflect common assessment needs.
+              </p>
+              <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
+                <li>Capacity scorecards with clear gap analysis.</li>
+                <li>Prioritized recommendations tied to delivery constraints.</li>
+                <li>Coaching prompts that guide next-step improvements.</li>
+              </ul>
+              <button
+                type="button"
+                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+              >
+                Request a Live Demo from Our Team
+              </button>
+            </div>
+          </section>
         </div>
 
         <div className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
