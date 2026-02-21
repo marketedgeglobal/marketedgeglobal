@@ -340,7 +340,7 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Ranking Tool
                 </a>
@@ -348,7 +348,7 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/marketintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Market Intelligence
                 </a>
@@ -356,19 +356,11 @@ export function GetStartedPage(_: PageProps) {
                   href="https://marketedgeglobal.github.io/rfpintelligence/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   RFP Intelligence
                 </a>
               </div>
-              <a
-                href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-sky-300 hover:text-sky-200 underline-offset-4 hover:underline"
-              >
-                View all analytics tools
-              </a>
             </div>
           </div>
           <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
@@ -392,32 +384,25 @@ export function GetStartedPage(_: PageProps) {
                 <button
                   type="button"
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', 'Financial Management Help')}
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Financial Management Help
                 </button>
                 <button
                   type="button"
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', 'Operations Systems Support')}
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Operations Systems Support
                 </button>
                 <button
                   type="button"
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', 'Business Development Assistant')}
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Business Development Assistant
                 </button>
               </div>
-              <button
-                type="button"
-                onClick={() => openAssistant(import.meta.env.VITE_OPENAI_ASSISTANT_ID ?? defaultFinancialId, 'PartnerAI Assistant')}
-                className="text-sm text-sky-300 hover:text-sky-200 underline-offset-4 hover:underline text-left"
-              >
-                View all assistants
-              </button>
             </div>
           </div>
           <div className="rounded-xl border border-slate-800/60 bg-slate-900/60 p-6 flex flex-col h-full transition hover:-translate-y-0.5 hover:shadow-lg">
@@ -477,14 +462,14 @@ export function GetStartedPage(_: PageProps) {
                   href="https://form.typeform.com/to/QLgS0bbC"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Organization Self-Assessment Survey
                 </a>
                 <button
                   type="button"
                   onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Diagnostic Virtual Coach')}
-                  className="text-xs px-3 py-1 rounded-full bg-sky-600/20 text-sky-200 border border-sky-500/20"
+                  className="rounded-full bg-[#116dff] px-4 py-2 text-sm font-semibold hover:bg-[#3899ec] transition-colors"
                 >
                   Diagnostic Virtual Coach
                 </button>
