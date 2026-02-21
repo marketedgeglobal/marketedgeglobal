@@ -319,7 +319,7 @@ export function GetStartedPage(_: PageProps) {
         <h2 className="text-xl font-semibold text-[var(--color-heading)]">Explore How PartnerAI Supports Your Work</h2>
 
         <div className="grid gap-6 gap-y-12 md:grid-cols-2">
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
             <a href="#analytics" className="absolute inset-0 z-10" aria-label="Jump to AI analytics details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
@@ -389,7 +389,7 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
             <a href="#assistants" className="absolute inset-0 z-10" aria-label="Jump to on-the-job assistant details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
@@ -447,7 +447,7 @@ export function GetStartedPage(_: PageProps) {
               </div>
             </div>
           </div>
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
             <a href="#personas" className="absolute inset-0 z-10" aria-label="Jump to stakeholder persona details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
@@ -472,7 +472,7 @@ export function GetStartedPage(_: PageProps) {
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
                   className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">RA</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">RA</div>
                   <div className="text-sm text-[var(--color-body)]">Ramiro - The Bolivian Rancher</div>
                 </button>
                 <button
@@ -482,7 +482,7 @@ export function GetStartedPage(_: PageProps) {
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
                   className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">JU</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">JU</div>
                   <div className="text-sm text-[var(--color-body)]">Jannatul - Bangladeshi University Student</div>
                 </button>
                 <button
@@ -492,7 +492,7 @@ export function GetStartedPage(_: PageProps) {
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
                   className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">NT</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">NT</div>
                   <div className="text-sm text-[var(--color-body)]">Niar Tun - Agribusiness Exporter from Myanmar</div>
                 </button>
                 <button
@@ -502,13 +502,13 @@ export function GetStartedPage(_: PageProps) {
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
                   className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">SW</div>
+                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">SW</div>
                   <div className="text-sm text-[var(--color-body)]">Sarah Whitmore - Senior Programme Manager at FCDO</div>
                 </button>
               </div>
             </div>
           </div>
-          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
+          <div className="relative cursor-pointer rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)]">
             <a href="#diagnostics" className="absolute inset-0 z-10" aria-label="Jump to diagnostics details" />
             <div className="relative z-20 flex-1 space-y-3">
               <div className="flex items-center gap-3">
