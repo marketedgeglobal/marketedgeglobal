@@ -118,5 +118,63 @@ footer {
   .mt-16 {
     margin-top: 2.5rem;
   }
+
+  .chat-modal {
+    padding: 0.75rem;
+  }
+
+  .chat-modal-card {
+    height: 72vh;
+    border-radius: 1.25rem;
+  }
+
+  .chat-modal-card .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .chat-modal-card .py-4 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .chat-modal-card .gap-4 {
+    gap: 0.75rem;
+  }
+
+  .chat-modal-card .text-lg {
+    font-size: 1rem;
+  }
+
+  .chat-modal-card .text-sm {
+    font-size: 0.85rem;
+  }
+
+  .chat-modal-card .rounded-2xl {
+    border-radius: 1rem;
+  }
+
+  .chat-modal-card .px-4 {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .chat-modal-card .py-3 {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .chat-modal-card .rounded-full {
+    border-radius: 0.85rem;
+  }
+
+  .chat-modal-card input,
+  .chat-modal-card button {
+    font-size: 0.85rem;
+  }
+
+  .chat-modal-card .p-4 {
+    padding: 0.85rem;
+  }
 }
 
