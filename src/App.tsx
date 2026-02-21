@@ -1,6 +1,7 @@
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { GetStartedPage } from "./pages/GetStartedPage";
+import { PartnerAIPage } from "./pages/PartnerAIPage";
 
 const features = [
   {
@@ -382,8 +383,11 @@ function Layout({ children }: { children: ReactNode }) {
             <Link className="hover:text-[var(--color-heading)]" to="/">
               Home
             </Link>
+            <Link className="hover:text-[var(--color-heading)]" to="/partnerai/">
+              PartnerAI
+            </Link>
             <a className="hover:text-[var(--color-heading)]" href={`${import.meta.env.BASE_URL}#analytics`}>
-              Demo
+              PartnerAI Demo
             </a>
           </nav>
           <a
@@ -484,6 +488,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<GetStartedPage />} />
+          <Route path="/partnerai/" element={<PartnerAIPage />} />
           <Route path="/features/" element={<FeaturesPage />} />
           <Route path="/get-started/" element={<HomePage />} />
           <Route
