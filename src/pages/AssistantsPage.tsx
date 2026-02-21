@@ -1,7 +1,7 @@
 export function AssistantsPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <section id="assistants" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
+      <section id="assistants" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
         <div className="space-y-4">
           <h3 className="text-2xl font-semibold text-[var(--color-heading)]">On-the-Job AI Assistants</h3>
           <p className="text-sm text-[var(--color-body)]">
@@ -54,7 +54,7 @@ export function AssistantsPage() {
           </div>
         </div>
 
-        <section id="financial-management" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="financial-management" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Financial Management Help</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Draft budgets, reconcile reports, and flag compliance gaps.</div>
@@ -63,7 +63,7 @@ export function AssistantsPage() {
           </div>
         </section>
 
-        <section id="operations-systems" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="operations-systems" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Operations Systems Support</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Improve SOPs, process maps, internal workflows, and coordination systems.</div>
@@ -72,7 +72,7 @@ export function AssistantsPage() {
           </div>
         </section>
 
-        <section id="business-development" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="business-development" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Business Development Assistant</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Draft proposal sections, check RFP alignment, and analyze partner fit.</div>
@@ -81,7 +81,7 @@ export function AssistantsPage() {
           </div>
         </section>
 
-        <section id="marketing-comms" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="marketing-comms" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Marketing & Communications Assistant</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Generate donor updates, messaging drafts, and strategic communications.</div>

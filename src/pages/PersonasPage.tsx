@@ -1,7 +1,7 @@
 export function PersonasPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <section id="personas" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
+      <section id="personas" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
         <div className="space-y-4">
           <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Stakeholder Personas & Simulation</h3>
           <p className="text-sm text-[var(--color-body)]">
@@ -58,7 +58,7 @@ export function PersonasPage() {
           </div>
         </div>
 
-        <section id="ramiro" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="ramiro" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ramiro – The Bolivian Rancher</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Practice stakeholder conversations focused on rural production, value chains, and sustainability incentives.</div>
@@ -74,7 +74,7 @@ export function PersonasPage() {
           </div>
         </section>
 
-        <section id="jannatul" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="jannatul" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Jannatul – Bangladeshi University Student</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Practice engaging young professionals on employment, skills development, and social impact.</div>
@@ -90,7 +90,7 @@ export function PersonasPage() {
           </div>
         </section>
 
-        <section id="niar-tun" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="niar-tun" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Niar Tun – Agribusiness Exporter from Myanmar</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Role-play export market dynamics, compliance challenges, and commercial partnership discussions.</div>
@@ -106,7 +106,7 @@ export function PersonasPage() {
           </div>
         </section>
 
-        <section id="sarah-whitmore" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="sarah-whitmore" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[140px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Sarah Whitmore – Senior Programme Manager at FCDO</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">Use for:</span> Practice donor engagement, results communication, and strategic program alignment with bilateral priorities.</div>

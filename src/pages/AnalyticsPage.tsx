@@ -1,7 +1,7 @@
 export function AnalyticsPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <section id="analytics" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
+      <section id="analytics" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
         <div className="space-y-4">
           <h3 className="text-2xl font-semibold text-[var(--color-heading)]">Advanced Analytics</h3>
           <p className="text-sm text-[var(--color-body)]">
@@ -60,7 +60,7 @@ export function AnalyticsPage() {
           </div>
         </div>
 
-        <section id="ranking-tool" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="ranking-tool" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ranking Tool</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Score and compare partners, sectors, or proposals using weighted criteria.</div>
@@ -69,7 +69,7 @@ export function AnalyticsPage() {
           </div>
         </section>
 
-        <section id="publication-review" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="publication-review" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Publication Review</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Summarize long reports and extract key findings, themes, and recommendations.</div>
@@ -78,7 +78,7 @@ export function AnalyticsPage() {
           </div>
         </section>
 
-        <section id="market-intelligence" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="market-intelligence" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Intelligence</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Scan sectors and markets to identify trends, risks, and opportunity signals.</div>
@@ -87,7 +87,7 @@ export function AnalyticsPage() {
           </div>
         </section>
 
-        <section id="rfp-intelligence" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="rfp-intelligence" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">RFP Intelligence</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Extract requirements, deadlines, and compliance gaps from funding calls.</div>
@@ -96,7 +96,7 @@ export function AnalyticsPage() {
           </div>
         </section>
 
-        <section id="market-assessment" className="scroll-mt-28 rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8">
+        <section id="market-assessment" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Assessment (Sample: Mekong)</h3>
           <div className="mt-3 space-y-2 text-sm text-[var(--color-body)]">
             <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Example structured market assessment for countries or sectors (replace with your own context).</div>

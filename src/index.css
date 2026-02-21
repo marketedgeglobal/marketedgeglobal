@@ -29,6 +29,7 @@
   --color-persona-hover: rgba(18, 43, 64, 0.85);
   --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.32);
   --shadow-cta: 0 6px 18px rgba(31, 166, 163, 0.25);
+  --header-offset: 80px;
 }
 
 html {
@@ -54,5 +55,10 @@ body {
 [class*="rounded-3xl"][class*="border-"][class*="bg-gradient-to-b"]:hover {
   transform: translateY(-2px);
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.38);
+}
+
+/* Anchor target scroll positioning for fixed header */
+[id] {
+  scroll-margin-top: calc(var(--header-offset) + 24px);
 }
 
