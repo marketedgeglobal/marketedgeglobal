@@ -467,7 +467,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', 'Ramiro - The Bolivian Rancher')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex items-center gap-3 text-left"
+                  className="flex w-full items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-slate-900"
                 >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">RA</div>
                   <div className="text-sm text-slate-200">Ramiro - The Bolivian Rancher</div>
@@ -477,7 +477,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex items-center gap-3 text-left"
+                  className="flex w-full items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-slate-900"
                 >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">JU</div>
                   <div className="text-sm text-slate-200">Jannatul - Bangladeshi University Student</div>
@@ -487,7 +487,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Niar Tun - Agribusiness Exporter from Myanmar')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex items-center gap-3 text-left"
+                  className="flex w-full items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-slate-900"
                 >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">NT</div>
                   <div className="text-sm text-slate-200">Niar Tun - Agribusiness Exporter from Myanmar</div>
@@ -497,7 +497,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore - Senior Programme Manager at FCDO')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex items-center gap-3 text-left"
+                  className="flex w-full items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-left transition hover:border-indigo-400 hover:bg-slate-900"
                 >
                   <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white text-xs">SW</div>
                   <div className="text-sm text-slate-200">Sarah Whitmore - Senior Programme Manager at FCDO</div>
