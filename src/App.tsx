@@ -109,7 +109,7 @@ function HomePage() {
           <div className="flex flex-wrap gap-4">
             <a
               className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-              href={`${import.meta.env.BASE_URL}get-started/`}
+              href={import.meta.env.BASE_URL}
             >
               PartnerAI demo
             </a>
@@ -258,13 +258,13 @@ function FeaturesPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 className="rounded-full bg-indigo-500 px-6 py-3 text-sm font-semibold"
-                href={`${import.meta.env.BASE_URL}get-started/`}
+                href={import.meta.env.BASE_URL}
               >
                 PartnerAI demo
               </a>
               <Link
                 className="rounded-full border border-slate-700 px-6 py-3 text-sm font-semibold text-slate-200"
-                to="/"
+                to="/get-started/"
               >
                 Back to overview
               </Link>
@@ -492,9 +492,9 @@ function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Layout>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<GetStartedPage />} />
           <Route path="/features/" element={<FeaturesPage />} />
-          <Route path="/get-started/" element={<GetStartedPage />} />
+          <Route path="/get-started/" element={<HomePage />} />
           <Route
             path="/explore-platform/"
             element={<ExplorePlatformPage onOpenChat={() => setIsChatOpen(true)} />}
