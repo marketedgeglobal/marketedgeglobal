@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/lib/openai.ts","./src/pages/GetStartedPage.tsx","./src/pages/Legal.tsx"],"version":"5.9.3"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/lib/openai.ts","./src/pages/AnalyticsPage.tsx","./src/pages/AssistantsPage.tsx","./src/pages/DiagnosticsPage.tsx","./src/pages/GetStartedPage.tsx","./src/pages/Legal.tsx","./src/pages/PartnerAIPage.tsx","./src/pages/PersonasPage.tsx"],"version":"5.9.3"}

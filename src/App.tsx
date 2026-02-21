@@ -376,6 +376,29 @@ function FeaturesPage() {
 }
 
 function Layout({ children }: { children: ReactNode }) {
+  const [isPlatformOpen, setIsPlatformOpen] = useState(false);
+  const platformMenuRef = useRef<HTMLDivElement>(null);
+
+  const platformLinks = [
+    { label: "Advanced Analytics", href: "/analytics/" },
+    { label: "On-the-Job AI Assistants", href: "/assistants/" },
+    { label: "Stakeholder Personas & Simulation", href: "/personas/" },
+    { label: "Rapid Diagnostics", href: "/diagnostics/" },
+  ];
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (platformMenuRef.current && !platformMenuRef.current.contains(event.target as Node)) {
+        setIsPlatformOpen(false);
+      }
+    };
+
+    if (isPlatformOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [isPlatformOpen]);
+
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-heading)]">
       <header className="sticky top-0 z-40 border-b border-[var(--color-card-border)] bg-[rgba(11,30,45,0.9)] backdrop-blur">
@@ -390,9 +413,31 @@ function Layout({ children }: { children: ReactNode }) {
             <Link className="hover:text-[var(--color-heading)]" to="/partnerai/">
               PartnerAI
             </Link>
-            <a className="hover:text-[var(--color-heading)]" href={`${import.meta.env.BASE_URL}#analytics`}>
-              PartnerAI Demo
-            </a>
+            <div className="relative" ref={platformMenuRef}>
+              <button
+                className="flex items-center gap-1 hover:text-[var(--color-heading)]"
+                onClick={() => setIsPlatformOpen(!isPlatformOpen)}
+              >
+                Platform
+                <svg className={`h-4 w-4 transition-transform ${isPlatformOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </button>
+              {isPlatformOpen && (
+                <div className="absolute left-0 mt-2 w-56 rounded-lg border border-[var(--color-card-border)] bg-[rgba(11,30,45,0.95)] shadow-lg backdrop-blur py-2">
+                  {platformLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      to={link.href}
+                      className="block px-4 py-2 text-sm text-[var(--color-body)] hover:bg-[var(--color-card-gradient-top)] hover:text-[var(--color-heading)]"
+                      onClick={() => setIsPlatformOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
           <a
             href="mailto:info@marketedgeglobal.com"
