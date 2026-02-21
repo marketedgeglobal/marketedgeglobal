@@ -307,7 +307,7 @@ export function GetStartedPage(_: PageProps) {
             <div>
               <button
                 type="button"
-                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+                className="rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
               >
                 Request a Live Demo from Our Team
               </button>
@@ -318,8 +318,8 @@ export function GetStartedPage(_: PageProps) {
 
         <h2 className="text-xl font-semibold text-[var(--color-heading)]">Explore How PartnerAI Supports Your Work</h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
+        <div className="grid gap-6 gap-y-12 md:grid-cols-2">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
@@ -342,7 +342,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Score and compare partners, sectors, or proposals using weighted criteria."
                   aria-label="Score and compare partners, sectors, or proposals using weighted criteria."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Ranking Tool
                 </a>
@@ -351,7 +351,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
                   title="Summarize long reports and extract key findings, themes, and recommendations."
                   aria-label="Summarize long reports and extract key findings, themes, and recommendations."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Publication Review
                 </button>
@@ -361,7 +361,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Scan sectors and markets. Identify trends, risks, and opportunity signals."
                   aria-label="Scan sectors and markets. Identify trends, risks, and opportunity signals."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Market Intelligence
                 </a>
@@ -371,7 +371,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Extract requirements, deadlines, and compliance gaps from funding calls."
                   aria-label="Extract requirements, deadlines, and compliance gaps from funding calls."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   RFP Intelligence
                 </a>
@@ -381,14 +381,14 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Example structured market assessment. Replace with your own country or sector."
                   aria-label="Example structured market assessment. Replace with your own country or sector."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Market Assessment (Sample: Mekong)
                 </a>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
@@ -411,7 +411,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? 'asst_2BNcG5OJXbPfhDmCadhC7aGM', 'Financial Management Help')}
                   title="Draft budgets, reconcile reports, and flag compliance gaps."
                   aria-label="Draft budgets, reconcile reports, and flag compliance gaps."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Financial Management Help
                 </button>
@@ -420,7 +420,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? 'asst_pGMkUNldDi6EXOQKvpM26Gtb', 'Operations Systems Support')}
                   title="Improve SOPs, process maps, internal workflows, and coordination systems."
                   aria-label="Improve SOPs, process maps, internal workflows, and coordination systems."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Operations Systems Support
                 </button>
@@ -429,7 +429,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? 'asst_yzDWzTYPE7bJf4vbqQlklmiP', 'Business Development Assistant')}
                   title="Draft proposal sections, check RFP alignment, and analyze partner fit."
                   aria-label="Draft proposal sections, check RFP alignment, and analyze partner fit."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Business Development Assistant
                 </button>
@@ -438,14 +438,14 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? 'asst_8XjZDwU3nU8PzDcqcOHqK2KU', 'Marketing & Communications Assistant')}
                   title="Generate donor updates, messaging drafts, and strategic communications."
                   aria-label="Generate donor updates, messaging drafts, and strategic communications."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Marketing & Communications Assistant
                 </button>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
@@ -467,9 +467,9 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant(import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? 'asst_LwQ63jo5RMN3WTwMeSnTRbun', 'Ramiro - The Bolivian Rancher')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">RA</div>
+                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">RA</div>
                   <div className="text-sm text-[var(--color-body)]">Ramiro - The Bolivian Rancher</div>
                 </button>
                 <button
@@ -477,9 +477,9 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_Efsxetzg8NyymK7AIit4knip', 'Jannatul - Bangladeshi University Student')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">JU</div>
+                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">JU</div>
                   <div className="text-sm text-[var(--color-body)]">Jannatul - Bangladeshi University Student</div>
                 </button>
                 <button
@@ -487,9 +487,9 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_zHLROcxpPw6Ho1AOlZh3Sv7N', 'Niar Tun - Agribusiness Exporter from Myanmar')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">NT</div>
+                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">NT</div>
                   <div className="text-sm text-[var(--color-body)]">Niar Tun - Agribusiness Exporter from Myanmar</div>
                 </button>
                 <button
@@ -497,15 +497,15 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_9KTRSFnH5aFCZtAmWNaeRLVZ', 'Sarah Whitmore - Senior Programme Manager at FCDO')}
                   title="Practice stakeholder conversations and test messaging in a safe simulation."
                   aria-label="Practice stakeholder conversations and test messaging in a safe simulation."
-                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-2 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
+                  className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs">SW</div>
+                  <div className="w-8 h-8 rounded-full bg-[rgba(124,200,220,0.15)] flex items-center justify-center text-[var(--color-pill-text)] text-xs">SW</div>
                   <div className="text-sm text-[var(--color-body)]">Sarah Whitmore - Senior Programme Manager at FCDO</div>
                 </button>
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-6 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5">
+          <div className="rounded-xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 flex flex-col h-full shadow-[var(--shadow-card)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.32)] hover:border-[rgba(124,200,220,0.35)]">
             <div className="flex-1 space-y-3">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-card-gradient-top)] text-[var(--color-icon-accent)]">
@@ -528,7 +528,7 @@ export function GetStartedPage(_: PageProps) {
                   rel="noopener noreferrer"
                   title="Structured capacity assessment with scoring and gap analysis."
                   aria-label="Structured capacity assessment with scoring and gap analysis."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Organization Self-Assessment Survey
                 </a>
@@ -537,7 +537,7 @@ export function GetStartedPage(_: PageProps) {
                   onClick={() => openAssistant('asst_hHsISiXIwBAUtUtCxmIggMd8', 'Organization Diagnostic Virtual Coach')}
                   title="AI-guided diagnostic with recommendations and improvement roadmap."
                   aria-label="AI-guided diagnostic with recommendations and improvement roadmap."
-                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-colors"
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Organization Diagnostic Virtual Coach
                 </button>
