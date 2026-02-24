@@ -29,6 +29,8 @@ export function PersonasPage() {
           <div className="space-y-3">
             <a
               href={`${import.meta.env.BASE_URL}?assistant=ramiro#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">RA</div>
@@ -36,6 +38,8 @@ export function PersonasPage() {
             </a>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=jannatul#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">JU</div>
@@ -43,6 +47,8 @@ export function PersonasPage() {
             </a>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=niar-tun#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">NT</div>
@@ -50,6 +56,8 @@ export function PersonasPage() {
             </a>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=sarah-whitmore#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">SW</div>
@@ -63,6 +71,8 @@ export function PersonasPage() {
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ramiro – The Bolivian Rancher</h3>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=ramiro#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Ramiro
@@ -87,6 +97,8 @@ export function PersonasPage() {
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Jannatul – Bangladeshi University Student</h3>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=jannatul#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Jannatul
@@ -111,6 +123,8 @@ export function PersonasPage() {
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Niar Tun – Agribusiness Exporter from Myanmar</h3>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=niar-tun#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Niar Tun
@@ -135,6 +149,8 @@ export function PersonasPage() {
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Sarah Whitmore – Senior Programme Manager at FCDO</h3>
             <a
               href={`${import.meta.env.BASE_URL}?assistant=sarah-whitmore#personas`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Sarah Whitmore
