@@ -553,7 +553,7 @@ function App() {
 
       {isChatOpen && (
         <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm">
-          <div className="absolute bottom-6 right-6 flex w-[min(420px,90vw)] flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl">
+          <div className="absolute bottom-6 right-6 flex w-[min(360px,90vw)] flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-950 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
               <div>
                 <div className="text-sm font-semibold">MarketEdge BD Assistant</div>
@@ -566,7 +566,7 @@ function App() {
                 Close
               </button>
             </div>
-            <div className="flex max-h-[50vh] flex-1 flex-col gap-4 overflow-y-auto px-5 py-4 text-sm">
+            <div className="flex max-h-[42vh] flex-1 flex-col gap-4 overflow-y-auto px-5 py-4 text-sm">
               {messages.map((message, index) => (
                 <div
                   key={`${message.role}-${index}`}

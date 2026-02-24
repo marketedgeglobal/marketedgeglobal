@@ -618,7 +618,7 @@ export function GetStartedPage(_: PageProps) {
 
       {isChatOpen && (
         <div className="chat-modal fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="chat-modal-card flex w-full max-w-2xl h-[80vh] flex-col overflow-hidden rounded-3xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-bottom)] shadow-2xl">
+          <div className="chat-modal-card flex w-full max-w-xl h-[70vh] flex-col overflow-hidden rounded-3xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-bottom)] shadow-2xl">
             <div className="flex items-center justify-between border-b border-[var(--color-card-border)] px-6 py-4">
               <div>
                 <div className="text-lg font-semibold">{currentAssistantName}</div>
