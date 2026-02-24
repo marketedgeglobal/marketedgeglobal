@@ -28,7 +28,9 @@ export function AssistantsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Financial Management Help</h3>
             <a
-              href="#financial-management"
+              href={`${import.meta.env.BASE_URL}?assistant=financial-management#assistants`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Financial Management Help
@@ -45,7 +47,9 @@ export function AssistantsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Operations Systems Support</h3>
             <a
-              href="#operations-systems"
+              href={`${import.meta.env.BASE_URL}?assistant=operations-systems#assistants`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Operations Systems Support
@@ -62,7 +66,9 @@ export function AssistantsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Business Development Assistant</h3>
             <a
-              href="#business-development"
+              href={`${import.meta.env.BASE_URL}?assistant=business-development#assistants`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Business Development Assistant
@@ -79,7 +85,9 @@ export function AssistantsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Marketing & Communications Assistant</h3>
             <a
-              href="#marketing-comms"
+              href={`${import.meta.env.BASE_URL}?assistant=marketing-comms#assistants`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Marketing & Communications Assistant

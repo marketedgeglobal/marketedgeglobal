@@ -282,6 +282,22 @@ export function GetStartedPage(_: PageProps) {
       didAutoOpenRef.current = true;
       openAssistant("asst_9KTRSFnH5aFCZtAmWNaeRLVZ", "Sarah Whitmore - Senior Programme Manager at FCDO");
     }
+    if (assistant === "financial-management") {
+      didAutoOpenRef.current = true;
+      openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? "asst_2BNcG5OJXbPfhDmCadhC7aGM", "Financial Management Help");
+    }
+    if (assistant === "operations-systems") {
+      didAutoOpenRef.current = true;
+      openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? "asst_pGMkUNldDi6EXOQKvpM26Gtb", "Operations Systems Support");
+    }
+    if (assistant === "business-development") {
+      didAutoOpenRef.current = true;
+      openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? "asst_yzDWzTYPE7bJf4vbqQlklmiP", "Business Development Assistant");
+    }
+    if (assistant === "marketing-comms") {
+      didAutoOpenRef.current = true;
+      openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? "asst_8XjZDwU3nU8PzDcqcOHqK2KU", "Marketing & Communications Assistant");
+    }
   }, []);
 
   const formatMessageContent = (content: string): ReactNode => {
