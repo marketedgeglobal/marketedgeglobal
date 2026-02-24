@@ -27,7 +27,9 @@ export function DiagnosticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Organization Self-Assessment Survey</h3>
             <a
-              href="#self-assessment-survey"
+              href="https://form.typeform.com/to/QLgS0bbC"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Organization Self-Assessment Survey
@@ -44,7 +46,7 @@ export function DiagnosticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Organization Diagnostic Virtual Coach</h3>
             <a
-              href="#virtual-coach"
+              href={`${import.meta.env.BASE_URL}?assistant=virtual-coach#diagnostics`}
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Organization Diagnostic Virtual Coach

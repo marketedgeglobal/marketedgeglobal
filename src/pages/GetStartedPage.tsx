@@ -262,6 +262,10 @@ export function GetStartedPage(_: PageProps) {
       didAutoOpenRef.current = true;
       openAssistant("asst_5NTh5OINlU3NoN0ROHFOXrrp", "Publication Review");
     }
+    if (assistant === "virtual-coach") {
+      didAutoOpenRef.current = true;
+      openAssistant("asst_hHsISiXIwBAUtUtCxmIggMd8", "Organization Diagnostic Virtual Coach");
+    }
   }, []);
 
   const formatMessageContent = (content: string): ReactNode => {
