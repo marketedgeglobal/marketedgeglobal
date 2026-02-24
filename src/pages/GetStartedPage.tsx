@@ -266,6 +266,22 @@ export function GetStartedPage(_: PageProps) {
       didAutoOpenRef.current = true;
       openAssistant("asst_hHsISiXIwBAUtUtCxmIggMd8", "Organization Diagnostic Virtual Coach");
     }
+    if (assistant === "ramiro") {
+      didAutoOpenRef.current = true;
+      openAssistant(import.meta.env.VITE_OPENAI_RAMIRO_ASSISTANT_ID ?? "asst_LwQ63jo5RMN3WTwMeSnTRbun", "Ramiro - The Bolivian Rancher");
+    }
+    if (assistant === "jannatul") {
+      didAutoOpenRef.current = true;
+      openAssistant("asst_Efsxetzg8NyymK7AIit4knip", "Jannatul - Bangladeshi University Student");
+    }
+    if (assistant === "niar-tun") {
+      didAutoOpenRef.current = true;
+      openAssistant("asst_zHLROcxpPw6Ho1AOlZh3Sv7N", "Niar Tun - Agribusiness Exporter from Myanmar");
+    }
+    if (assistant === "sarah-whitmore") {
+      didAutoOpenRef.current = true;
+      openAssistant("asst_9KTRSFnH5aFCZtAmWNaeRLVZ", "Sarah Whitmore - Senior Programme Manager at FCDO");
+    }
   }, []);
 
   const formatMessageContent = (content: string): ReactNode => {

@@ -28,28 +28,28 @@ export function PersonasPage() {
           <h3 className="text-xl font-semibold text-[var(--color-heading)] mb-4">Available Personas</h3>
           <div className="space-y-3">
             <a
-              href="#ramiro"
+              href={`${import.meta.env.BASE_URL}?assistant=ramiro#personas`}
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">RA</div>
               <div className="text-sm text-[var(--color-body)]">Ramiro – The Bolivian Rancher</div>
             </a>
             <a
-              href="#jannatul"
+              href={`${import.meta.env.BASE_URL}?assistant=jannatul#personas`}
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">JU</div>
               <div className="text-sm text-[var(--color-body)]">Jannatul – Bangladeshi University Student</div>
             </a>
             <a
-              href="#niar-tun"
+              href={`${import.meta.env.BASE_URL}?assistant=niar-tun#personas`}
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">NT</div>
               <div className="text-sm text-[var(--color-body)]">Niar Tun – Agribusiness Exporter from Myanmar</div>
             </a>
             <a
-              href="#sarah-whitmore"
+              href={`${import.meta.env.BASE_URL}?assistant=sarah-whitmore#personas`}
               className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-persona-border)] bg-[var(--color-persona-bg)] px-3 py-1.5 text-left transition hover:border-[var(--color-icon-accent)] hover:bg-[var(--color-persona-hover)]"
             >
               <div className="w-8 h-8 rounded-full bg-[var(--color-card-gradient-top)] flex items-center justify-center text-[var(--color-heading)] text-xs font-semibold">SW</div>
@@ -62,7 +62,7 @@ export function PersonasPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ramiro – The Bolivian Rancher</h3>
             <a
-              href="#ramiro"
+              href={`${import.meta.env.BASE_URL}?assistant=ramiro#personas`}
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Ramiro
@@ -86,7 +86,7 @@ export function PersonasPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Jannatul – Bangladeshi University Student</h3>
             <a
-              href="#jannatul"
+              href={`${import.meta.env.BASE_URL}?assistant=jannatul#personas`}
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Jannatul
@@ -110,7 +110,7 @@ export function PersonasPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Niar Tun – Agribusiness Exporter from Myanmar</h3>
             <a
-              href="#niar-tun"
+              href={`${import.meta.env.BASE_URL}?assistant=niar-tun#personas`}
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Niar Tun
@@ -134,7 +134,7 @@ export function PersonasPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Sarah Whitmore – Senior Programme Manager at FCDO</h3>
             <a
-              href="#sarah-whitmore"
+              href={`${import.meta.env.BASE_URL}?assistant=sarah-whitmore#personas`}
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Sarah Whitmore
