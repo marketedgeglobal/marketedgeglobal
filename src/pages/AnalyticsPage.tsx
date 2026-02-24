@@ -28,7 +28,9 @@ export function AnalyticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ranking Tool</h3>
             <a
-              href="#ranking-tool"
+              href="https://marketedgeglobal.github.io/marketedgeglobal/explore-platform/ranking-tool/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Ranking Tool
@@ -45,7 +47,7 @@ export function AnalyticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Publication Review</h3>
             <a
-              href="#publication-review"
+              href={`${import.meta.env.BASE_URL}?assistant=publication-review#analytics`}
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Publication Review
@@ -62,7 +64,9 @@ export function AnalyticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Intelligence</h3>
             <a
-              href="#market-intelligence"
+              href="https://marketedgeglobal.github.io/marketintelligence/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Market Intelligence
@@ -79,7 +83,9 @@ export function AnalyticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">RFP Intelligence</h3>
             <a
-              href="#rfp-intelligence"
+              href="https://marketedgeglobal.github.io/rfpintelligence/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               RFP Intelligence
@@ -96,7 +102,9 @@ export function AnalyticsPage() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Market Assessment (Sample: Mekong)</h3>
             <a
-              href="#market-assessment"
+              href="https://marketedgeglobal.github.io/BASIN/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
               Market Assessment (Sample: Mekong)

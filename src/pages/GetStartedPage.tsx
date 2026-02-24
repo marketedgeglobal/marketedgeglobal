@@ -25,6 +25,7 @@ export function GetStartedPage(_: PageProps) {
   const [attachedFiles, setAttachedFiles] = useState<AttachedFile[]>([]);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const initialMessageCountRef = useRef(0); // Track how many initial greeting messages were added
+  const didAutoOpenRef = useRef(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
@@ -252,6 +253,16 @@ export function GetStartedPage(_: PageProps) {
     setMessages(initialMessages);
     setIsChatOpen(true);
   };
+
+  useEffect(() => {
+    if (didAutoOpenRef.current) return;
+    const params = new URLSearchParams(window.location.search);
+    const assistant = params.get("assistant");
+    if (assistant === "publication-review") {
+      didAutoOpenRef.current = true;
+      openAssistant("asst_5NTh5OINlU3NoN0ROHFOXrrp", "Publication Review");
+    }
+  }, []);
 
   const formatMessageContent = (content: string): ReactNode => {
     if (!content) return null;
