@@ -438,6 +438,16 @@ export function GetStartedPage(_: PageProps) {
                 >
                   Market Assessment (Sample: Mekong)
                 </a>
+                <a
+                  href="https://marketedgeglobal.github.io/VZLAnews/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Track Venezuela market signals and news intelligence."
+                  aria-label="Track Venezuela market signals and news intelligence."
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
+                >
+                  VZLA News
+                </a>
               </div>
             </div>
           </div>
