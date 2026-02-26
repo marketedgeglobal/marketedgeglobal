@@ -282,7 +282,10 @@ export function AssistantsPage() {
   };
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <section id="assistants" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
+      <section
+        id="assistants"
+        className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]"
+      >
         <div className="space-y-4">
           <h3 className="text-2xl font-semibold text-[var(--color-heading)]">On-the-Job AI Assistants</h3>
           <p className="text-sm text-[var(--color-body)]">
@@ -290,98 +293,194 @@ export function AssistantsPage() {
             budgeting, operations, and proposal development without leaving existing processes. The examples below
             mirror typical day-to-day usage.
           </p>
-          <ul className="list-disc list-inside text-sm text-[var(--color-body)] space-y-1">
+          <ul className="list-disc list-inside space-y-1 text-sm text-[var(--color-body)]">
             <li>Budget drafts, reconciliations, and compliance checks.</li>
             <li>SOP and process updates to improve internal coordination.</li>
             <li>Proposal drafting with clear alignment to RFP criteria.</li>
           </ul>
-          <a
-            href="mailto:info@marketedgeglobal.com?subject=PartnerAI Inquiry - AI Assistants&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in learning more about the AI Assistants in PartnerAI.%0D%0A%0D%0AThank you."
-            className="inline-block rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="mailto:info@marketedgeglobal.com?subject=PartnerAI Inquiry - AI Assistants&body=Hello MarketEdge team,%0D%0A%0D%0AI am interested in learning more about the AI Assistants in PartnerAI.%0D%0A%0D%0AThank you."
+              className="inline-block rounded-full bg-gradient-to-r from-[var(--color-cta-gradient-top)] to-[var(--color-cta-gradient-bottom)] px-6 py-3.5 text-sm font-semibold text-[var(--color-cta-text)] shadow-[var(--shadow-cta)] transition hover:from-[var(--color-cta-hover-top)] hover:to-[var(--color-cta-hover-bottom)]"
+            >
+              Request a Live Demo
+            </a>
             <button
               type="button"
-              onClick={() => openAssistant(import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? "asst_2BNcG5OJXbPfhDmCadhC7aGM", "Financial Management Help")}
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+              onClick={() =>
+                openAssistant(
+                  import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? "asst_2BNcG5OJXbPfhDmCadhC7aGM",
+                  "Financial Management Help"
+                )
+              }
+              className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
             >
+              Open Financial Assistant
+            </button>
+          </div>
+        </div>
       </section>
-            </button>
+
       <div className="mt-16 space-y-8">
-        <section id="financial-management" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+        <section
+          id="financial-management"
+          className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]"
+        >
+          <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Financial Management Help</h3>
-            <a
-              href={`${import.meta.env.BASE_URL}?assistant=financial-management#assistants`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            <button
-              type="button"
-              onClick={() => openAssistant(import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? "asst_pGMkUNldDi6EXOQKvpM26Gtb", "Operations Systems Support")}
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            >
-          <div className="space-y-2 text-sm text-[var(--color-body)]">
-            </button>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Budget templates, transaction data, financial policies, compliance requirements.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Budget drafts, reconciliation summaries, compliance checklists, risk flags.</div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  openAssistant(
+                    import.meta.env.VITE_OPENAI_FINANCIAL_ASSISTANT_ID ?? "asst_2BNcG5OJXbPfhDmCadhC7aGM",
+                    "Financial Management Help"
+                  )
+                }
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open chat
+              </button>
+              <a
+                href={`${import.meta.env.BASE_URL}?assistant=financial-management#assistants`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open in new tab
+              </a>
+            </div>
           </div>
-        </section>
-            <button
-              type="button"
-              onClick={() => openAssistant(import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? "asst_yzDWzTYPE7bJf4vbqQlklmiP", "Business Development Assistant")}
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            >
-            <a
-            </button>
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            <button
-              type="button"
-              onClick={() => openAssistant(import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? "asst_8XjZDwU3nU8PzDcqcOHqK2KU", "Marketing & Communications Assistant")}
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            >
           <div className="space-y-2 text-sm text-[var(--color-body)]">
-            </button>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Current SOPs, workflow diagrams, staff feedback, operational challenges.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Revised SOPs, process improvements, coordination guides, implementation plans.</div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Budget templates, transaction data, financial policies, compliance requirements.
+            </div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Budget drafts, reconciliation summaries, compliance checklists, risk flags.
+            </div>
           </div>
         </section>
 
-        <section id="business-development" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+        <section
+          id="operations-systems"
+          className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]"
+        >
+          <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Operations Systems Support</h3>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  openAssistant(
+                    import.meta.env.VITE_OPENAI_OPERATIONS_ASSISTANT_ID ?? "asst_pGMkUNldDi6EXOQKvpM26Gtb",
+                    "Operations Systems Support"
+                  )
+                }
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open chat
+              </button>
+              <a
+                href={`${import.meta.env.BASE_URL}?assistant=operations-systems#assistants`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open in new tab
+              </a>
+            </div>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Current SOPs, workflow diagrams, staff feedback, operational challenges.
+            </div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Revised SOPs, process improvements, coordination guides, implementation plans.
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="business-development"
+          className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]"
+        >
+          <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Business Development Assistant</h3>
-            <a
-              href={`${import.meta.env.BASE_URL}?assistant=business-development#assistants`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            >
-              Business Development Assistant
-            </a>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  openAssistant(
+                    import.meta.env.VITE_OPENAI_BD_ASSISTANT_ID ?? "asst_yzDWzTYPE7bJf4vbqQlklmiP",
+                    "Business Development Assistant"
+                  )
+                }
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open chat
+              </button>
+              <a
+                href={`${import.meta.env.BASE_URL}?assistant=business-development#assistants`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open in new tab
+              </a>
+            </div>
           </div>
           <div className="space-y-2 text-sm text-[var(--color-body)]">
-            <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Draft proposal sections, check RFP alignment, and analyze partner fit.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> RFP documents, organizational capabilities, previous proposals, partner profiles.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Proposal drafts, RFP compliance analysis, partner assessment, competitive positioning.</div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Draft proposal sections, check RFP alignment, and analyze partner fit.
+            </div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> RFP documents, organizational capabilities, previous proposals, partner profiles.
+            </div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Proposal drafts, RFP compliance analysis, partner assessment, competitive positioning.
+            </div>
           </div>
         </section>
 
-        <section id="marketing-comms" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+        <section
+          id="marketing-comms"
+          className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]"
+        >
+          <div className="mb-3 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Marketing & Communications Assistant</h3>
-            <a
-              href={`${import.meta.env.BASE_URL}?assistant=marketing-comms#assistants`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            >
-              Marketing & Communications Assistant
-            </a>
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() =>
+                  openAssistant(
+                    import.meta.env.VITE_OPENAI_MARKETING_ASSISTANT_ID ?? "asst_8XjZDwU3nU8PzDcqcOHqK2KU",
+                    "Marketing & Communications Assistant"
+                  )
+                }
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open chat
+              </button>
+              <a
+                href={`${import.meta.env.BASE_URL}?assistant=marketing-comms#assistants`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] transition-all duration-150 ease-out hover:border-[var(--color-pill-hover-border)] hover:bg-[var(--color-pill-hover-bg)]"
+              >
+                Open in new tab
+              </a>
+            </div>
           </div>
           <div className="space-y-2 text-sm text-[var(--color-body)]">
-            <div><span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Generate donor updates, messaging drafts, and strategic communications.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Program results, impact data, donor briefs, communication objectives.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Donor updates, messaging frameworks, communications drafts, impact narratives.</div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">What it helps with:</span> Generate donor updates, messaging drafts, and strategic communications.
+            </div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Program results, impact data, donor briefs, communication objectives.
+            </div>
+            <div>
+              <span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Donor updates, messaging frameworks, communications drafts, impact narratives.
+            </div>
           </div>
         </section>
       </div>
