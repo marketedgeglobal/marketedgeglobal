@@ -23,7 +23,7 @@ export function AnalyticsPage() {
         </div>
       </section>
 
-      <div className="mt-16 space-y-8">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
         <section id="ranking-tool" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ranking Tool</h3>
