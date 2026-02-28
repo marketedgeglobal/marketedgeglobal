@@ -1,4 +1,60 @@
+import { FormEvent, useState } from "react";
+
 export function AnalyticsPage() {
+  const [repositoryFullName, setRepositoryFullName] = useState("");
+  const [zapStatus, setZapStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [zapMessage, setZapMessage] = useState("");
+
+  const runZapierWorkflow = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const webhookUrl = import.meta.env.VITE_ZAPIER_WEBHOOK_URL as string | undefined;
+    if (!webhookUrl) {
+      setZapStatus("error");
+      setZapMessage("Zap webhook is not configured. Set VITE_ZAPIER_WEBHOOK_URL and rebuild.");
+      return;
+    }
+
+    const normalizedRepo = repositoryFullName.trim().replace(/^https?:\/\/github\.com\//i, "").replace(/\/$/, "");
+    const repoPattern = /^[^\s/]+\/[^\s/]+$/;
+    if (!repoPattern.test(normalizedRepo)) {
+      setZapStatus("error");
+      setZapMessage("Enter a repository as owner/repo (example: marketedgeglobal/marketedgeglobal).");
+      return;
+    }
+
+    const [owner, repo] = normalizedRepo.split("/");
+
+    setZapStatus("loading");
+    setZapMessage("Triggering Zap...");
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          owner,
+          repo,
+          repository_full_name: normalizedRepo,
+          repository_url: `https://github.com/${normalizedRepo}`,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Zap request failed (${response.status})`);
+      }
+
+      setZapStatus("success");
+      setZapMessage("Zap triggered successfully. Check your Zapier task history for details.");
+    } catch (error) {
+      setZapStatus("error");
+      const message = error instanceof Error ? error.message : "Unexpected error";
+      setZapMessage(`Could not trigger Zap: ${message}`);
+    }
+  };
+
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <section id="analytics" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.38)]">
@@ -137,21 +193,33 @@ export function AnalyticsPage() {
         </section>
 
         <section id="zapier-integration" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+          <div className="flex flex-col gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Zapier Workflow</h3>
-            <a
-              href="https://zapier.com/editor/351423135/published/351423138/fields"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
-            >
-              Zapier Workflow
-            </a>
+            <form onSubmit={runZapierWorkflow} className="flex flex-col sm:flex-row gap-2">
+              <input
+                type="text"
+                value={repositoryFullName}
+                onChange={(event) => setRepositoryFullName(event.target.value)}
+                placeholder="owner/repo"
+                className="w-full sm:flex-1 rounded-full border border-[var(--color-pill-border)] bg-[var(--color-pill-bg)] px-4 py-2 text-sm text-[var(--color-pill-text)] outline-none focus:border-[var(--color-pill-hover-border)]"
+                aria-label="GitHub repository"
+              />
+              <button
+                type="submit"
+                disabled={zapStatus === "loading"}
+                className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out disabled:opacity-60"
+              >
+                {zapStatus === "loading" ? "Running..." : "Run Zap"}
+              </button>
+            </form>
+            {zapMessage && (
+              <p className="text-sm text-[var(--color-body)]">{zapMessage}</p>
+            )}
           </div>
           <div className="space-y-2 text-sm text-[var(--color-body)]">
-            <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Open your published Zap workflow fields page to run the configured intake flow.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Form values required by your Zap trigger.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Automated downstream actions configured in Zapier.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Sends a GitHub repository to your Zap so the workflow can look up and process repo details.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Repository in owner/repo format, or a GitHub repo URL.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Automated GitHub and downstream actions configured in Zapier.</div>
           </div>
         </section>
       </div>

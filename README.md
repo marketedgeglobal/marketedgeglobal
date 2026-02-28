@@ -73,6 +73,13 @@ The chat widget on the site calls a separate backend proxy to keep your API key 
 - Set the GitHub Actions secret VITE_AGENT_API_URL to your deployed /agent endpoint
  - Optional: use the Fly.io deployment workflow in .github/workflows/deploy-agent.yml
 
+## Zapier Integration (Analytics)
+
+The Analytics page includes a `Run Zap` action that posts repository data to Zapier.
+
+- Set `VITE_ZAPIER_WEBHOOK_URL` to your Zapier Catch Hook URL (for example `https://hooks.zapier.com/hooks/catch/...`).
+- Rebuild the site after setting the variable so the client can use it.
+
 ## PartnerAI demo Page with ChatGPT Assistant
 
 The PartnerAI demo includes an integrated chat widget that connects directly to an OpenAI Assistant. This allows visitors to ask questions about your organization's messaging and communications.
