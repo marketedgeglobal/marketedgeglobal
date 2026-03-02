@@ -75,7 +75,7 @@ The chat widget on the site calls a separate backend proxy to keep your API key 
 
 ## Zapier Integration (Analytics)
 
-The Analytics page includes a `Run Zap` action that posts repository data to Zapier.
+The Analytics page includes a `Ghana Research Snythensis` action that posts repository data to Zapier.
 
 - Set `VITE_ZAPIER_WEBHOOK_URL` to your Zapier Catch Hook URL (for example `https://hooks.zapier.com/hooks/catch/...`).
 - Rebuild the site after setting the variable so the client can use it.

@@ -209,7 +209,7 @@ export function AnalyticsPage() {
                 disabled={zapStatus === "loading"}
                 className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out disabled:opacity-60"
               >
-                {zapStatus === "loading" ? "Running..." : "Run Zap"}
+                {zapStatus === "loading" ? "Running..." : "Ghana Research Snythensis"}
               </button>
             </form>
             {zapMessage && (
