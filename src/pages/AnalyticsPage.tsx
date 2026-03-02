@@ -139,8 +139,8 @@ export function AnalyticsPage() {
         </section>
 
         <section id="zapier-integration" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
-          <div className="flex flex-col gap-3 mb-3">
-            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Zapier Workflow</h3>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ghana Research Snythensis</h3>
             <a
               href="https://marketedgeglobal.github.io/primarydataghana/"
               target="_blank"
@@ -151,9 +151,9 @@ export function AnalyticsPage() {
             </a>
           </div>
           <div className="space-y-2 text-sm text-[var(--color-body)]">
-            <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Sends a GitHub repository to your Zap so the workflow can look up and process repo details.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Repository in owner/repo format, or a GitHub repo URL.</div>
-            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Automated GitHub and downstream actions configured in Zapier.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Produces Ghana-focused research synthesis across reports, datasets, and policy context.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Research reports, sector briefs, market notes, and stakeholder questions.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> Synthesis summaries, key findings, and actionable recommendations.</div>
           </div>
         </section>
       </div>
