@@ -138,6 +138,25 @@ export function AnalyticsPage() {
           </div>
         </section>
 
+        <section id="laos-news" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Laos News</h3>
+            <a
+              href="https://marketedgeglobal.github.io/LaosNews/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
+            >
+              Laos News
+            </a>
+          </div>
+          <div className="space-y-2 text-sm text-[var(--color-body)]">
+            <div><span className="font-medium text-[var(--color-heading)]">What it does:</span> Track Laos market signals and news intelligence.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">Typical inputs:</span> Country focus, sector priorities, news timeframe.</div>
+            <div><span className="font-medium text-[var(--color-heading)]">Typical outputs:</span> News digest, market signal summaries, emerging risks.</div>
+          </div>
+        </section>
+
         <section id="zapier-integration" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
             <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ghana Research Snythensis</h3>
@@ -147,7 +166,7 @@ export function AnalyticsPage() {
               rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
-              Ghana Research Snythensis
+              Ghana T&G Analysis,
             </a>
           </div>
           <div className="space-y-2 text-sm text-[var(--color-body)]">
