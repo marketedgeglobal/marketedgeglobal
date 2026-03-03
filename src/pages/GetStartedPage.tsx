@@ -435,15 +435,14 @@ export function GetStartedPage(_: PageProps) {
                 >
                   Ranking Tool
                 </a>
-                <button
-                  type="button"
-                  onClick={() => openAssistant('asst_5NTh5OINlU3NoN0ROHFOXrrp', 'Publication Review')}
+                <a
+                  href={`${import.meta.env.BASE_URL}?assistant=publication-review#analytics`}
                   title="Summarize long reports and extract key findings, themes, and recommendations."
                   aria-label="Summarize long reports and extract key findings, themes, and recommendations."
                   className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   Publication Review
-                </button>
+                </a>
                 <a
                   href="https://marketedgeglobal.github.io/marketintelligence/"
                   target="_blank"
@@ -483,6 +482,36 @@ export function GetStartedPage(_: PageProps) {
                   className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
                   VZLA News
+                </a>
+                <a
+                  href="https://marketedgeglobal.github.io/LaosNews/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Track Laos market signals and news intelligence."
+                  aria-label="Track Laos market signals and news intelligence."
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
+                >
+                  Laos News
+                </a>
+                <a
+                  href="https://marketedgeglobal.github.io/SEALeaders/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Track Southeast Asia leadership signals and news intelligence."
+                  aria-label="Track Southeast Asia leadership signals and news intelligence."
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
+                >
+                  SEA Leaders
+                </a>
+                <a
+                  href="https://marketedgeglobal.github.io/primarydataghana/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Produces Ghana-focused research synthesis across reports, datasets, and policy context."
+                  aria-label="Produces Ghana-focused research synthesis across reports, datasets, and policy context."
+                  className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
+                >
+                  Ghana T&G Analysis,
                 </a>
               </div>
             </div>
