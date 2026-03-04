@@ -30,7 +30,7 @@ The server listens on http://localhost:8787 and exposes:
 - RATE_LIMIT_WINDOW_MS (default 60000)
 - RATE_LIMIT_MAX (default 60)
 - MAX_UPLOAD_FILES (default 5)
-- MAX_UPLOAD_SIZE (default 2097152 bytes)
+- MAX_UPLOAD_SIZE (default 10485760 bytes, 10MB)
 
 `ALLOWED_ORIGIN` examples:
 

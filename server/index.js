@@ -32,7 +32,7 @@ const requestTimeoutMs = parseInt(process.env.REQUEST_TIMEOUT_MS || "", 10) || 2
 const rateLimitWindowMs = parseInt(process.env.RATE_LIMIT_WINDOW_MS || "", 10) || 60000;
 const rateLimitMax = parseInt(process.env.RATE_LIMIT_MAX || "", 10) || 60;
 const maxUploadFiles = parseInt(process.env.MAX_UPLOAD_FILES || "", 10) || 5;
-const maxUploadSize = parseInt(process.env.MAX_UPLOAD_SIZE || "", 10) || 2 * 1024 * 1024;
+const maxUploadSize = parseInt(process.env.MAX_UPLOAD_SIZE || "", 10) || 10 * 1024 * 1024;
 
 const allowedMimeTypes = new Set([
   "application/json",

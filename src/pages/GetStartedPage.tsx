@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { resolveAgentUrl, sendMessage, type ChatMessage } from "../lib/openai";
+import { clientMaxUploadSizeBytes, resolveAgentUrl, sendMessage, type ChatMessage } from "../lib/openai";
 
 type PageProps = {};
 
@@ -49,12 +49,34 @@ export function GetStartedPage(_: PageProps) {
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files) {
-      const newFiles: AttachedFile[] = Array.from(files).map((file) => ({
-        name: file.name,
-        size: file.size,
-        file,
-      }));
-      setAttachedFiles((prev) => [...prev, ...newFiles]);
+      const maxSizeMb = Math.round((clientMaxUploadSizeBytes / (1024 * 1024)) * 10) / 10;
+      const acceptedFiles: AttachedFile[] = [];
+      const rejectedNames: string[] = [];
+
+      Array.from(files).forEach((file) => {
+        if (file.size > clientMaxUploadSizeBytes) {
+          rejectedNames.push(file.name);
+          return;
+        }
+        acceptedFiles.push({
+          name: file.name,
+          size: file.size,
+          file,
+        });
+      });
+
+      if (acceptedFiles.length > 0) {
+        setAttachedFiles((prev) => [...prev, ...acceptedFiles]);
+      }
+
+      if (rejectedNames.length > 0) {
+        const joined = rejectedNames.slice(0, 3).join(", ");
+        const moreCount = rejectedNames.length - 3;
+        const suffix = moreCount > 0 ? ` (+${moreCount} more)` : "";
+        setErrorMessage(`Some files were skipped because they exceed the ${maxSizeMb}MB limit: ${joined}${suffix}`);
+      } else {
+        setErrorMessage(null);
+      }
     }
     // Reset input so the same file can be selected again
     if (fileInputRef.current) {

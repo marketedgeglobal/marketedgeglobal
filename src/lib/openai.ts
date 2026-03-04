@@ -1,4 +1,5 @@
 export type ChatMessage = { role: "user" | "assistant"; content: string };
+export const clientMaxUploadSizeBytes = parseInt(import.meta.env.VITE_MAX_UPLOAD_SIZE || "", 10) || 10 * 1024 * 1024;
 
 type AgentEndpoint = "assistant" | "upload";
 
