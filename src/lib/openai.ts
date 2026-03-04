@@ -47,6 +47,21 @@ export function resolveAgentUrl(endpoint: AgentEndpoint): string {
 	return `/${endpoint}`;
 }
 
+function isLikelyFetchNetworkError(err: Error): boolean {
+	const message = err.message.toLowerCase();
+	return err.name === "TypeError" && (message.includes("failed to fetch") || message.includes("fetch failed") || message.includes("networkerror"));
+}
+
+function formatFetchFailureMessage(url: string, operation: "assistant" | "upload"): string {
+	const pageProtocol = window.location.protocol;
+	const targetProtocol = new URL(url, window.location.origin).protocol;
+	const mixedContentHint = pageProtocol === "https:" && targetProtocol === "http:"
+		? " Mixed content is blocked: use an HTTPS backend URL for VITE_AGENT_API_URL."
+		: "";
+	const operationLabel = operation === "upload" ? "File upload" : "Assistant request";
+	return `${operationLabel} could not reach backend endpoint: ${url}. This is usually a CORS, DNS, backend availability, or TLS issue.${mixedContentHint}`;
+}
+
 // The client should call the server-side proxy to keep the OpenAI API key secret.
 async function sendMessage(messages: ChatMessage[], assistantId: string, attachments?: { id: string; name: string }[]): Promise<string> {
 	const url = resolveAgentUrl("assistant");
@@ -69,6 +84,9 @@ async function sendMessage(messages: ChatMessage[], assistantId: string, attachm
 	} catch (err) {
 		// Provide more helpful error messages
 		if (err instanceof Error) {
+			if (isLikelyFetchNetworkError(err)) {
+				throw new Error(formatFetchFailureMessage(url, "assistant"));
+			}
 			if (err.name === 'AbortError') {
 				throw new Error('Request timed out. The server took too long to respond.');
 			}

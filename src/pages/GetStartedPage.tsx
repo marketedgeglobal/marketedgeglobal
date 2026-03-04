@@ -75,9 +75,8 @@ export function GetStartedPage(_: PageProps) {
     // Upload files if present
     let uploaded: { id: string; name: string }[] = [];
     if (attachedFiles.length > 0) {
+      const uploadUrl = resolveAgentUrl("upload");
       try {
-        const uploadUrl = resolveAgentUrl("upload");
-
         const form = new FormData();
         attachedFiles.forEach((f) => {
           if (f.file) form.append('files', f.file);
@@ -91,7 +90,14 @@ export function GetStartedPage(_: PageProps) {
         const upData = await upResp.json();
         uploaded = upData.files || [];
       } catch (err) {
-        const message = err instanceof Error ? err.message : 'Upload failed';
+        let message = err instanceof Error ? err.message : 'Upload failed';
+        if (err instanceof Error && err.name === "TypeError" && /failed to fetch|fetch failed|networkerror/i.test(err.message)) {
+          const targetProtocol = new URL(uploadUrl, window.location.origin).protocol;
+          const mixedContentHint = window.location.protocol === "https:" && targetProtocol === "http:"
+            ? " Mixed content is blocked: use an HTTPS backend URL for VITE_AGENT_API_URL."
+            : "";
+          message = `Upload could not reach backend endpoint: ${uploadUrl}. This is usually a CORS, DNS, backend availability, or TLS issue.${mixedContentHint}`;
+        }
         setErrorMessage(message);
         setIsSending(false);
         return;
