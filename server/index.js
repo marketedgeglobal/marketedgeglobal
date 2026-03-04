@@ -12,9 +12,20 @@ dotenv.config();
 const app = express();
 const port = parseInt(process.env.PORT || "", 10) || 8787;
 
+const normalizeOrigin = (value) => {
+  const trimmed = (value || "").trim();
+  if (!trimmed) return "";
+  if (trimmed === "*") return "*";
+  try {
+    return new URL(trimmed).origin;
+  } catch {
+    return trimmed.replace(/\/+$/, "");
+  }
+};
+
 const allowedOrigins = (process.env.ALLOWED_ORIGIN || "")
   .split(",")
-  .map((origin) => origin.trim())
+  .map((origin) => normalizeOrigin(origin))
   .filter(Boolean);
 
 const requestTimeoutMs = parseInt(process.env.REQUEST_TIMEOUT_MS || "", 10) || 20000;
@@ -37,10 +48,11 @@ const corsOptions = {
     if (!origin) {
       return callback(null, true);
     }
-    if (allowedOrigins.length === 0) {
+    if (allowedOrigins.length === 0 || allowedOrigins.includes("*")) {
       return callback(null, true);
     }
-    if (allowedOrigins.includes(origin)) {
+    const normalizedOrigin = normalizeOrigin(origin);
+    if (allowedOrigins.includes(normalizedOrigin) || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
     return callback(new Error("Not allowed by CORS"));

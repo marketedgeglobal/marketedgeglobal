@@ -32,6 +32,14 @@ The server listens on http://localhost:8787 and exposes:
 - MAX_UPLOAD_FILES (default 5)
 - MAX_UPLOAD_SIZE (default 2097152 bytes)
 
+`ALLOWED_ORIGIN` examples:
+
+- Single origin: `https://marketedgeglobal.github.io`
+- Multiple origins: `https://marketedgeglobal.github.io,http://localhost:5173`
+- Allow all (not recommended for production): `*`
+
+Note: origins should be protocol + host (no path). The server also normalizes common variants with trailing slashes.
+
 ## Request shape
 
 POST /assistant
