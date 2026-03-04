@@ -19,7 +19,9 @@ This lightweight server proxies your web chat to the OpenAI API so your API key 
 The server listens on http://localhost:8787 and exposes:
 
 - GET /health
-- POST /agent
+- POST /assistant (recommended)
+- POST /agent (legacy compatibility)
+- POST /upload
 
 ## Optional hardening env vars
 
@@ -32,7 +34,7 @@ The server listens on http://localhost:8787 and exposes:
 
 ## Request shape
 
-POST /agent
+POST /assistant
 
 {
   "messages": [
@@ -50,3 +52,9 @@ POST /agent
 
 Deploy this folder to a Node hosting provider (Render, Railway, Fly.io, AWS, etc.).
 Set the deployed URL as VITE_AGENT_API_URL in your site build.
+
+Examples:
+
+- Recommended: `https://api.example.com/assistant`
+- Legacy compatible: `https://api.example.com/agent`
+- Base URL (frontend will call `/assistant`): `https://api.example.com/`

@@ -1,22 +1,55 @@
 export type ChatMessage = { role: "user" | "assistant"; content: string };
 
+type AgentEndpoint = "assistant" | "upload";
+
+function getConfiguredAgentUrl(): string | null {
+	const envUrl = import.meta.env.VITE_AGENT_API_URL as string | undefined;
+	if (envUrl && envUrl.trim()) return envUrl.trim();
+	const runtimeUrl = (window as any).__AGENT_API_URL as string | undefined;
+	if (runtimeUrl && runtimeUrl.trim()) return runtimeUrl.trim();
+	return null;
+}
+
+export function resolveAgentUrl(endpoint: AgentEndpoint): string {
+	const configured = getConfiguredAgentUrl();
+
+	if (configured) {
+		const url = new URL(configured, window.location.origin);
+		const normalizedPath = url.pathname.replace(/\/+$/, "");
+		const endpointMatch = normalizedPath.match(/^(.*)\/(agent|assistant|upload|assistants)$/);
+
+		if (endpoint === "assistant" && endpointMatch) {
+			const configuredEndpoint = endpointMatch[2];
+			if (configuredEndpoint === "agent" || configuredEndpoint === "assistant") {
+				url.pathname = normalizedPath;
+				url.search = "";
+				url.hash = "";
+				return url.toString();
+			}
+		}
+
+		if (endpointMatch) {
+			const prefix = endpointMatch[1] || "";
+			url.pathname = `${prefix}/${endpoint}`.replace(/\/+/g, "/");
+		} else {
+			url.pathname = `${normalizedPath}/${endpoint}`.replace(/\/+/g, "/");
+		}
+
+		url.search = "";
+		url.hash = "";
+		return url.toString();
+	}
+
+	if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== "/") {
+		return new URL(endpoint, window.location.origin + import.meta.env.BASE_URL).toString();
+	}
+
+	return `/${endpoint}`;
+}
+
 // The client should call the server-side proxy to keep the OpenAI API key secret.
 async function sendMessage(messages: ChatMessage[], assistantId: string, attachments?: { id: string; name: string }[]): Promise<string> {
-	// Prefer an explicitly configured backend (`VITE_AGENT_API_URL`) so the client
-	// calls the real server (useful in dev where the backend runs on another port).
-	const agentApi = import.meta.env.VITE_AGENT_API_URL as string | undefined;
-	let url: string;
-	if (agentApi) {
-		url = new URL('assistant', agentApi).toString();
-	} else if ((window as any).__AGENT_API_URL) {
-		// Allow a runtime-injected global to override the agent URL.
-		url = new URL('assistant', (window as any).__AGENT_API_URL).toString();
-	} else if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
-		url = new URL('assistant', window.location.origin + (import.meta.env.BASE_URL ?? '/')).toString();
-	} else {
-		// Default to same-origin root path
-		url = '/assistant';
-	}
+	const url = resolveAgentUrl("assistant");
 
 	try {
 		const resp = await fetch(url, {

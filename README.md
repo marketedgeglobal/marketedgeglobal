@@ -70,7 +70,10 @@ For documentation-only branches that don't include a `package.json`, tooling com
 The chat widget on the site calls a separate backend proxy to keep your API key private.
 
 - See docs/agent-backend.md for setup
-- Set the GitHub Actions secret VITE_AGENT_API_URL to your deployed /agent endpoint
+- Set the GitHub Actions secret VITE_AGENT_API_URL to your deployed backend URL.
+   - Recommended: full assistant endpoint (for example, `https://api.example.com/assistant`)
+   - Also supported: legacy `/agent` endpoint (for example, `https://api.example.com/agent`)
+   - Base URLs are also supported (for example, `https://api.example.com/`), in which case the client uses `/assistant`
  - Optional: use the Fly.io deployment workflow in .github/workflows/deploy-agent.yml
 
 ## Zapier Integration (Analytics)

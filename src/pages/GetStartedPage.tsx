@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { sendMessage, type ChatMessage } from "../lib/openai";
+import { resolveAgentUrl, sendMessage, type ChatMessage } from "../lib/openai";
 
 type PageProps = {};
 
@@ -76,15 +76,7 @@ export function GetStartedPage(_: PageProps) {
     let uploaded: { id: string; name: string }[] = [];
     if (attachedFiles.length > 0) {
       try {
-        const agentApi = import.meta.env.VITE_AGENT_API_URL as string | undefined;
-        let uploadUrl: string;
-        if (agentApi) {
-          uploadUrl = new URL('upload', agentApi).toString();
-        } else if (import.meta.env.BASE_URL && import.meta.env.BASE_URL !== '/') {
-          uploadUrl = new URL('upload', window.location.origin + (import.meta.env.BASE_URL ?? '/')).toString();
-        } else {
-          uploadUrl = '/upload';
-        }
+        const uploadUrl = resolveAgentUrl("upload");
 
         const form = new FormData();
         attachedFiles.forEach((f) => {
