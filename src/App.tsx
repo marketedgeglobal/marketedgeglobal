@@ -476,7 +476,7 @@ function App() {
         "Hi! I’m the MarketEdge BD Assistant. Ask me about regions, accounts, or competitive trends.",
     },
   ]);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
   const agentEndpoint = import.meta.env.VITE_AGENT_API_URL as string | undefined;
@@ -491,6 +491,13 @@ function App() {
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, isChatOpen]);
+
+  useEffect(() => {
+    const textarea = inputRef.current;
+    if (!textarea) return;
+    textarea.style.height = "auto";
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`;
+  }, [inputValue, isChatOpen]);
 
   const handleSend = async () => {
     if (!inputValue.trim() || isSending) {
@@ -591,15 +598,21 @@ function App() {
               </div>
             )}
             <div className="border-t border-slate-800 p-4">
-              <div className="flex items-center gap-3">
-                <input
+              <div className="flex items-end gap-3">
+                <textarea
                   ref={inputRef}
-                  className="flex-1 rounded-full border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+                  rows={1}
+                  className="max-h-40 flex-1 resize-none rounded-2xl border border-slate-800 bg-slate-900 px-4 py-2 text-sm leading-5 text-slate-100 outline-none focus:border-indigo-500"
                   placeholder="Ask the BD Assistant..."
                   value={inputValue}
-                  onChange={(event) => setInputValue(event.target.value)}
+                  onChange={(event) => {
+                    setInputValue(event.target.value);
+                    event.currentTarget.style.height = "auto";
+                    event.currentTarget.style.height = `${Math.min(event.currentTarget.scrollHeight, 160)}px`;
+                  }}
                   onKeyDown={(event) => {
-                    if (event.key === "Enter") {
+                    if (event.key === "Enter" && !event.shiftKey) {
+                      event.preventDefault();
                       void handleSend();
                     }
                   }}

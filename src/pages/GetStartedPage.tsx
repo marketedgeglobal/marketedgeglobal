@@ -26,7 +26,7 @@ export function GetStartedPage(_: PageProps) {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const initialMessageCountRef = useRef(0); // Track how many initial greeting messages were added
   const didAutoOpenRef = useRef(false);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const messageEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -34,6 +34,13 @@ export function GetStartedPage(_: PageProps) {
     if (!isChatOpen) return;
     inputRef.current?.focus();
   }, [isChatOpen]);
+
+  useEffect(() => {
+    const textarea = inputRef.current;
+    if (!textarea) return;
+    textarea.style.height = "auto";
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`;
+  }, [inputValue, isChatOpen]);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -778,13 +785,18 @@ export function GetStartedPage(_: PageProps) {
                   📎 Attach
                 </button>
               </div>
-              <div className="flex items-center gap-3">
-                <input
+              <div className="flex items-end gap-3">
+                <textarea
                   ref={inputRef}
-                  className="flex-1 rounded-full border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-4 py-3 text-sm text-[var(--color-body)] outline-none focus:border-[var(--color-icon-accent)]"
-                    placeholder={isChatOpen ? `Ask ${currentAssistantName}...` : "Ask the coach..."}
+                  rows={1}
+                  className="max-h-40 flex-1 resize-none rounded-2xl border border-[var(--color-card-border)] bg-[var(--color-card-gradient-top)] px-4 py-3 text-sm leading-5 text-[var(--color-body)] outline-none focus:border-[var(--color-icon-accent)]"
+                  placeholder={isChatOpen ? `Ask ${currentAssistantName}...` : "Ask the coach..."}
                   value={inputValue}
-                  onChange={(event) => setInputValue(event.target.value)}
+                  onChange={(event) => {
+                    setInputValue(event.target.value);
+                    event.currentTarget.style.height = "auto";
+                    event.currentTarget.style.height = `${Math.min(event.currentTarget.scrollHeight, 160)}px`;
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" && !event.shiftKey) {
                       event.preventDefault();
