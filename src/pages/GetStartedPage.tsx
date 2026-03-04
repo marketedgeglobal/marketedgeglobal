@@ -538,7 +538,7 @@ export function GetStartedPage(_: PageProps) {
                   aria-label="Produces Ghana-focused research synthesis across reports, datasets, and policy context."
                   className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out"
                 >
-                  Ghana T&G Analysis,
+                  Ghana T&G Analysis
                 </a>
               </div>
             </div>

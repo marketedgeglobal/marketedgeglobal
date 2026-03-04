@@ -178,14 +178,14 @@ export function AnalyticsPage() {
 
         <section id="zapier-integration" className="rounded-3xl border border-[var(--color-card-border)] bg-gradient-to-b from-[var(--color-card-gradient-top)] to-[var(--color-card-gradient-bottom)] p-8 min-h-[120px]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-3">
-            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ghana Research Snythensis</h3>
+            <h3 className="text-lg font-semibold text-[var(--color-heading)]">Ghana T&G Study</h3>
             <a
               href="https://marketedgeglobal.github.io/primarydataghana/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full bg-[var(--color-pill-bg)] px-4 py-2 text-sm font-semibold text-[var(--color-pill-text)] border border-[var(--color-pill-border)] hover:bg-[var(--color-pill-hover-bg)] hover:border-[var(--color-pill-hover-border)] transition-all duration-150 ease-out w-fit"
             >
-              Ghana T&G Analysis,
+              Ghana T&G Analysis
             </a>
           </div>
           <div className="space-y-2 text-sm text-[var(--color-body)]">
